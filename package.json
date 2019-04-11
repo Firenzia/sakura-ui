@@ -1,0 +1,26 @@
+{
+  "name": "sakura-ui",
+  "version": "1.0.0",
+  "description": "an UI framework based on Vue.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Firenzia/sakura-ui.git"
+  },
+  "keywords": [
+    "UI",
+    "vue"
+  ],
+  "author": "Firenzia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Firenzia/sakura-ui/issues"
+  },
+  "homepage": "https://github.com/Firenzia/sakura-ui#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
