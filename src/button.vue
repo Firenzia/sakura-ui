@@ -1,5 +1,7 @@
 <template>
-    <button class="s-button">122</button>
+    <button class="s-button">
+      <slot></slot>
+    </button>
 </template>
 <script>
 export default {
