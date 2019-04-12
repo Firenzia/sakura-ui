@@ -1,5 +1,5 @@
 <template>
-    <button class="s-button" :class="{[`${icon-position}`]:true}">
+    <button class="s-button" :class="`ico-${iconPosition}`">
       <svg class="icon" aria-hidden="true">
             <use :xlink:href="`#i-${icon}`"></use>
         </svg>
@@ -9,7 +9,7 @@
 <script>
 export default {
     name:'s-button',
-    props:['icon', 'icon-position'],
+    props:['icon', 'iconPosition'],
     created(){
       console.log(this.icon)
     }
