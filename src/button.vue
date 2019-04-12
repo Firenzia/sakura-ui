@@ -1,11 +1,18 @@
 <template>
-    <button class="s-button">
+    <button class="s-button" :class="{[`${icon-position}`]:true}">
+      <svg class="icon" aria-hidden="true">
+            <use :xlink:href="`#i-${icon}`"></use>
+        </svg>
       <slot></slot>
     </button>
 </template>
 <script>
 export default {
-    name:'s-button'
+    name:'s-button',
+    props:['icon', 'icon-position'],
+    created(){
+      console.log(this.icon)
+    }
 }
 </script>
 <style lang="scss" scoped>
