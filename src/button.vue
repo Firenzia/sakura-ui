@@ -9,8 +9,12 @@
     </button>
 </template>
 <script>
+import Icon from './icon'
 export default {
     name:'s-button',
+    components:{
+      's-icon': Icon
+    },
     props:{
         'loading':{
           type: Boolean,
