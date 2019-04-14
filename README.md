@@ -37,13 +37,14 @@ This is an UI framework based on Vue. The inspiration comes from Sakura :cherry_
 
    ```
 3. Global CSS Setting 
-    Besure to set global css property box-sizing
+   
+    Besure to set global css property box-sizing.
     ```
     *, *:before, *:after{box-sizing:border-box}
+    <!-- Browser Supportment: IE 8+ -->
     ```
-    Browser Supportment: IE 8+
-
-    Besure to set global style
+    
+    Besure to set global style.
     ```
     html {
         --button-height: 32px;
@@ -55,8 +56,9 @@ This is an UI framework based on Vue. The inspiration comes from Sakura :cherry_
         --border-color: #999;
         --border-color-hover: #666;
     }
+    <!-- Browser Supportment: IE 15+ -->
     ```
-    Browser Supportment: IE 15+
+    
 ## Issue
 
 ## Changelog
