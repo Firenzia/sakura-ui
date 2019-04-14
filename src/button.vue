@@ -1,5 +1,5 @@
 <template>
-    <button class="s-button" :class="`ico-${iconPosition}`"
+    <button class="s-button test-cls" :class="`ico-${iconPosition}`"
       @click="$emit('click')">
       <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
       <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
