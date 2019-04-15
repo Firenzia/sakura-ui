@@ -44,6 +44,17 @@ describe('Input', () => {
             const inputElement = vm.$el.querySelector('input')
             expect(inputElement.getAttribute('disabled')).to.equal('disabled')
         })
+        it('可以设置error属性.', () => {
+            vm = new Constructor({
+            propsData: {
+                error:'有问题哦'
+            }
+            }).$mount()
+            const useElement = vm.$el.querySelector('use')
+            expect(useElement.getAttribute('xlink:href')).to.equal('#i-error')
+            const msgDom =  vm.$el.querySelector('.err-msg')
+            expect(msgDom.innerText).to.equal('有问题哦')
+        })
     
     })
 
