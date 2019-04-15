@@ -1,6 +1,13 @@
 <template>
     <div class="wrapper" :class="{error}">
-        <input type="text" :readonly="readonly" :disabled="disabled" :placeholder="value">
+        <input type="text" 
+        :readonly="readonly" 
+        :disabled="disabled" 
+        :value="value" 
+        @input="$emit('input',$event.target.value)"
+        @change="$emit('change',$event.target.value)"
+        @focus="$emit('focus',$event.target.value)"
+        @blur="$emit('blur',$event.target.value)">
         <template v-if="error">
             <s-icon name="setting"></s-icon>
             <span>{{error}}</span>
@@ -31,7 +38,7 @@ export default {
     error:{
       type: String
     }
-  }    
+  } 
 }
 </script>
 <style lang="scss" scoped>

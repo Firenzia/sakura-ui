@@ -14,6 +14,13 @@ Vue.component('s-input', input)
 new Vue({
     el:'#app',
     data:{
-        loading1:true
+        loading1:true,
+        testMsg:'testMsg'
+    },
+    methods:{
+        say(e){
+            console.log('trigger say')
+            console.log(e)
+        }
     }
 })

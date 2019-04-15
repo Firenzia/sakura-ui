@@ -27,10 +27,10 @@
 <body>
 	<div id="app">
          <s-input>test</s-input>
-        <s-input value="测试"></s-input>
-        <s-input readonly value="只读"></s-input>
-        <s-input disabled value="不可点击"></s-input>
-        <s-input error="有问题哦"></s-input>
+        <s-input value="测试" @change="say"></s-input>
+        <s-input value="只读" readonly id="readonly" ></s-input>
+        <s-input value="不可点击" disabled ></s-input>
+        <s-input error="有问题哦" v-model="testMsg"></s-input> 
         
         <!-- <s-button icon="setting" icon-position="left">按钮</s-button>
         <s-button icon="setting" icon-position="right">按钮</s-button>
