@@ -42,24 +42,30 @@
         <s-input value="只读" readonly id="readonly" ></s-input>
         <s-input value="不可点击" disabled ></s-input>
         <s-input error="有问题哦" v-model="testMsg"></s-input>  -->
+
+        <p>响应式</p>
+        <s-row >
+            <s-col span="8" :npc="{span:2}" :wpc="{span:10}"><div class="demo-col">1</div></s-col>
+            <s-col span="8" :npc="{span:10}" :wpc="{span:2}"><div class="demo-col">2</div></s-col>
+            <s-col span="8" :npc="{span:2}" :wpc="{span:3}"><div class="demo-col">3</div></s-col>
+        </s-row>
         
         <p>不设置</p>
         <s-row >
-            <s-col><div class="demo-col">1</div></s-col>
-            <s-col><div class="demo-col">2</div></s-col>
-            <s-col><div class="demo-col">3</div></s-col>
-            <s-col><div class="demo-col">4</div></s-col>
-            <s-col><div class="demo-col">5</div></s-col>
-            <s-col><div class="demo-col">6</div></s-col>
-            <s-col><div class="demo-col">7</div></s-col>
+            <s-col span="4"><div class="demo-col">1</div></s-col>
+            <s-col span="4"><div class="demo-col">2</div></s-col>
+            <s-col span="4"><div class="demo-col">3</div></s-col>
+            <s-col span="4"><div class="demo-col">4</div></s-col>
+            <s-col span="4"><div class="demo-col">5</div></s-col>
+            <s-col span="4"><div class="demo-col">6</div></s-col>
         </s-row>
 
         <p>设置gutter20</p>
         <s-row gutter="20">
-            <s-col><div class="demo-col">1</div></s-col>
-            <s-col><div class="demo-col">2</div></s-col>
-            <s-col><div class="demo-col">3</div></s-col>
-            <s-col><div class="demo-col">4</div></s-col>
+            <s-col span="6"><div class="demo-col">1</div></s-col>
+            <s-col span="6"><div class="demo-col">2</div></s-col>
+            <s-col span="6"><div class="demo-col">3</div></s-col>
+            <s-col span="6"><div class="demo-col">4</div></s-col>
         </s-row>
 
         <p>设置span</p>
