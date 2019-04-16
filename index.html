@@ -17,21 +17,63 @@
         }
         #app{
             margin:20px;
+            border:1px solid green;
         }
         body{
             font-size:var(--font-size)
         }
 
      </style>
+     <style>
+         .demo-col{
+             border:1px solid #ddd;
+             height: 100%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+     </style>
 </head>
 <body>
 	<div id="app">
-         <s-input>test</s-input>
+        <s-input icon="setting">test</s-input>
+        <!-- <s-input>test</s-input>
         <s-input value="测试" @change="say"></s-input>
         <s-input value="只读" readonly id="readonly" ></s-input>
         <s-input value="不可点击" disabled ></s-input>
-        <s-input error="有问题哦" v-model="testMsg"></s-input> 
+        <s-input error="有问题哦" v-model="testMsg"></s-input>  -->
         
+        <p>不设置</p>
+        <s-row >
+            <s-col><div class="demo-col">1</div></s-col>
+            <s-col><div class="demo-col">2</div></s-col>
+            <s-col><div class="demo-col">3</div></s-col>
+            <s-col><div class="demo-col">4</div></s-col>
+            <s-col><div class="demo-col">5</div></s-col>
+            <s-col><div class="demo-col">6</div></s-col>
+            <s-col><div class="demo-col">7</div></s-col>
+        </s-row>
+
+        <p>设置gutter20</p>
+        <s-row gutter="20">
+            <s-col><div class="demo-col">1</div></s-col>
+            <s-col><div class="demo-col">2</div></s-col>
+            <s-col><div class="demo-col">3</div></s-col>
+            <s-col><div class="demo-col">4</div></s-col>
+        </s-row>
+
+        <p>设置span</p>
+        <s-row>
+            <s-col span="5"><div class="demo-col">span是5</div></s-col>
+            <s-col span="8"><div class="demo-col">span是8</div></s-col>
+        </s-row>
+
+        <p>设置offset</p>
+        <s-row>
+            <s-col span="6"><div class="demo-col">1</div></s-col>
+            <s-col span="6"><div class="demo-col">2</div></s-col>
+            <s-col span="6" offset="6"><div class="demo-col">offset是6</div></s-col>
+        </s-row>
 
         <!-- <s-button icon="setting" icon-position="right">按钮</s-button>
         <s-button :loading=true icon="download">按钮</s-button>

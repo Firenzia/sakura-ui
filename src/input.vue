@@ -21,6 +21,9 @@ export default {
       's-icon': Icon
   },
   props:{
+    icon:{
+      type: String
+    },
     value:{
       type: String
     },
