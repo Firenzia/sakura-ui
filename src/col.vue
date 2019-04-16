@@ -29,7 +29,7 @@ export default {
           if(deviceType === 'common'){
               return [span && `col-${span}`, offset && `offset-${offset}`]
           }
-          return [`${deviceType}-col-${span}`, `${deviceType}-offset-${offset}`]
+          return [ span && `${deviceType}-col-${span}`, offset && `${deviceType}-offset-${offset}`]
       }
     },
     computed:{
