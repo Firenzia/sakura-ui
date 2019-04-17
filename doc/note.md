@@ -114,3 +114,12 @@ flex 弹性布局
 默认layout是纵向排列，在里面有sider的时候横向排列；考虑到嵌套layout的情况，layout的flex-grow:1
 content的flex-grow:1
 header/footer可以设置高度,sider可以设置宽度
+
+
+## Tabs
+技术点：
+.sync 修饰符语法糖 （父组件）对应子组件内部抛出 $emit('update:eventName')
+跨祖孙组件通信： provide inject
+eventBus 
+
+
