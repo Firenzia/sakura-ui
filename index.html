@@ -15,10 +15,10 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
-        #app{
+        /* #app{
             margin:20px;
             border:1px solid green;
-        }
+        } */
         body{
             font-size:var(--font-size)
         }
@@ -36,14 +36,14 @@
 </head>
 <body>
 	<div id="app">
-        <s-input icon="setting">test</s-input>
+        <!-- <s-input icon="setting">test</s-input> -->
         <!-- <s-input>test</s-input>
         <s-input value="测试" @change="say"></s-input>
         <s-input value="只读" readonly id="readonly" ></s-input>
         <s-input value="不可点击" disabled ></s-input>
         <s-input error="有问题哦" v-model="testMsg"></s-input>  -->
 
-        <p>响应式</p>
+        <!-- <p>响应式</p>
         <s-row align="left">
             <s-col span="8" :xs="{span:2}" :md="{span:10}"><div class="demo-col">1</div></s-col>
             <s-col span="8" :xs="{span:10}":md="{span:2}"><div class="demo-col">2</div></s-col>
@@ -79,7 +79,7 @@
             <s-col span="6"><div class="demo-col">1</div></s-col>
             <s-col span="6"><div class="demo-col">2</div></s-col>
             <s-col span="6" offset="6"><div class="demo-col">offset是6</div></s-col>
-        </s-row>
+        </s-row> -->
 
         <!-- <s-button icon="setting" icon-position="right">按钮</s-button>
         <s-button :loading=true icon="download">按钮</s-button>
@@ -89,6 +89,14 @@
             <s-button icon-position="left">中间</s-button>
             <s-button icon="right" icon-position="right">后一页</s-button>
         </s-button-group> -->
+        <s-layout style="height:100vh">
+            <s-header>header</s-header>
+            <s-layout>
+                <s-sidebar>sidebar</s-sidebar>
+                <s-content>content</s-content>
+            </s-layout>
+            <s-footer>footer</s-footer>
+        </s-layout>
        
     </div>
     <script src="./src/app.js"></script>
