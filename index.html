@@ -89,14 +89,54 @@
             <s-button icon-position="left">中间</s-button>
             <s-button icon="right" icon-position="right">后一页</s-button>
         </s-button-group> -->
-        <s-layout style="height:100vh">
-            <s-header>header</s-header>
-            <s-layout>
-                <s-sidebar>sidebar</s-sidebar>
-                <s-content>content</s-content>
+        <p>1</p>
+        <div style="width:600px">
+            <s-layout height='400'>
+                <s-header height='100'>header</s-header>
+                <s-layout>
+                    <s-sider width='200'>sidebar</s-sider>
+                    <s-content>content</s-content>
+                </s-layout>
+                <s-footer>footer</s-footer>
             </s-layout>
-            <s-footer>footer</s-footer>
-        </s-layout>
+        </div>
+
+        <p>2</p>
+        <div style="width:600px">
+            <s-layout height='400'>
+                <s-header height='100'>header</s-header>
+                <s-layout>
+                    <s-content>content</s-content>
+                </s-layout>
+                <s-footer>footer</s-footer>
+            </s-layout>
+        </div>
+
+        <p>3</p>
+        <div style="width:600px">
+            <s-layout height='400'>
+                <s-header height='100'>header</s-header>
+                <s-layout>
+                    <s-content>content</s-content>
+                    <s-sider width='200'>sidebar</s-sider>
+                </s-layout>
+                <s-footer>footer</s-footer>
+            </s-layout>
+        </div>
+
+        <p>4</p>
+        <div style="width:600px">
+            <s-layout height='400'>
+                 <s-sider width='200'>sidebar</s-sider>
+                <s-layout>
+                    <s-header height='100'>header</s-header>
+                    <s-content>content</s-content>
+                    <s-footer>footer</s-footer>
+                </s-layout>
+               
+            </s-layout>
+        </div>
+        
        
     </div>
     <script src="./src/app.js"></script>

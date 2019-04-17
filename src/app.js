@@ -8,7 +8,7 @@ import row from './row'
 import layout from './layout'
 import header from './header'
 import content from './content'
-import sidebar from './sidebar'
+import sider from './sider'
 import footer from './footer'
 
 
@@ -21,7 +21,7 @@ Vue.component('s-col', col)
 
 Vue.component('s-layout', layout)
 Vue.component('s-header', header)
-Vue.component('s-sidebar', sidebar)
+Vue.component('s-sider', sider)
 Vue.component('s-content', content)
 Vue.component('s-footer', footer)
 
@@ -38,5 +38,8 @@ new Vue({
             console.log('trigger say')
             console.log(e)
         }
+    },
+    mounted(){
+        // console.log(layout);
     }
 })
