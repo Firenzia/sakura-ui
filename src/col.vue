@@ -75,29 +75,6 @@ export default {
       .#{$offset-prefix}#{$i} {margin-left: 1/24*$i*100%}
     }
 
-    @media screen and (max-width: 1700px) {
-         $col-npc-prefix:col-npc-;
-         $offset-npc-prefix:offset-npc-;
-        @for $i from 1 through 24 {
-        .#{$col-npc-prefix}#{$i} {width: 1/24*$i*100%}
-        }
-        
-        @for $i from 1 through 24 {
-        .#{$offset-npc-prefix}#{$i} {margin-left: 1/24*$i*100%}
-        }
-    }
-
-    @media screen and (max-width: 1200px) {
-         $col-wpc-prefix:wpc-col-;
-         $offset-wpc-prefix:wpc-offset-;
-        @for $i from 1 through 24 {
-        .#{$col-wpc-prefix}#{$i} {width: 1/24*$i*100%}
-        }
-        
-        @for $i from 1 through 24 {
-        .#{$offset-wpc-prefix}#{$i} {margin-left: 1/24*$i*100%}
-        }
-    }
 
     // Extra small devices (portrait phones, less than 576px)
     @media (max-width: 575.98px) {

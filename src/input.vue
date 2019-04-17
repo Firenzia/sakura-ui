@@ -27,9 +27,6 @@ export default {
     value:{
       type: String
     },
-    icon:{
-      type: String
-    },
     disabled:{
       type: Boolean,
       default: false
