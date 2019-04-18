@@ -120,6 +120,7 @@ header/footer可以设置高度,sider可以设置宽度
 技术点：
 .sync 修饰符语法糖 （父组件）对应子组件内部抛出 $emit('update:eventName')
 跨祖孙组件通信： provide inject
-eventBus 
+eventBus， 使用new Vue(), 因为new 出来的vue有$on/$off/$emit3个接口
+注意vue组件的事件不会冒泡，html标签会 
 
 
