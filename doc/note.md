@@ -123,4 +123,6 @@ header/footer可以设置高度,sider可以设置宽度
 eventBus， 使用new Vue(), 因为new 出来的vue有$on/$off/$emit3个接口
 注意vue组件的事件不会冒泡，html标签会 
 
+注意！provide 的函数不要用箭头函数，这样this不是指向vm
+
 

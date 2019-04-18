@@ -36,6 +36,41 @@
 </head>
 <body>
 	<div id="app">
+        <!-- tabs demo -->
+        <p>tap show on left</p>
+        <s-tab tab-position="left" selected="herb">
+            <s-tab-head>
+                <s-tab-item name="flower">
+                    flower
+                    <s-icon name="setting" slot="icon"></s-icon>
+                </s-tab-item>
+                <s-tab-item name="grass">grass</s-tab-item>
+                <s-tab-item name="herb">herb</s-tab-item>
+            </s-tab-head>
+            <s-tab-body>
+                <s-tab-pane name="flower">This is flower</s-tab-pane>
+                <s-tab-pane name="grass">This is grass</s-tab-pane>
+                <s-tab-pane  name="herb">This is herb</s-tab-pane>
+            </s-tab-body>
+        </s-tab>
+
+        <p>tap show on top</p>
+        <s-tab selected="herb">
+                <s-tab-head>
+                    <s-tab-item name="flower">
+                        flower
+                        <s-icon name="setting" slot="icon"></s-icon>
+                    </s-tab-item>
+                    <s-tab-item name="grass">grass</s-tab-item>
+                    <s-tab-item name="herb">herb</s-tab-item>
+                </s-tab-head>
+                <s-tab-body>
+                    <s-tab-pane name="flower">This is flower</s-tab-pane>
+                    <s-tab-pane name="grass">This is grass</s-tab-pane>
+                    <s-tab-pane  name="herb">This is herb</s-tab-pane>
+                </s-tab-body>
+            </s-tab>
+
         <!-- button demo -->
         <!-- <s-button icon="setting" icon-position="right">按钮</s-button>
         <s-button :loading=true icon="download">按钮</s-button>

@@ -1,29 +1,40 @@
 import  Vue from 'vue'
-import button from './button'
-import icon from './icon'
-import buttonGroup from './button-group'
-import input from './input'
-import col from './col'
-import row from './row'
-import layout from './layout'
-import header from './header'
-import content from './content'
-import sider from './sider'
-import footer from './footer'
+import Button from './button'
+import Icon from './icon'
+import ButtonGroup from './button-group'
+import Input from './input'
+import Col from './col'
+import Row from './row'
+import Layout from './layout'
+import Header from './header'
+import Content from './content'
+import Sider from './sider'
+import Footer from './footer'
+import Tab from './tab'
+import TabHead from './tab-head'
+import TabItem from './tab-item'
+import TabBody from './tab-body'
+import TabPane from './tab-pane'
 
 
-Vue.component('s-button-group', buttonGroup)
-Vue.component('s-button', button)
-Vue.component('s-icon', icon)
-Vue.component('s-input', input)
-Vue.component('s-row', row)
-Vue.component('s-col', col)
+Vue.component('s-button-group', ButtonGroup)
+Vue.component('s-button', Button)
+Vue.component('s-icon', Icon)
+Vue.component('s-input', Input)
+Vue.component('s-row', Row)
+Vue.component('s-col', Col)
 
-Vue.component('s-layout', layout)
-Vue.component('s-header', header)
-Vue.component('s-sider', sider)
-Vue.component('s-content', content)
-Vue.component('s-footer', footer)
+Vue.component('s-layout', Layout)
+Vue.component('s-header', Header)
+Vue.component('s-sider', Sider)
+Vue.component('s-content', Content)
+Vue.component('s-footer', Footer)
+
+Vue.component('s-tab', Tab)
+Vue.component('s-tab-head', TabHead)
+Vue.component('s-tab-item', TabItem)
+Vue.component('s-tab-body', TabBody)
+Vue.component('s-tab-pane', TabPane)
 
 
 
@@ -40,6 +51,5 @@ new Vue({
         }
     },
     mounted(){
-        // console.log(layout);
     }
 })
