@@ -121,6 +121,8 @@ header/footer可以设置高度,sider可以设置宽度
 
 开发思路：在插件的install方法修改vue原型链，方法中引入我们的组件，手动调用extend方法获得组件构造器，然后new 一个组件实例，传递数据，再进行组件的$mount方法，让组件构建dom树保存在内存中，再调用document.body.appendChild(vm.$el)手动挂载组件。
 
+暴露组件方法给用户调用，在组件内部调用callBack的时候参数传入this, 然后用户在自定义callBack的时候能通过参数拿到toast组件，从而调用toast组件内部方法。
+
 ## Tabs
 技术点：
 .sync 修饰符语法糖 （父组件）对应子组件内部抛出 $emit('update:eventName')

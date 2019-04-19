@@ -60,7 +60,21 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast({'message':'出来'})
+            this.$toast({'message':'出来阿'})
+        },
+        showToast2(){
+            this.$toast({'message':'出来阿', 'autoClose': false})
+        },
+        showToast3(){
+            this.$toast({'message':'出来阿', 
+            'autoClose': false,
+            'closeBtn':{'btnText':'关门阿',
+                        'callback':function(arg){
+                            console.log('用户说他知道啦')
+                            console.log(arg.componentMethod());
+                        }
+                      }
+            })
         }
     }
 })

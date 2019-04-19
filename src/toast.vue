@@ -1,15 +1,53 @@
 <template>
     <div class="toast-wrapper">
         <slot>{{message}}</slot>
+        <div v-if="closeBtn">
+            <span @click="userCustClsoe">{{closeBtn.btnText}}</span>
+        </div>
     </div>
 </template>
 <script>
 export default {
-    data(){
-        return {
-            message:'',
-            type:'info',
-            position:'top'
+    props:{
+        duration:{
+            type: Number,
+            default: 2000
+        },
+        message:{
+            type: String
+        },
+        closeBtn:{
+            validator(val){
+                let flag = true
+                for(let key of Object.keys(val)){
+                    if(!['btnText','callback'].includes(key)){
+                        flag= false
+                        break;
+                    }
+                }
+                return flag
+            }
+        },
+    },
+    mounted(){
+        // 默认3s关闭
+       if(!this.closeBtn){
+           setTimeout(()=>{
+               this.close()
+            },this.duration)
+       }  
+    },
+    methods:{
+        close(){
+            this.$el.remove()
+            this.$destroy()
+        },
+        userCustClsoe(){
+            this.close()
+            this.closeBtn.callback(this)
+        },
+        componentMethod(){
+            console.log('我是组件方法')
         }
     }
 }
