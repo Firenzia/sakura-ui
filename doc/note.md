@@ -115,6 +115,11 @@ flex 弹性布局
 content的flex-grow:1
 header/footer可以设置高度,sider可以设置宽度
 
+## Toast
+从用户角度考虑，是用方法触发展示toast,那么就要去修改vue原型链。对于这种修改原型链的操作，vue推荐使用插件方式，这样规避2个问题：
+开发者对于引入vue版本的问题；是否引入插件会覆盖原有原型链方法，让代码有侵入性
+
+开发思路：在插件的install方法修改vue原型链，方法中引入我们的组件，手动调用extend方法获得组件构造器，然后new 一个组件实例，传递数据，再进行组件的$mount方法，让组件构建dom树保存在内存中，再调用document.body.appendChild(vm.$el)手动挂载组件。
 
 ## Tabs
 技术点：
@@ -123,8 +128,17 @@ header/footer可以设置高度,sider可以设置宽度
 eventBus， 使用new Vue(), 因为new 出来的vue有$on/$off/$emit3个接口
 注意vue组件的事件不会冒泡，html标签会
 考虑到切换的时候，选中的tab-item下面的线会滑来滑去有动画，不考虑用after画线，用js实现在tab-head下面动态画线，使用到的原生js api Element.getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。 (点我)[https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect] 
+
+一个事件中心 eventBuss
+| 标签 | 触发 | 监听 |
+| :------| ------: | :------: |
+| tab | emit(只有初始化的时候emit) | - |
+| tabHead|  | on(移动line)  |
+| tabItem| emit(点击tabItem的时候emit) | on(设置item active)  |
+| tabPane|  |  on(切换pane)|
  
-注意！provide 的函数不要用箭头函数，这样this不是指向vm
+注意！
+provide 的函数不要用箭头函数，这样this不是指向vm
 对ui操作放到nextTick
 
 

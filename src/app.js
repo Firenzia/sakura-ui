@@ -15,7 +15,10 @@ import TabHead from './tab-head'
 import TabItem from './tab-item'
 import TabBody from './tab-body'
 import TabPane from './tab-pane'
+import TestComp from './sync'
+import ToastPlugin from './plugins/toast'
 
+Vue.use(ToastPlugin)
 
 Vue.component('s-button-group', ButtonGroup)
 Vue.component('s-button', Button)
@@ -36,13 +39,16 @@ Vue.component('s-tab-item', TabItem)
 Vue.component('s-tab-body', TabBody)
 Vue.component('s-tab-pane', TabPane)
 
+Vue.component('test-comp', TestComp)
 
 
 new Vue({
     el:'#app',
     data:{
         loading1:true,
-        testMsg:'testMsg'
+        testMsg:'testMsg',
+        number:100,
+        number2:100
     },
     methods:{
         say(e){
@@ -51,5 +57,10 @@ new Vue({
         }
     },
     mounted(){
+    },
+    methods:{
+        showToast(){
+            this.$toast({'message':'出来'})
+        }
     }
 })

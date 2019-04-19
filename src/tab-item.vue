@@ -29,7 +29,7 @@ export default {
     },
     created(){
         this.eventBus.$on('update:selected', (val)=>{
-            // val===this.name && console.log(`item ${this.name}被选中`)
+            val===this.name && console.log(`item ${this.name}被选中`)
             this.active = val===this.name
         })
     },
