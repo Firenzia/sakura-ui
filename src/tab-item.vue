@@ -1,9 +1,9 @@
 <template>
-    <div class="s-tab-item" @click="changeSelect" :class="isActive && 'active'">
+    <div class="s-tab-item" @click="changeSelect" :class="{active,disabled}">
         <template class="icon">
             <slot name="icon"></slot>
         </template>
-       <div :class="hasIcon && 'hasIcon'">
+       <div :class="{hasIcon}">
         <slot></slot>
         </div> 
        
@@ -16,18 +16,21 @@ export default {
     props:{
         name:{
           type:String
+        },
+        disabled:{
+          type: Boolean
         }
     },
     data(){
         return {
-            isActive:false,
-            hasIcon: false
+            active:false,
+            hasIcon: false,
         }
     },
     created(){
         this.eventBus.$on('update:selected', (val)=>{
             val===this.name && console.log(`item ${this.name}被选中`)
-            this.isActive = val===this.name
+            this.active = val===this.name
         })
     },
     mounted(){
@@ -37,6 +40,7 @@ export default {
     },
     methods:{
         changeSelect(){
+            if(this.disabled) return
             this.eventBus.$emit('update:selected',this.name)
         }
     }
@@ -45,13 +49,16 @@ export default {
 <style lang="scss" scoped>
     .s-tab-item{
         display: flex;
-        border:1px solid #ccc;
+        // border:1px solid #ccc;
         align-items: center;
         justify-content: flex-start;
         padding:.5em 2em;
         
         &.active{
             background: lightblue
+        }
+        &.disabled{
+            cursor: not-allowed;
         }
         .hasIcon{
             margin-left:10px;
