@@ -28,12 +28,25 @@ export default {
         return {eventBus: this.eventBus}
     },
     mounted(){
-        this.eventBus.$emit("update:selected", this.selected)
+        // todo 找到被选中的item，发送给eventBus
+        this.$children.forEach(child=>{
+            if(child.$options.name === 's-tab-head'){
+                child.$children.forEach(grandChild=>{
+                    if(grandChild.name === this.selected){
+                         this.eventBus.$emit("update:selected", this.selected, grandChild)
+                    }
+                })
+            }
+        })
+
+        // this.eventBus.$emit("update:selected", this.selected)
         if(this.tabPosition === 'left'){
             this.$children.forEach(child=>{
               child.align = child.$options.name === 's-tab-head'?'left':''
             })
         }
+
+        
     }
 }
 </script>

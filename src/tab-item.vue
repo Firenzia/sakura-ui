@@ -1,5 +1,5 @@
 <template>
-    <div class="s-tab-item" @click="changeSelect" :class="{active,disabled}">
+    <div class="s-tab-item" @click="changeSelect" :class="{active,disabled}" ref="item">
         <template class="icon">
             <slot name="icon"></slot>
         </template>
@@ -29,7 +29,7 @@ export default {
     },
     created(){
         this.eventBus.$on('update:selected', (val)=>{
-            val===this.name && console.log(`item ${this.name}被选中`)
+            // val===this.name && console.log(`item ${this.name}被选中`)
             this.active = val===this.name
         })
     },
@@ -41,7 +41,8 @@ export default {
     methods:{
         changeSelect(){
             if(this.disabled) return
-            this.eventBus.$emit('update:selected',this.name)
+            this.eventBus.$emit('update:selected',this.name,this)
+            console.log('item 触发事件');
         }
     }
 }
@@ -49,13 +50,13 @@ export default {
 <style lang="scss" scoped>
     .s-tab-item{
         display: flex;
-        // border:1px solid #ccc;
         align-items: center;
         justify-content: flex-start;
         padding:.5em 2em;
+        font-weight: bold;
         
         &.active{
-            background: lightblue
+            color: #3ba0e9
         }
         &.disabled{
             cursor: not-allowed;

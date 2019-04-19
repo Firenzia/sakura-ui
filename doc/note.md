@@ -125,5 +125,6 @@ eventBus， 使用new Vue(), 因为new 出来的vue有$on/$off/$emit3个接口
 考虑到切换的时候，选中的tab-item下面的线会滑来滑去有动画，不考虑用after画线，用js实现在tab-head下面动态画线，使用到的原生js api Element.getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。 (点我)[https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect] 
  
 注意！provide 的函数不要用箭头函数，这样this不是指向vm
+对ui操作放到nextTick
 
 
