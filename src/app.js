@@ -60,20 +60,29 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast({'message':'出来阿'})
+            this.$toast({
+            'message':'<p>123</p>',
+            'enableHtml':true
+           
+            })
         },
         showToast2(){
-            this.$toast({'message':'出来阿', 'autoClose': false})
+            this.$toast({
+                'message':'duration是5s', 
+                'duration':5000,
+                'position':'bottom'
+            })
         },
         showToast3(){
-            this.$toast({'message':'出来阿', 
+            this.$toast({'message':'更新元素可以重新考虑是否通过使用组件来替代。', 
             'autoClose': false,
-            'closeBtn':{'btnText':'关门阿',
+            'closeBtn':{'btnText':'',
                         'callback':function(arg){
-                            console.log('用户说他知道啦')
-                            console.log(arg.componentMethod());
+                            // console.log('用户说他知道啦')
+                            // console.log(arg.componentMethod());
                         }
-                      }
+                      },
+            'position':'middle'
             })
         }
     }
