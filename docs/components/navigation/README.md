@@ -3,7 +3,7 @@ title: 'Navigation'
 sidebarDepth: 2
 ---
 
-## Tabs标签
+## Tabs
 <ClientOnly>
   <sakura-tab/>
 </ClientOnly>

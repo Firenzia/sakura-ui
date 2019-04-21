@@ -3,7 +3,7 @@ title: 'Notice'
 sidebarDepth: 2
 ---
 
-## Tabs标签
+## Toast
 <ClientOnly>
   <sakura-toast/>
 </ClientOnly>
