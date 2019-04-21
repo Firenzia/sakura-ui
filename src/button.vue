@@ -3,7 +3,7 @@
       @click="$emit('click')">
       <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
       <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
-      <div class="content">
+      <div class="btn-content">
           <slot></slot>
       </div>
     </button>
@@ -35,22 +35,30 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: white;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
  .s-button {
-    font-size: var(--font-size);
-    height: var(--button-height);
+    font-size: $font-size;
+    height: $button-height;
     padding: 0 1em;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background: var(--button-bg);
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $button-bg;
     display:inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
     &:hover {
-      border-color: var(--border-color-hover);
+      border-color: $border-color-hover;
     }
     &:active {
-      background-color: var(--button-active-bg);
+      background-color: $button-active-bg;
     }
     &:focus {
       outline: none;
@@ -60,7 +68,7 @@ export default {
             order:1;
             margin-right:.4em
         }
-         > .content{
+         > .btn-content{
             order:2
         }
     }
@@ -69,7 +77,7 @@ export default {
             order:2;
             margin-left:.4em
         }
-         > .content{
+         > .btn-content{
             order:1;
         }
     }
