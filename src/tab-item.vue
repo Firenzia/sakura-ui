@@ -36,14 +36,14 @@ export default {
     mounted(){
         this.$children.forEach(child=>{
          this.hasIcon = child.$options.name === 's-icon'
-         
+
         })
     },
     methods:{
         changeSelect(){
             if(this.disabled) return
             this.eventBus.$emit('update:selected',this.name,this)
-            console.log('item 触发事件');
+            // console.log('item 触发事件');
         }
     }
 }

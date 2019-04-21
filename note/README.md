@@ -35,8 +35,8 @@
 使用方式如下
 ```
  <svg  class="s-icon" aria-hidden="true">
-        <use :xlink:href="`#i-${name}`"></use>
-    </svg>
+      <use :xlink:href="`#i-${name}`"></use>
+  </svg>
 ```
 
 ## Button
@@ -143,4 +143,11 @@ eventBus， 使用new Vue(), 因为new 出来的vue有$on/$off/$emit3个接口
 provide 的函数不要用箭头函数，这样this不是指向vm
 对ui操作放到nextTick
 
+
+## popover
+技术点：
+这个组件要放外面，避免出现在一个overflow:hidden的元素中看不见
+事件的冒泡处理 @click.stop 但是也会有其他问题：用户在自己div上写了click事件，但是组件阻止了冒泡
+场景的考虑：点击（鼠标进入）按钮出现popover, （鼠标划出）点击popover意外区域popover隐藏
+window.scrollY 滚动距离; 根元素中元素绝对定位相对于body
 

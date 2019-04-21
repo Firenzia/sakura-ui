@@ -47,9 +47,7 @@
       </s-layout>
     </div>
 
-    <pre class="codePre">
-          <code>{{code}}</code>
-        </pre>
+    <pre><code>{{code}}</code></pre> 
   </div>
 </template>
 <script>
@@ -63,17 +61,15 @@ export default {
     return {
       code: `
         // 样式1
-          <s-layout height='400'>
-              <s-header height='100'>header</s-header>
-              <s-layout>
-                  <s-sider width='200'>sidebar</s-sider>
-                  <s-content>content</s-content>
-              </s-layout>
-              <s-footer>footer</s-footer>
-          </s-layout>
-    `
-        .replace(/^ {8}/gm, "")
-        .trim()
+        <s-layout height='400'>
+            <s-header height='100'>header</s-header>
+            <s-layout>
+                <s-sider width='200'>sidebar</s-sider>
+                <s-content>content</s-content>
+            </s-layout>
+            <s-footer>footer</s-footer>
+        </s-layout>
+    `.replace(/^ {8}/gm, "").trim()
     };
   },
   components: {

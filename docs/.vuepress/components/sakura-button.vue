@@ -8,9 +8,7 @@
             <s-button icon="right" icon-position="right">后一页</s-button>
         </s-button-group>
 
-         <pre class="codePre">
-          <code>{{code}}</code>
-        </pre>
+        <pre><code>{{code}}</code></pre> 
     
       </div>
 </template>

@@ -2,9 +2,7 @@
       <div>
         <s-icon name="setting"></s-icon>
 
-         <pre class="codePre">
-          <code>{{code}}</code>
-        </pre> 
+         <pre><code>{{code}}</code></pre> 
     
       </div>
 </template>
@@ -15,7 +13,7 @@ export default {
     return {
       code: `
         <s-icon name="setting"></s-icon>
-    `.replace(/^ {8}/gm, '').trim()
+    `.replace(/^\s+|\t+/gm, '')
     }
   },
   components:{

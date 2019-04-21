@@ -39,9 +39,7 @@
     </s-tab>
 
     <p>代码</p>
-    <pre>
-            <code>{{code}}</code>
-    </pre>
+    <pre><code>{{code}}</code></pre> 
   </div>
 </template>
 <script>
@@ -70,8 +68,7 @@ export default {
             <s-tab-pane name="herb">This is herb</s-tab-pane>
         </s-tab-body>
         </s-tab>
-    `
-        .replace(/^ {8}/gm, "")
+    `.replace(/^ {8}/gm, "")
         .trim()
     };
   },

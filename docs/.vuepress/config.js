@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/sakura-ui/',
     title: 'Sakura UI',
     description: 'Just playing around',
     themeConfig: {
@@ -10,7 +11,7 @@ module.exports = {
         sidebar: [
             {
                 title: '开发指南',
-                collapsable: false,
+                collapsable: true,
                 children: [
                   'guide/install.md',
                   'guide/get-started.md'
@@ -18,7 +19,7 @@ module.exports = {
               },
               {
                 title: '组件',
-                collapsable: false,
+                collapsable: true,
                 children: [
                   'components/basic/',
                   'components/form/',

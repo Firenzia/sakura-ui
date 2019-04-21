@@ -8,9 +8,7 @@
       <s-input v-model="msg"></s-input>
       {{msg}}
     </div>
-    <pre class="codePre">
-          <code>{{code}}</code>
-        </pre>
+     <pre><code>{{code}}</code></pre> 
   </div>
 </template>
 <script>
@@ -25,9 +23,7 @@ export default {
         <s-input value="不可点击" disabled></s-input>
         <s-input error="有问题哦"></s-input>
         <s-input v-model="msg"></s-input>
-    `
-        .replace(/^ {8}/gm, "")
-        .trim()
+    `.replace(/^ {8}/gm, "").trim()
     };
   },
   components: {

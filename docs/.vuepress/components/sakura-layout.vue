@@ -74,9 +74,7 @@
       </s-col>
     </s-row>
 
-    <pre class="codePre">
-          <code>{{code}}</code>
-        </pre>
+     <pre><code>{{code}}</code></pre> 
   </div>
 </template>
 <script>
