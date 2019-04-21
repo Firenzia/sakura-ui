@@ -9,5 +9,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+    .s-tab-body{
+        padding:1em
+    }
 </style>

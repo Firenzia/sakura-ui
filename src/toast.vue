@@ -114,6 +114,7 @@ export default {
          }
      } 
      .outer{
+        z-index: 30;
         position: fixed;
         left:50%;
         transform: translate(-50%);

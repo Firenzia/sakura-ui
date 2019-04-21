@@ -36,6 +36,7 @@ export default {
     mounted(){
         this.$children.forEach(child=>{
          this.hasIcon = child.$options.name === 's-icon'
+         
         })
     },
     methods:{

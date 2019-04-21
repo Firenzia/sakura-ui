@@ -49,8 +49,7 @@ export default {
   $font-size: 12px;
   $box-shadow-color: rgba(0, 0, 0, 0.5);
   $red: #F1453D;
-  .wrapper { font-size: $font-size; display: inline-flex;
-    align-items: center;
+  .wrapper { font-size: $font-size; display: inline-flex;align-items: center;margin-bottom:1em;
     > :not(:last-child) {margin-right: .5em; }
     > input { height: 32px; border: 1px solid $border-color; border-radius: 4px; padding: 0 8px; font-size: inherit;
       &:hover { border-color: $border-color-hover; }

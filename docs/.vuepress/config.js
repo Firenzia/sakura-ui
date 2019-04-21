@@ -21,6 +21,9 @@ module.exports = {
                 collapsable: false,
                 children: [
                   'components/basic/',
+                  'components/form/',
+                  'components/navigation/',
+                  'components/notice/'
                 ]
               },
           ]

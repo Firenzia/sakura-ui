@@ -4,10 +4,21 @@ sidebarDepth: 2
 ---
 ## Icon
 <ClientOnly>
-  <s-icon/>
+  <sakura-icon/>
 </ClientOnly>
 
-## 按钮
+## Button
 <ClientOnly>
-  <s-button/>
+  <sakura-button/>
+</ClientOnly>
+
+
+## Layout
+<ClientOnly>
+  <sakura-layout/>
+</ClientOnly>
+
+## Container
+<ClientOnly>
+  <sakura-container/>
 </ClientOnly>

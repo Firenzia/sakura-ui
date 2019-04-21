@@ -4,7 +4,7 @@
 
          <pre class="codePre">
           <code>{{code}}</code>
-        </pre>
+        </pre> 
     
       </div>
 </template>
@@ -14,12 +14,7 @@ export default {
   data(){
     return {
       code: `
-        <s-button :loading=true icon="download">按钮</s-button>
-        <s-button-group>
-          <s-button icon="left" icon-position="left">前一页</s-button>
-          <s-button icon-position="left">中间</s-button>
-          <s-button icon="right" icon-position="right">后一页</s-button>
-        </s-button-group>
+        <s-icon name="setting"></s-icon>
     `.replace(/^ {8}/gm, '').trim()
     }
   },

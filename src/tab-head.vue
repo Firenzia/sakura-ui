@@ -68,12 +68,14 @@ export default {
       display: flex;
     //   flex-direction: column;
      &.head-in-row{
-         flex-direction: row
+         flex-direction: row;
+         border-right:1px solid #ccc;
      }
      &.head-in-column{
-         flex-direction: column
+         flex-direction: column;
+          border-bottom:1px solid #ccc;
      }
-      border:1px solid #ccc;
+      
       .item-wrapper{
           display: flex;
           &.item-in-row{
