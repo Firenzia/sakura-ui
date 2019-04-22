@@ -16,6 +16,8 @@ import TabItem from './tab-item'
 import TabBody from './tab-body'
 import TabPane from './tab-pane'
 import TestComp from './sync'
+import Popover from './popover'
+
 import ToastPlugin from './plugins/toast'
 
 Vue.use(ToastPlugin)
@@ -26,6 +28,7 @@ Vue.component('s-icon', Icon)
 Vue.component('s-input', Input)
 Vue.component('s-row', Row)
 Vue.component('s-col', Col)
+Vue.component('s-popover',Popover)
 
 Vue.component('s-layout', Layout)
 Vue.component('s-header', Header)

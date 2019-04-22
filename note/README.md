@@ -148,6 +148,13 @@ provide 的函数不要用箭头函数，这样this不是指向vm
 技术点：
 这个组件要放外面，避免出现在一个overflow:hidden的元素中看不见
 事件的冒泡处理 @click.stop 但是也会有其他问题：用户在自己div上写了click事件，但是组件阻止了冒泡
-场景的考虑：点击（鼠标进入）按钮出现popover, （鼠标划出）点击popover意外区域popover隐藏
+场景的考虑：点击（鼠标进入）按钮出现popover, （鼠标划出）点击popover以外区域popover隐藏
 window.scrollY 滚动距离; 根元素中元素绝对定位相对于body
 
+
+created 处理全局事件监听问题？ 用e.target判断点击对象 
+API:Node.contains()返回的是一个布尔值，来表示传入的节点是否为该节点的后代节点。
+关于事件监听：
+refrence的事件监听函数是切换visible的boolean
+点击refrence出现popover,即visible是true,然后异步document添加监听函数（切记，要异步，否则document会监听到第一次click事件 ）
+document监听函数如果被点击的target是popover或者被popover包含, 隐藏popover并且移除监听

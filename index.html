@@ -35,10 +35,54 @@
      </style>
 </head>
 <body>
-	<div id="app" style="margin:40px">
-        <button @click="showToast">default</button>
+<div id="app" style="margin:100px">
+
+    <s-popover
+       style="margin-right:60px;"
+        placement="top"
+        title="标题"
+        width="200"
+        trigger="click"
+        content="这是一段内容">
+      <s-button slot="reference">click 激活</s-button>
+    </s-popover>
+
+    <s-popover
+        placement="bottom"
+        style="margin-right:60px;"
+        title="标题"
+        width="200"
+        trigger="hover"
+        content="啦啦啦啦，我是卖报的先哦行家。">
+      <s-button slot="reference">hover 激活</s-button>
+    </s-popover>
+
+    <s-popover
+        placement="left"
+        style="margin-right:60px;"
+        title="标题"
+        width="200"
+        trigger="hover"
+        content="啦啦啦啦，">
+      <s-button slot="reference">hover 激活</s-button>
+    </s-popover>
+
+    <s-popover
+        placement="right"
+        title="标题"
+        width="200"
+        trigger="hover"
+        content="啦啦啦啦">
+      <s-button slot="reference">hover 激活</s-button>
+    </s-popover>
+
+
+        <!-- demo toast -->
+        <!-- <button @click="showToast">default</button>
         <button @click="showToast2">user can close</button>
-        <button @click="showToast3">user cust behaviour</button>
+        <button @click="showToast3">user cust behaviour</button> -->
+
+
         <!-- <test-comp :number.sync="number2"></test-comp>
         <p>.sync语法糖解决props双向绑定问题，让父组件写法更简洁，子组件需要配合触发'update:xxx'事件</p>
         <test-comp :number="number" @update:number="number=$event"></test-comp> -->
