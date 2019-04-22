@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div ref="popover" v-show="visible" class="popover">{{content}}</div>
+    <div ref="popover" v-show="visible" class="popover" :class="popoverPosition">{{content}}</div>
     <div ref="reference" class="reference">
         <slot name="reference"></slot>
     </div>
@@ -36,6 +36,11 @@ export default {
   mounted(){
       this.setEvent()
   },
+  computed:{
+    popoverPosition(){
+      return `position-${this.placement}`
+    }
+  },
   methods:{
     setEvent(){
       if(this.trigger === 'click'){
@@ -44,41 +49,44 @@ export default {
           this.hoverHandler()
       }
     },
+    onShow(){
+      this.positionPopover()
+      this.addDocClickListener()
+      // console.log('每次点击显示popover 添加事件监听')
+    },
     positionPopover(){
       this.$nextTick(()=>{
-        let {top,left,bottom, right,width,height} = this.$refs.reference.getBoundingClientRect()
         document.body.appendChild(this.$refs.popover)
-        let popoverStyle = this.$refs.popover.getBoundingClientRect()
-       
-        switch(this.placement){
-          case 'top':
-            this.$refs.popover.style.left =`${left+window.scrollX}px`;
-            this.$refs.popover.style.top =`${top+window.scrollY}px`;
-            this.$refs.popover.style.transform=`translateY(-${popoverStyle.height+10}px)`;
-            break;
-          case 'bottom':
-            this.$refs.popover.style.left =`${left+window.scrollX}px`;
-            this.$refs.popover.style.top =`${bottom+window.scrollY}px`;
-            this.$refs.popover.style.transform=`translateY(10px)`;
-            break;
-          case 'left':
-           this.$refs.popover.style.left =`${left+window.scrollX}px`;
-            this.$refs.popover.style.top =`${top+window.scrollY}px`;
-            this.$refs.popover.style.transform=`translateX(-${popoverStyle.width+10}px)`;
-            break;
-          case 'right':
-            this.$refs.popover.style.left =`${right+window.scrollX}px`;
-            this.$refs.popover.style.top =`${top+window.scrollY}px`;
-            this.$refs.popover.style.transform=`translateX(10px)`;
-            break;
-          default:
-            break;
+        let {top,left,bottom, right,width,height} = this.$refs.reference.getBoundingClientRect()
+        let {height:height2, width: width2} = this.$refs.popover.getBoundingClientRect()
+        let {style} = this.$refs.popover
+
+        const positionMap = {
+          'top':{
+            'left': `${left+window.scrollX}px`,
+            'top': `${top+window.scrollY-10-height2}px`
+          },
+          'bottom':{
+            'left':`${left+window.scrollX}px`,
+            'top': `${bottom+window.scrollY+10}px`
+          },
+          'left':{
+            'left':`${left+window.scrollX-width2-10}px`,
+            'top': `${top+window.scrollY+(height-height2)/2}px`
+          },
+          'right':{
+            'left': `${right+window.scrollX+10}px`,
+            'top': `${top+window.scrollY+(height-height2)/2}px`
+          }
         }
+        style['left'] = positionMap[this.placement].left
+        style['top'] = positionMap[this.placement].top
+        
       })
     },
     addDocClickListener(){
         let bodyClickHandler = (e)=>{
-          if(!(e.target === this.$refs.popover || this.$refs.popover.contains(e.target))){
+          if(!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))){
             //   console.log('非popover区域，移除事件监听')
             this.visible = false
             document.removeEventListener('click',bodyClickHandler)
@@ -92,9 +100,7 @@ export default {
     clickHandler(){
         this.visible=!this.visible
         if(this.visible){
-            this.positionPopover()
-            this.addDocClickListener()
-            // console.log('每次点击显示popover 添加事件监听')
+          this.onShow()
         }
     },
     hoverHandler(){
@@ -119,11 +125,66 @@ export default {
     }
   }
   .popover{
-      border:1px solid green;
+      max-width: 200px;
+      border:1px solid #ccc;
       position: absolute;
       padding:.5em 1em;
       background: #fff;
       z-index: 100;
+      &::before, &::after{
+        position: absolute;
+        content: '';
+        display: block;
+        border:10px solid transparent;
+      }
+      
+      &.position-top{
+         &::before{
+           border-top:10px solid #ccc;
+           top:100%;
+         }
+          &::after{
+           border-top:10px solid #fff;
+           top:98%;
+         }
+      }
+      &.position-bottom{
+        &::before{
+           border-bottom:10px solid #ccc;
+           bottom:100%;
+         }
+          &::after{
+           border-bottom:10px solid #fff;
+           bottom:99%;
+         }
+      }
+      &.position-left{
+        &::before{
+           border-left:10px solid #ccc;
+           left:100%;
+            top:20%;
+         }
+        &::after{
+           border-left:10px solid #fff;
+           left:99%;
+           top:20%;
+         }
+      }
+
+     &.position-right{
+        &::before{
+           border-right:10px solid #ccc;
+           right:100%;
+            top:20%;
+         }
+          &::after{
+           border-right:10px solid #fff;
+           right:99%;
+           top:20%;
+         }
+      }
+
+
     }
 </style>
 
