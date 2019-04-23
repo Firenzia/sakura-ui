@@ -58,7 +58,7 @@ Vue.component('test-comp', TestComp)
 new Vue({
     el:'#app',
     data:{
-        selectKey:1,
+        arr:["1"],
         loading1:true,
         testMsg:'testMsg',
         number:100,

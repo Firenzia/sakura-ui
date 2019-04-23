@@ -3,12 +3,15 @@
       <slot></slot>
   </div>
 </template>
-<script>
+<script> 
 import Vue from 'vue'
 export default {
   name:'s-collapse',
   props:{
     selected:{
+        default:()=>{
+          return []
+        },
         type: [String, Array]
     },
     accordion:{
@@ -24,14 +27,36 @@ export default {
     return {eventBus: this.eventBus}
   },
   created(){
-     
+    //todo 兼容传入字符串
+    //  this.formatSelect()
+  },
+  methods:{
+    formatSelect(){
+      if(!Array.isArray(this.selected) && typeof(this.selected)==='string'){
+        console.log('str')
+        this.selected= [this.selected]
+      }
+    }
   },
   mounted(){
       this.eventBus.$emit('update:selected',this.selected)
-       this.$children.forEach(vm => {
-          vm.singlePane = this.accordion
+    // 父组件自己修改selected数组，然后子组件监听到数据变化更新视图
+      this.eventBus.$on('add:selected',(name)=>{
+        if(this.accordion){
+          this.selected.splice(0,1,name)
+        }else{
+          this.selected.push(name)
+        }
+        this.eventBus.$emit('update:selected',this.selected)
       })
-    //  todo 父组件自己修改selected数组，然后子组件监听到数据变化更新视图
+
+      this.eventBus.$on('remove:selected',(name)=>{
+         if(!this.accordion){
+           let idx = this.selected.indexOf(name)
+           this.selected.splice(idx,1)
+           this.eventBus.$emit('update:selected',this.selected)
+         }
+      })
   }
 }
 </script>
@@ -41,6 +66,7 @@ export default {
   .collapse{
       border: 1px solid $border-color;
       border-radius: $border-radius;
+      padding:.5em 1em;
   }
 </style>
 

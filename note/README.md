@@ -163,9 +163,8 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 ## collapse
 | 标签 | 触发 | 监听 |
 | :------| ------: | :------: |
-| collapse | emit(只有初始化的时候emit) | on 用于更新组件的数据 |
-| collapse-item|  emit(选择的时候触发)| on(手风琴模式需要监听)  |
+| collapse |update| add/remove |
+| collapse-item| add/remove|update  |
 
 问题：
-选中当前都会抛出update:select事件
-accordion监听到selected 1个出现其他不出现，非accourdion监听到要设置选中的几个出现
+怎么抹平有无accordion差异？数组！让父元素操作被选中的值的数组并emit，子组件监听到做处理
