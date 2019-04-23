@@ -158,3 +158,14 @@ API:Node.contains()返回的是一个布尔值，来表示传入的节点是否�
 refrence的事件监听函数是切换visible的boolean
 点击refrence出现popover,即visible是true,然后异步document添加监听函数（切记，要异步，否则document会监听到第一次click事件 ）
 document监听函数如果被点击的target是popover或者被popover包含, 隐藏popover并且移除监听
+
+
+## collapse
+| 标签 | 触发 | 监听 |
+| :------| ------: | :------: |
+| collapse | emit(只有初始化的时候emit) | on 用于更新组件的数据 |
+| collapse-item|  emit(选择的时候触发)| on(手风琴模式需要监听)  |
+
+问题：
+选中当前都会抛出update:select事件
+accordion监听到selected 1个出现其他不出现，非accourdion监听到要设置选中的几个出现

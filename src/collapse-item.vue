@@ -22,11 +22,21 @@ export default {
   inject:['eventBus'],
   data(){
     return {
-      visible:false
+      visible:false,
+      singlePane: false
     }
   },
+  
   mounted(){
-      this.eventBus.$on('update:selected', function(v){console.log(v+'----')})
+       this.eventBus.$on('update:selected', (v)=>{
+        console.log('get selected',v);
+             if(v.includes(this.name)){
+                 this.visible =true
+             }else{
+                 this.visible =false
+             }
+      })
+    //   accoudion
   },
   methods:{
     toggle(){
