@@ -3,22 +3,29 @@ import Button from './button'
 import Icon from './icon'
 import ButtonGroup from './button-group'
 import Input from './input'
+
 import Col from './col'
 import Row from './row'
+
 import Layout from './layout'
 import Header from './header'
 import Content from './content'
 import Sider from './sider'
 import Footer from './footer'
+
 import Tab from './tab'
 import TabHead from './tab-head'
 import TabItem from './tab-item'
 import TabBody from './tab-body'
 import TabPane from './tab-pane'
-import TestComp from './sync'
-import Popover from './popover'
 
+import Collapse from './collapse'
+import CollapseItem from './collapse-item'
+
+import Popover from './popover'
+import TestComp from './sync'
 import ToastPlugin from './plugins/toast'
+
 
 Vue.use(ToastPlugin)
 
@@ -41,6 +48,9 @@ Vue.component('s-tab-head', TabHead)
 Vue.component('s-tab-item', TabItem)
 Vue.component('s-tab-body', TabBody)
 Vue.component('s-tab-pane', TabPane)
+
+Vue.component('s-collapse', Collapse)
+Vue.component('s-collapse-item', CollapseItem)
 
 Vue.component('test-comp', TestComp)
 
