@@ -26,6 +26,8 @@ import Popover from './popover'
 import TestComp from './sync'
 import ToastPlugin from './plugins/toast'
 
+import Cascader from './cascader'
+import CascaderItem from './cascader-item'
 
 Vue.use(ToastPlugin)
 
@@ -52,6 +54,9 @@ Vue.component('s-tab-pane', TabPane)
 Vue.component('s-collapse', Collapse)
 Vue.component('s-collapse-item', CollapseItem)
 
+Vue.component('s-cascader', Cascader)
+Vue.component('s-cascader-item', CascaderItem)
+
 Vue.component('test-comp', TestComp)
 
 
@@ -63,7 +68,39 @@ new Vue({
         loading1:true,
         testMsg:'testMsg',
         number:100,
-        number2:100
+        number2:100,
+        options:[{
+            label:"美国",
+            children:[
+              {
+                label:"德克萨斯",
+                children:[
+                  {label:"休斯顿"},
+                  {label:"达拉斯"}
+                ]
+              }
+            ]
+          },
+          {
+            label:"中国",
+            children:[
+              {
+                label:"广东",
+                children:[
+                  {label:"汕头"},
+                  {label:"揭阳"}
+                ]
+              },
+              {
+                label:"江苏",
+                children:[
+                  {label:"苏州"},
+                  {label:"南京"}
+                ]
+              }
+            ]
+          }
+          ]
     },
     methods:{
         say(e){
