@@ -1,0 +1,250 @@
+<!-- 1 icon -->
+<s-icon name="setting"></s-icon>
+
+<!-- 2 button -->
+<s-button icon="setting" icon-position="right">按钮</s-button>
+<s-button :loading=true icon="download">按钮</s-button>
+<s-button :loading=loading1 icon-position="right" @click="loading1 = false" icon="download">按钮</s-button>
+<s-button-group>
+    <s-button icon="left" icon-position="left">前一页</s-button>
+    <s-button icon-position="left">中间</s-button>
+    <s-button icon="right" icon-position="right">后一页</s-button>
+</s-button-group>
+
+<!-- 3 input -->
+<s-input>test</s-input>
+<s-input value="测试" @change="say"></s-input>
+<s-input value="只读" readonly id="readonly" ></s-input>
+<s-input value="不可点击" disabled ></s-input>
+<s-input error="有问题哦" v-model="testMsg"></s-input> 
+
+ <!-- 4 grid -->
+ <p>响应式</p>
+ <s-row align="left">
+     <s-col span="8" :xs="{span:2}" :md="{span:10}"><div class="demo-col">1</div></s-col>
+     <s-col span="8" :xs="{span:10}":md="{span:2}"><div class="demo-col">2</div></s-col>
+     <s-col span="8" :xs="{span:2}" :md="{span:3}"><div class="demo-col">3</div></s-col>
+ </s-row>
+ 
+ <p>不设置</p>
+ <s-row >
+     <s-col span="4"><div class="demo-col">1</div></s-col>
+     <s-col span="4"><div class="demo-col">2</div></s-col>
+     <s-col span="4"><div class="demo-col">3</div></s-col>
+     <s-col span="4"><div class="demo-col">4</div></s-col>
+     <s-col span="4"><div class="demo-col">5</div></s-col>
+     <s-col span="4"><div class="demo-col">6</div></s-col>
+ </s-row>
+
+ <p>设置gutter20</p>
+ <s-row gutter="20">
+     <s-col span="6"><div class="demo-col">1</div></s-col>
+     <s-col span="6"><div class="demo-col">2</div></s-col>
+     <s-col span="6"><div class="demo-col">3</div></s-col>
+     <s-col span="6"><div class="demo-col">4</div></s-col>
+ </s-row>
+
+ <p>设置span</p>
+ <s-row>
+     <s-col span="5"><div class="demo-col">span是5</div></s-col>
+     <s-col span="8"><div class="demo-col">span是8</div></s-col>
+ </s-row>
+
+ <p>设置offset</p>
+ <s-row>
+     <s-col span="6"><div class="demo-col">1</div></s-col>
+     <s-col span="6"><div class="demo-col">2</div></s-col>
+     <s-col span="6" offset="6"><div class="demo-col">offset是6</div></s-col>
+ </s-row>
+
+<!-- 5 layout -->
+ <p>1</p>
+ <div style="width:600px">
+     <s-layout height='400'>
+         <s-header height='100'>header</s-header>
+         <s-layout>
+             <s-sider width='200'>sidebar</s-sider>
+             <s-content>content</s-content>
+         </s-layout>
+         <s-footer>footer</s-footer>
+     </s-layout>
+ </div>
+
+ <p>2</p>
+ <div style="width:600px">
+     <s-layout height='400'>
+         <s-header height='100'>header</s-header>
+         <s-layout>
+             <s-content>content</s-content>
+         </s-layout>
+         <s-footer>footer</s-footer>
+     </s-layout>
+ </div>
+
+ <p>3</p>
+ <div style="width:600px">
+     <s-layout height='400'>
+         <s-header height='100'>header</s-header>
+         <s-layout>
+             <s-content>content</s-content>
+             <s-sider width='200'>sidebar</s-sider>
+         </s-layout>
+         <s-footer>footer</s-footer>
+     </s-layout>
+ </div>
+
+ <p>4</p>
+ <div style="width:600px">
+     <s-layout height='400'>
+             <s-sider width='200'>sidebar</s-sider>
+         <s-layout>
+             <s-header height='100'>header</s-header>
+             <s-content>content</s-content>
+             <s-footer>footer</s-footer>
+         </s-layout>
+         
+     </s-layout>
+ </div>
+
+<!--6 toast -->
+<button @click="showToast">default</button>
+<button @click="showToast2">user can close</button>
+<button @click="showToast3">user cust behaviour</button>
+
+<!-- 7 tab -->
+<p>tap show on left</p>
+<s-tab tab-position="left" selected="herb">
+    <s-tab-head>
+        <s-tab-item name="flower">
+            flower
+            <s-icon name="setting" slot="icon"></s-icon>
+        </s-tab-item>
+        <s-tab-item name="grass">grass</s-tab-item>
+        <s-tab-item name="herb">herb</s-tab-item>
+    </s-tab-head>
+    <s-tab-body>
+        <s-tab-pane name="flower">This is flower</s-tab-pane>
+        <s-tab-pane name="grass">This is grass</s-tab-pane>
+        <s-tab-pane  name="herb">This is herb</s-tab-pane>
+    </s-tab-body>
+</s-tab>
+
+<p>tap show on top</p>
+<s-tab selected="herb">
+        <s-tab-head>
+            <s-tab-item name="bee">
+                bee
+            </s-tab-item>
+            <s-tab-item name="flower" disabled>
+                flower
+                <s-icon name="setting" slot="icon"></s-icon>
+            </s-tab-item>
+            <s-tab-item name="grass">grass</s-tab-item>
+            <s-tab-item name="herb">herb</s-tab-item>
+            <s-tab-item name="tree">tree</s-tab-item>
+        </s-tab-head>
+        <s-tab-body>
+            <s-tab-pane name="bee">This is bee</s-tab-pane>
+            <s-tab-pane name="flower">This is flower</s-tab-pane>
+            <s-tab-pane name="grass">This is grass</s-tab-pane>
+            <s-tab-pane  name="herb">This is herb</s-tab-pane>
+            <s-tab-pane  name="tree">This is tree</s-tab-pane>
+        </s-tab-body>
+</s-tab>
+
+<!-- 8 collapse -->
+<s-collapse  selected="2" >
+    <s-collapse-item title="一致性 Consistency" name="1">
+        <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+        <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+    </s-collapse-item>
+    <s-collapse-item title="反馈 Feedback" name="2">
+        <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+        <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
+    </s-collapse-item>
+    <s-collapse-item title="效率 Efficiency" name="3">
+        <div>简化流程：设计简洁直观的操作流程；</div>
+        <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+        <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+    </s-collapse-item>
+    <s-collapse-item title="可控 Controllability" name="4">
+        <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+        <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+    </s-collapse-item>
+</s-collapse>
+
+
+<p style="margin-top:100px">手风琴accordion</p>
+<s-collapse  :selected.sync=arr accordion  style="width:600px">  
+    <s-collapse-item title="一致性 Consistency" name="1">
+        <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+    </s-collapse-item>
+    <s-collapse-item title="反馈 Feedback" name="2">
+        <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
+    </s-collapse-item>
+    <s-collapse-item title="效率 Efficiency" name="3">
+
+        <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+    </s-collapse-item>
+    <s-collapse-item title="可控 Controllability" name="4">
+        <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
+    </s-collapse-item>
+</s-collapse>
+
+<!--9 popover -->
+<s-popover
+    style="margin-right:60px;"
+    placement="top"
+    title="标题"
+    width="200"
+    trigger="click"
+    content="这是一段内容">
+    <s-button slot="reference">click 激活</s-button>
+    <template v-slot:content="slotProps">
+    <s-button @click="slotProps.close">点我也可以关闭</s-button>
+    </template>>
+
+</s-popover>
+
+<s-popover
+    placement="bottom"
+    style="margin-right:60px;"
+    title="标题"
+    width="200"
+    trigger="hover"
+    content="啦啦啦啦，我是卖报的先哦行家。">
+    <s-button slot="reference">hover 激活</s-button>
+</s-popover>
+
+<s-popover
+    placement="left"
+    style="margin-right:60px;"
+    title="标题"
+    width="200"
+    trigger="hover"
+    content="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦v，">
+    <s-button slot="reference">hover 激活</s-button>
+</s-popover>
+
+<s-popover
+    placement="right"
+    title="标题"
+    width="200"
+    trigger="hover"
+    content="啦啦啦啦">
+    <s-button slot="reference">hover 激活</s-button>
+</s-popover>
+
+
+<!-- test -->
+<test-comp :number.sync="number2"></test-comp>
+<p>.sync语法糖解决props双向绑定问题，让父组件写法更简洁，子组件需要配合触发'update:xxx'事件</p>
+<test-comp :number="number" @update:number="number=$event"></test-comp>
+
+  
+
+
+
+
+ 
+    

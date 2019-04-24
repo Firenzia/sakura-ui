@@ -171,6 +171,10 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 怎么抹平有无accordion差异？数组！让父元素操作被选中的值的数组并emit，子组件监听到做处理
 
 ## 1 cascader
+问题1？多层v-for, 组件内部自己调用自己，必须用name属性， 左右递归的思想
+
+
+
 ## 2 animation
 ## 3 slider
 ## 4 nav
