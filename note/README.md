@@ -166,5 +166,6 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 | collapse |update| add/remove |
 | collapse-item| add/remove|update  |
 
-问题：
+核心：
+单向数据流，让父组件来修改数据，通知子组件，子组件不要自己修改数据，子组件把要修改的意图通过事件发送给父组件，让父组件修改数据。
 怎么抹平有无accordion差异？数组！让父元素操作被选中的值的数组并emit，子组件监听到做处理

@@ -26,35 +26,27 @@ export default {
   provide(){
     return {eventBus: this.eventBus}
   },
-  created(){
-    //todo 兼容传入字符串
-    //  this.formatSelect()
-  },
-  methods:{
-    formatSelect(){
-      if(!Array.isArray(this.selected) && typeof(this.selected)==='string'){
-        console.log('str')
-        this.selected= [this.selected]
-      }
-    }
-  },
   mounted(){
       this.eventBus.$emit('update:selected',this.selected)
     // 父组件自己修改selected数组，然后子组件监听到数据变化更新视图
-      this.eventBus.$on('add:selected',(name)=>{
+      this.eventBus.$on('update:addSelected',(name)=>{
+        let selectedCopy = typeof(this.selected)==='string'?[this.selected]:[...this.selected]
         if(this.accordion){
-          this.selected.splice(0,1,name)
+          selectedCopy=[name]
         }else{
-          this.selected.push(name)
+         selectedCopy.push(name)
         }
-        this.eventBus.$emit('update:selected',this.selected)
+        this.$emit('update:selected',this.accordion?name:selectedCopy)
+        this.eventBus.$emit('update:selected',selectedCopy)
       })
 
-      this.eventBus.$on('remove:selected',(name)=>{
+      this.eventBus.$on('update:removeSelected',(name)=>{
+         let selectedCopy = typeof(this.selected)==='string'?[this.selected]:[...this.selected]
          if(!this.accordion){
-           let idx = this.selected.indexOf(name)
-           this.selected.splice(idx,1)
-           this.eventBus.$emit('update:selected',this.selected)
+            let idx = selectedCopy.indexOf(name)
+            selectedCopy.splice(idx,1)
+            this.$emit('update:selected',selectedCopy)
+            this.eventBus.$emit('update:selected',selectedCopy)
          }
       })
   }

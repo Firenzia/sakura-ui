@@ -56,8 +56,9 @@
           <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
         </s-collapse-item>
       </s-collapse> -->
-
-      <s-collapse  :selected=arr accordion style="margin-top:100px;width:600px">
+   
+      <!-- :selected.sync=arr accordion -->
+      <s-collapse  :selected.sync=arr accordion  style="margin-top:100px;width:600px">  
         <s-collapse-item title="一致性 Consistency" name="1">
           <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
         </s-collapse-item>

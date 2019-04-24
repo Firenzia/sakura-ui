@@ -52,10 +52,10 @@ export default {
   },
   methods:{
     addSelectItem(){
-       this.eventBus.$emit('add:selected',this.name)
+       this.eventBus.$emit('update:addSelected',this.name)
     },
     removeSelectItem(){
-       this.eventBus.$emit('remove:selected',this.name)
+       this.eventBus.$emit('update:removeSelected',this.name)
     },
     showPane(){
       this.addSelectItem()
