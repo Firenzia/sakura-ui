@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <div ref="popover" v-show="visible" class="popover" :class="popoverPosition">{{content}}</div>
+    <div ref="popover" v-show="visible" class="popover" :class="popoverPosition">
+      {{content}}
+      <slot name="content" v-bind:close="close"></slot>
+    </div>
     <div ref="reference" class="reference">
         <slot name="reference"></slot>
     </div>
@@ -52,7 +55,7 @@ export default {
     onShow(){
       this.positionPopover()
       this.addDocClickListener()
-      // console.log('每次点击显示popover 添加事件监听')
+      console.log('每次点击显示popover 添加事件监听')
     },
     positionPopover(){
       this.$nextTick(()=>{
@@ -84,12 +87,19 @@ export default {
         
       })
     },
+    open(){
+      this.visible = true
+    },
+    close(){
+      this.visible = false
+    
+    },
     addDocClickListener(){
         let bodyClickHandler = (e)=>{
           if(!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))){
-            //   console.log('非popover区域，移除事件监听')
-            this.visible = false
-            document.removeEventListener('click',bodyClickHandler)
+              console.log('非popover区域，移除事件监听')
+            this.close()
+            document.removeEventListener('click', bodyClickHandler)
           }
         }
         
@@ -105,10 +115,11 @@ export default {
     },
     hoverHandler(){
         this.$refs.reference.addEventListener('mouseover', 
-          (e)=>{this.visible=true;
+          (e)=>{
+            this.open();
             this.positionPopover()}
           )
-        this.$refs.reference.addEventListener('mouseout', (e)=>{this.visible=false})
+        this.$refs.reference.addEventListener('mouseout', (e)=>{this.close()})
     }
   }
 };

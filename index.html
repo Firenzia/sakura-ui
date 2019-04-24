@@ -36,8 +36,8 @@
 </head>
 <body>
 <div id="app" style="margin:100px">
-
-    <!-- <s-collapse  selected="2" accordion>
+    <!-- <p>普通</p>
+    <s-collapse  selected="2" >
         <s-collapse-item title="一致性 Consistency" name="1">
           <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
           <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
@@ -55,10 +55,11 @@
           <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
           <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
         </s-collapse-item>
-      </s-collapse> -->
+      </s-collapse>
    
-      <!-- :selected.sync=arr accordion -->
-      <s-collapse  :selected.sync=arr accordion  style="margin-top:100px;width:600px">  
+
+      <p style="margin-top:100px">手风琴accordion</p>
+      <s-collapse  :selected.sync=arr accordion  style="width:600px">  
         <s-collapse-item title="一致性 Consistency" name="1">
           <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
         </s-collapse-item>
@@ -73,10 +74,10 @@
           <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
         </s-collapse-item>
       </s-collapse>
-      {{arr}}
+      {{arr}} -->
 
     <!-- popover -->
-    <!-- <s-popover
+    <s-popover
        style="margin-right:60px;"
         placement="top"
         title="标题"
@@ -84,6 +85,10 @@
         trigger="click"
         content="这是一段内容">
       <s-button slot="reference">click 激活</s-button>
+      <template v-slot:content="slotProps">
+        <s-button @click="slotProps.close">关闭</s-button>
+      </template>>
+    
     </s-popover>
 
     <s-popover
@@ -113,7 +118,7 @@
         trigger="hover"
         content="啦啦啦啦">
       <s-button slot="reference">hover 激活</s-button>
-    </s-popover> -->
+    </s-popover>
 
 
         <!-- demo toast -->
