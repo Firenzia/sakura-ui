@@ -59,6 +59,7 @@ new Vue({
     el:'#app',
     data:{
         arr:["1","4"],
+        value:'3',
         loading1:true,
         testMsg:'testMsg',
         number:100,

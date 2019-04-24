@@ -5,8 +5,8 @@ module.exports = {
     themeConfig: {
         nav: [
           { text: 'Home', link: '/' },
-          { text: 'Guide', link: '/guide/' },
-          { text: 'External', link: 'https://google.com' },
+          // { text: 'Guide', link: '/guide/' },
+          { text: 'Github', link: 'https://github.com/Firenzia/sakura-ui/' },
         ],
         sidebar: [
             {
@@ -24,7 +24,8 @@ module.exports = {
                   'components/basic/',
                   'components/form/',
                   'components/navigation/',
-                  'components/notice/'
+                  'components/notice/',
+                  'components/other/'
                 ]
               },
           ]

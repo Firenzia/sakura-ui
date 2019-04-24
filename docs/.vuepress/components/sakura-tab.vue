@@ -17,7 +17,7 @@
       </s-tab-body>
     </s-tab>
 
-    <p>顶部标签页</p>
+    <p style="margin-top:60px;">顶部标签页</p>
     <s-tab selected="herb">
       <s-tab-head>
         <s-tab-item name="bee">bee</s-tab-item>

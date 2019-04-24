@@ -47,6 +47,10 @@ export default {
             selectedCopy.splice(idx,1)
             this.$emit('update:selected',selectedCopy)
             this.eventBus.$emit('update:selected',selectedCopy)
+         }else{
+           if(name === this.selected){
+             this.$emit('update:selected','')
+           }
          }
       })
   }

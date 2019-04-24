@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="showToast">点我</button>
+    <s-button @click="showToast">点我</s-button>
 
      <pre><code>{{code}}</code></pre> 
   </div>
@@ -8,6 +8,7 @@
 <script>
 import Vue from "vue";
 import ToastPlugin from "../../../src/plugins/toast";
+import Button from '../../../src/button'
 
 Vue.use(ToastPlugin);
 export default {
@@ -15,7 +16,7 @@ export default {
     return {
       code: `
         this.$toast({
-            'message':'更新元素可以重新考虑是否通过使用组件来替代。', 
+            'message':'我从天而降啦啦啦~~。', 
             'closeBtn':
               {
                 'btnText':'',
@@ -27,10 +28,13 @@ export default {
     `.replace(/^ {8}/gm, "").trim()
     };
   },
+  components:{
+    's-button':Button
+  },
   methods: {
     showToast() {
       this.$toast({
-        message: "更新元素可以重新考虑是否通过使用组件来替代。",
+        message: "我从天而降啦啦啦~~。",
         closeBtn: {
           btnText: "",
           callback: function(toast) {

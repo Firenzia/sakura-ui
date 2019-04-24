@@ -129,7 +129,8 @@ export default {
     }
     
     .reference{
-      border:1px solid red;
+      border:1px solid #ddd;
+      border-radius: 4px;
     }
   }
   .popover{
@@ -187,7 +188,7 @@ export default {
          }
           &::after{
            border-right:10px solid #fff;
-           right:99%;
+           right:98%;
            top:20%;
          }
       }
