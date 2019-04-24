@@ -57,6 +57,16 @@ export default {
       this.addDocClickListener()
       console.log('每次点击显示popover 添加事件监听')
     },
+    addDocClickListener(){
+        setTimeout(()=>{
+            document.addEventListener('click',this.documentClickHandler)
+        },0)
+    },
+    documentClickHandler(e){
+      if(!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))){
+            this.close()
+      }
+    },
     positionPopover(){
       this.$nextTick(()=>{
         document.body.appendChild(this.$refs.popover)
@@ -92,20 +102,7 @@ export default {
     },
     close(){
       this.visible = false
-    
-    },
-    addDocClickListener(){
-        let bodyClickHandler = (e)=>{
-          if(!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))){
-              console.log('非popover区域，移除事件监听')
-            this.close()
-            document.removeEventListener('click', bodyClickHandler)
-          }
-        }
-        
-        setTimeout(()=>{
-            document.addEventListener('click',bodyClickHandler)
-        },0)
+      this.trigger === 'click' && document.removeEventListener('click', this.documentClickHandler)
     },
     clickHandler(){
         this.visible=!this.visible

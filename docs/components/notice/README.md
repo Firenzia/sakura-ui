@@ -8,3 +8,8 @@ sidebarDepth: 2
   <sakura-toast/>
 </ClientOnly>
 
+
+## Popover
+<ClientOnly>
+  <sakura-popover/>
+</ClientOnly>

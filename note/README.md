@@ -169,3 +169,15 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 核心：
 单向数据流，让父组件来修改数据，通知子组件，子组件不要自己修改数据，子组件把要修改的意图通过事件发送给父组件，让父组件修改数据。
 怎么抹平有无accordion差异？数组！让父元素操作被选中的值的数组并emit，子组件监听到做处理
+
+## 1 cascader
+## 2 animation
+## 3 slider
+## 4 nav
+## 5 form
+## 6 pagination
+## 7 table
+## 8 uploader
+## 9 sticky
+## 10 datepicker
+## 11 router
