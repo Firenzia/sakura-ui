@@ -28,6 +28,7 @@
       <div class="left">
           <div v-for="(item,index) in this.options" :key="index" @click="setNextOption(item)">
            {{item.label}}
+            <s-icon v-if="item.children" name="right" style="transform: scale(.7)"></s-icon>
           </div>
       </div>
       <div class="right" v-if="this.curItem && this.curItem.children">
@@ -37,10 +38,11 @@
     </div>
 </template>
 <script>
+import Icon from './icon'
 export default {
   name:'s-cascader-item',
   props:{
-    options:{}
+    options:null
   },
   data(){
     return {
@@ -49,7 +51,8 @@ export default {
       curItem:{}
     }
   },
-  created(){
+  components:{
+    's-icon': Icon
   },
   methods:{
     setLevel1(item){
@@ -74,6 +77,8 @@ export default {
   @import './common.scss';
   .item-wrapper{
     display:flex;
+    align-items: flex-start;
+    justify-content: flex-start;
     .left{
       border:1px solid $border-color;
       padding:.5em;

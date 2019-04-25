@@ -12,6 +12,7 @@ export default {
   name: 's-cascader',
   props:{
     options:{
+      type: Array
     },
   },
   data(){
