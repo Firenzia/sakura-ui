@@ -172,6 +172,16 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 
 ## 1 cascader
 问题1？多层v-for, 组件内部自己调用自己，必须用name属性， 左右递归的思想
+单项数据流解决点了当展开三项，点了第一项其他则隐藏第三项, 
+* 父组件控制全部selected数组，让每个item都知道全部选中项（数组）
+* vue 修改data中的数组
+* vue 不允许子组件修改props
+| | 左 | 右（递归组件） |
+| :------| ------: | :------: |
+| dataSource | 原始| 上一个的children |
+| level| 0| 上一个+1  |
+| 全局selected| 一样|一样  |
+| 事件监听| 一样| 一样  |
 
 
 

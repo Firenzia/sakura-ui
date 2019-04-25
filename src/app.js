@@ -69,6 +69,7 @@ new Vue({
         testMsg:'testMsg',
         number:100,
         number2:100,
+        selected: [],
         options:[{
             label:"美国",
             children:[
@@ -100,7 +101,7 @@ new Vue({
               }
             ]
           }
-          ]
+        ]
     },
     methods:{
         say(e){

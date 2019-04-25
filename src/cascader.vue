@@ -1,8 +1,12 @@
 <template>
    <div>
-      <div class="content"></div>
-      <div class="popper">
-          <s-cascader-item :options="options"></s-cascader-item>
+      <div class="content" @click="toggle">{{content}}</div>
+      <div class="popper" v-if="popoverVisible">
+          <s-cascader-item 
+            :options="options" 
+            :selected="selected" 
+            @update:selected="onItemUpdateSelected">
+          </s-cascader-item>
       </div>
    </div>
 </template>
@@ -14,28 +18,35 @@ export default {
     options:{
       type: Array
     },
+    selected:{
+      type: Array,
+      default:()=>{
+        return []
+      }
+    }
   },
   data(){
     return {
-      key1:[],
-      key2:[]
+      popoverVisible:false
     }
   },
   created(){
   },
+  computed:{
+    content(){
+      return this.selected.map(x=>x.label).join('/')
+    }
+  },
   methods:{
-    setLevel1(item){
-      this.key1= item.children
-      this.key2 =[]
+    onItemUpdateSelected(newSelected){
+      this.$emit('update:selected',newSelected)
     },
-    setLevel2(item){
-      this.key2=item.children
+    toggle(){
+      this.popoverVisible = !this.popoverVisible
     }
   },
   components:{
     's-cascader-item': CascaderItem
-  },
-  created(){
   }
 }
 </script>
@@ -45,6 +56,10 @@ export default {
     width: 200px;
     height: 40px;
     border: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:.6em 
   }
   .popper{
     display: flex;

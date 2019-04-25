@@ -1,38 +1,18 @@
 <template>
-    <div class="item-wrapper">
-      <!-- <div v-for="item in this.options">
-          {{item.label}}
-          <div v-if="item.children">
-            <s-cascader-item :options="item.children"></s-cascader-item>
-          </div>
-      </div>  -->
-
-      <!-- <div class="menu">
-        <div v-for="(item,index) in this.options" :key="index" @click="setLevel1(item)">
-          {{item.label}}
-        </div>
-      </div>
-        
-      <div class="menu" v-if="key1.length>0">
-          <div  v-for="(item2,index2) in key1" :key="index2"  @click="setLevel2(item2)">
-          {{item2.label}}
-          </div>
-      </div>
-
-      <div class="menu" v-if="key2.length>0">
-          <div  v-for="(item3,index3) in key2" :key="index3">
-            {{item3.label}}
-          </div>
-      </div> -->
-
-      <div class="left">
+    <div class="item-wrapper">      
+      <div class="left" v-if="options.length>0">
           <div v-for="(item,index) in this.options" :key="index" @click="setNextOption(item)">
            {{item.label}}
             <s-icon v-if="item.children" name="right" style="transform: scale(.7)"></s-icon>
           </div>
       </div>
-      <div class="right" v-if="this.curItem && this.curItem.children">
-           <s-cascader-item :options="childOption"></s-cascader-item>
+      <div class="right" v-if="selected && selected[level]">
+           <s-cascader-item 
+             :options="childOption" 
+             :level="level+1" 
+             :selected="selected"
+              @update:selected="onRecursiveUpdateSelected"
+            ></s-cascader-item>
       </div>
       
     </div>
@@ -42,7 +22,16 @@ import Icon from './icon'
 export default {
   name:'s-cascader-item',
   props:{
-    options:null
+    options:null,
+    level: {
+      default:0
+    },
+    selected:{
+      type: Array,
+      default:()=>{
+        return []
+      }
+    }
   },
   data(){
     return {
@@ -64,11 +53,20 @@ export default {
     },
     setNextOption(item){
       this.curItem = item
+      //  子组件要修改props 只能通过事件
+      let selectedCopy = [...this.selected]
+      selectedCopy[this.level] = item
+      selectedCopy.splice(this.level+1)
+      this.$emit("update:selected",  selectedCopy)
+    },
+    // 递归的组件也要监听内部的$emit事件，此法同cascader.vue里面的事件传播一样
+    onRecursiveUpdateSelected(newSelected){
+      this.$emit('update:selected',newSelected)
     }
   },
   computed:{
     childOption(){
-      return this.curItem.children
+      return this.selected[this.level].children || []
     }
   }
 }
