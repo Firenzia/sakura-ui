@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name:'s-content'
+  name: 's-content'
 }
 </script>
 <style lang="scss" scoped>
@@ -16,4 +16,3 @@ export default {
     }
 
 </style>
-

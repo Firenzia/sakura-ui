@@ -11,115 +11,115 @@
 </template>
 <script>
 export default {
-  data(){
+  data () {
     return {
-        visible: false
+      visible: false
     }
   },
-  props:{
-      placement:{
-        defaut:'top',
-        validator(){
-          return ['top','bottom','left','right']
-        }
-      },
-      title:{},
-      trigger:{
-        default: 'click',
-        type: String,
-        validator(val){
-          return ['click','hover'].includes(val)
-        }
-      },
-      width:{},
-      content:{
-        type: String
+  props: {
+    placement: {
+      defaut: 'top',
+      validator () {
+        return ['top', 'bottom', 'left', 'right']
       }
+    },
+    title: {},
+    trigger: {
+      default: 'click',
+      type: String,
+      validator (val) {
+        return ['click', 'hover'].includes(val)
+      }
+    },
+    width: {},
+    content: {
+      type: String
+    }
   },
-  mounted(){
-      this.setEvent()
+  mounted () {
+    this.setEvent()
   },
-  computed:{
-    popoverPosition(){
+  computed: {
+    popoverPosition () {
       return `position-${this.placement}`
     }
   },
-  methods:{
-    setEvent(){
-      if(this.trigger === 'click'){
-          this.$refs.reference.addEventListener('click', this.clickHandler)
-      }else if(this.trigger === 'hover'){
-          this.hoverHandler()
+  methods: {
+    setEvent () {
+      if (this.trigger === 'click') {
+        this.$refs.reference.addEventListener('click', this.clickHandler)
+      } else if (this.trigger === 'hover') {
+        this.hoverHandler()
       }
     },
-    onShow(){
+    onShow () {
       this.positionPopover()
       this.addDocClickListener()
       console.log('每次点击显示popover 添加事件监听')
     },
-    addDocClickListener(){
-        setTimeout(()=>{
-            document.addEventListener('click',this.documentClickHandler)
-        },0)
+    addDocClickListener () {
+      setTimeout(() => {
+        document.addEventListener('click', this.documentClickHandler)
+      }, 0)
     },
-    documentClickHandler(e){
-      if(!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))){
-            this.close()
+    documentClickHandler (e) {
+      if (!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))) {
+        this.close()
       }
     },
-    positionPopover(){
-      this.$nextTick(()=>{
+    positionPopover () {
+      this.$nextTick(() => {
         document.body.appendChild(this.$refs.popover)
-        let {top,left,bottom, right,width,height} = this.$refs.reference.getBoundingClientRect()
-        let {height:height2, width: width2} = this.$refs.popover.getBoundingClientRect()
-        let {style} = this.$refs.popover
+        let { top, left, bottom, right, height } = this.$refs.reference.getBoundingClientRect()
+        let { height: height2, width: width2 } = this.$refs.popover.getBoundingClientRect()
+        let { style } = this.$refs.popover
 
         const positionMap = {
-          'top':{
-            'left': `${left+window.scrollX}px`,
-            'top': `${top+window.scrollY-10-height2}px`
+          'top': {
+            'left': `${left + window.scrollX}px`,
+            'top': `${top + window.scrollY - 10 - height2}px`
           },
-          'bottom':{
-            'left':`${left+window.scrollX}px`,
-            'top': `${bottom+window.scrollY+10}px`
+          'bottom': {
+            'left': `${left + window.scrollX}px`,
+            'top': `${bottom + window.scrollY + 10}px`
           },
-          'left':{
-            'left':`${left+window.scrollX-width2-10}px`,
-            'top': `${top+window.scrollY+(height-height2)/2}px`
+          'left': {
+            'left': `${left + window.scrollX - width2 - 10}px`,
+            'top': `${top + window.scrollY + (height - height2) / 2}px`
           },
-          'right':{
-            'left': `${right+window.scrollX+10}px`,
-            'top': `${top+window.scrollY+(height-height2)/2}px`
+          'right': {
+            'left': `${right + window.scrollX + 10}px`,
+            'top': `${top + window.scrollY + (height - height2) / 2}px`
           }
         }
         style['left'] = positionMap[this.placement].left
         style['top'] = positionMap[this.placement].top
-        
       })
     },
-    open(){
+    open () {
       this.visible = true
     },
-    close(){
+    close () {
       this.visible = false
       this.trigger === 'click' && document.removeEventListener('click', this.documentClickHandler)
     },
-    clickHandler(){
-        this.visible=!this.visible
-        if(this.visible){
-          this.onShow()
-        }
+    clickHandler () {
+      this.visible = !this.visible
+      if (this.visible) {
+        this.onShow()
+      }
     },
-    hoverHandler(){
-        this.$refs.reference.addEventListener('mouseover', 
-          (e)=>{
-            this.open();
-            this.positionPopover()}
-          )
-        this.$refs.reference.addEventListener('mouseout', (e)=>{this.close()})
+    hoverHandler () {
+      this.$refs.reference.addEventListener('mouseover',
+        (e) => {
+          this.open()
+          this.positionPopover()
+        }
+      )
+      this.$refs.reference.addEventListener('mouseout', (e) => { this.close() })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
   .wrapper{
@@ -127,7 +127,7 @@ export default {
     > div{
       display: inline-block;
     }
-    
+
     .reference{
       border:1px solid #ddd;
       border-radius: 4px;
@@ -146,7 +146,7 @@ export default {
         display: block;
         border:10px solid transparent;
       }
-      
+
       &.position-top{
          &::before{
            border-top:10px solid #ccc;
@@ -193,8 +193,5 @@ export default {
          }
       }
 
-
     }
 </style>
-
-

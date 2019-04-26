@@ -1,11 +1,11 @@
 <template>
     <div class="s-tab-body">
-       <slot></slot> 
+       <slot></slot>
     </div>
 </template>
 <script>
 export default {
-    name:"s-tab-body"
+  name: 's-tab-body'
 }
 </script>
 <style lang="scss" scoped>

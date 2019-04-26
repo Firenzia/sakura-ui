@@ -5,18 +5,18 @@
 </template>
 <script>
 export default {
-    name:'s-footer',
-    props:{
-        height:{
-            type: [Number, String],
-            default:'60'
-        }
-    },
-    computed: {
-        footerSetting (){
-            return `height:${this.height}px`
-        }
+  name: 's-footer',
+  props: {
+    height: {
+      type: [Number, String],
+      default: '60'
     }
+  },
+  computed: {
+    footerSetting () {
+      return `height:${this.height}px`
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -25,4 +25,3 @@ export default {
       color: #fff;
   }
 </style>
-

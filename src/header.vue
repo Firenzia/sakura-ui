@@ -5,18 +5,18 @@
 </template>
 <script>
 export default {
-    name:'s-header',
-    props:{
-        height:{
-            type: [Number, String],
-            default:'60'
-        }
-    },
-    computed: {
-        heightSetting (){
-            return `height:${this.height}px`
-        }
+  name: 's-header',
+  props: {
+    height: {
+      type: [Number, String],
+      default: '60'
     }
+  },
+  computed: {
+    heightSetting () {
+      return `height:${this.height}px`
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -26,4 +26,3 @@ export default {
   }
 
 </style>
-

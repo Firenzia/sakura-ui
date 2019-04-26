@@ -6,8 +6,8 @@
 <script>
 import './svg'
 export default {
-    name: 's-icon',
-    props:['name']
+  name: 's-icon',
+  props: ['name']
 }
 </script>
 <style lang="scss" scoped>
@@ -24,7 +24,5 @@ export default {
     .loading{
       animation: spin 1s infinite linear
     }
-    
+
 </style>
-
-

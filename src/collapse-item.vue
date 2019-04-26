@@ -14,63 +14,62 @@
 <script>
 import Icon from './icon'
 export default {
-  name:'s-collapse-item',
-  props:{
-    title:{
+  name: 's-collapse-item',
+  props: {
+    title: {
       type: String,
       required: true
     },
-    name:{
-      type:String,
+    name: {
+      type: String,
       required: true
     }
   },
-  components:{
-    's-icon':Icon
+  components: {
+    's-icon': Icon
   },
-  inject:['eventBus'],
-  computed:{
-    icoClass(){
-      return {'ico-active': this.visible}
+  inject: ['eventBus'],
+  computed: {
+    icoClass () {
+      return { 'ico-active': this.visible }
     }
   },
-  data(){
+  data () {
     return {
-      visible:false
+      visible: false
     }
   },
-  
-  mounted(){
-       this.eventBus.$on('update:selected', (v)=>{
-          if(v.includes(this.name)){
-              this.visible =true
-          }else{
-              this.visible =false
-          }
-      })
 
+  mounted () {
+    this.eventBus.$on('update:selected', (v) => {
+      if (v.includes(this.name)) {
+        this.visible = true
+      }else {
+        this.visible = false
+      }
+    })
   },
-  methods:{
-    addSelectItem(){
-       this.eventBus.$emit('update:addSelected',this.name)
+  methods: {
+    addSelectItem () {
+      this.eventBus.$emit('update:addSelected', this.name)
     },
-    removeSelectItem(){
-       this.eventBus.$emit('update:removeSelected',this.name)
+    removeSelectItem () {
+      this.eventBus.$emit('update:removeSelected', this.name)
     },
-    showPane(){
+    showPane () {
       this.addSelectItem()
     },
-    closePane(){
+    closePane () {
       this.removeSelectItem()
     },
-    toggle(){
-        this.visible = !this.visible
-        if(this.visible){
-           this.showPane()
-        }else{
-          this.closePane()
-        }
-    },
+    toggle () {
+      this.visible = !this.visible
+      if (this.visible) {
+        this.showPane()
+      }else {
+        this.closePane()
+      }
+    }
   }
 }
 </script>
@@ -99,5 +98,3 @@ export default {
       }
    }
 </style>
-
-

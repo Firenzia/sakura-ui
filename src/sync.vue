@@ -6,13 +6,12 @@
 </template>
 <script>
 export default {
-    props:['number'],
-    methods:{
-        changeNumber(){
-            let copy = this.number
-            this.$emit('update:number',copy+1)
-        }
+  props: ['number'],
+  methods: {
+    changeNumber () {
+      let copy = this.number
+      this.$emit('update:number', copy + 1)
     }
+  }
 }
 </script>
-

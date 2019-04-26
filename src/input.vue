@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper" :class="{error}">
-        <input type="text" 
-        :readonly="readonly" 
-        :disabled="disabled" 
-        :value="value" 
+        <input type="text"
+        :readonly="readonly"
+        :disabled="disabled"
+        :value="value"
         @input="$emit('input',$event.target.value)"
         @change="$emit('change',$event.target.value)"
         @focus="$emit('focus',$event.target.value)"
@@ -17,28 +17,28 @@
 <script>
 import Icon from './icon'
 export default {
-  components:{
-      's-icon': Icon
+  components: {
+    's-icon': Icon
   },
-  props:{
-    icon:{
+  props: {
+    icon: {
       type: String
     },
-    value:{
+    value: {
       type: String
     },
-    disabled:{
+    disabled: {
       type: Boolean,
       default: false
     },
-    readonly:{
+    readonly: {
       type: Boolean,
       default: false
     },
-    error:{
+    error: {
       type: String
     }
-  } 
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -63,4 +63,3 @@ export default {
     .errorMessage { color: $red; }
   }
 </style>
-

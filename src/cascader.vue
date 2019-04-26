@@ -2,9 +2,9 @@
    <div>
       <div class="content" @click="toggle">{{content}}</div>
       <div class="popper" v-if="popoverVisible">
-          <s-cascader-item 
-            :options="options" 
-            :selected="selected" 
+          <s-cascader-item
+            :options="options"
+            :selected="selected"
             @update:selected="onItemUpdateSelected">
           </s-cascader-item>
       </div>
@@ -14,39 +14,39 @@
 import CascaderItem from './cascader-item'
 export default {
   name: 's-cascader',
-  props:{
-    options:{
+  props: {
+    options: {
       type: Array
     },
-    selected:{
+    selected: {
       type: Array,
-      default:()=>{
+      default: () => {
         return []
       }
     }
   },
-  data(){
+  data () {
     return {
-      popoverVisible:false
+      popoverVisible: false
     }
   },
-  created(){
+  created () {
   },
-  computed:{
-    content(){
-      return this.selected.map(x=>x.label).join('/')
+  computed: {
+    content () {
+      return this.selected.map(x => x.label).join('/')
     }
   },
-  methods:{
-    onItemUpdateSelected(newSelected){
-      this.$emit('update:selected',newSelected)
+  methods: {
+    onItemUpdateSelected (newSelected) {
+      this.$emit('update:selected', newSelected)
     },
-    toggle(){
+    toggle () {
       this.popoverVisible = !this.popoverVisible
     }
-    
+
   },
-  components:{
+  components: {
     's-cascader-item': CascaderItem
   }
 }
@@ -60,11 +60,10 @@ export default {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:.6em 
+    padding:.6em
   }
   .popper{
     display: flex;
     flex-direction: row;
   }
 </style>
-

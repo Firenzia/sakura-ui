@@ -11,74 +11,74 @@
             </div>
         </div>
     </div>
-   
+
 </template>
 <script>
 export default {
-    props:{
-        // 默认2s自动关闭
-        duration:{
-            type: Number,
-            default: 10000
-        },
-        message:{
-            type: String
-        },
-        enableHtml:{
-            type: Boolean,
-            default: false
-        },
-        // 自动关闭前用户可以看文字按钮手动关闭
-        closeBtn:{
-            validator(val){
-                let flag = true
-                for(let key of Object.keys(val)){
-                    if(!['btnText','callback'].includes(key)){
-                        flag= false
-                        break;
-                    }
-                }
-                if(flag){
-                    val['btnText'] = val['btnText'] || '关闭'
-                }
-                return flag
-            }
-        },
-        // toast出现位置
-        position:{
-            default:'top',
-            validator(val){
-                return ['top','middle','bottom'].includes(val)
-            }
-        }
+  props: {
+    // 默认2s自动关闭
+    duration: {
+      type: Number,
+      default: 10000
     },
-    mounted(){
-        this.autoClose()
+    message: {
+      type: String
     },
-    computed:{
-        toastClass(){
-            return `show-on-${this.position}`
-        }
+    enableHtml: {
+      type: Boolean,
+      default: false
     },
-    methods:{
-        autoClose(){
-            setTimeout(()=>{
-               this.close()
-            },this.duration)
-        },
-        close(){
-            this.$el.remove()
-            this.$emit('closed')
-            this.$destroy()
-        },
-        userCustClose(){
-            this.close()
-            this.closeBtn.callback(this)
-        },
-        componentMethod(){
-            // console.log('我是组件方法')
+    // 自动关闭前用户可以看文字按钮手动关闭
+    closeBtn: {
+      validator (val) {
+        let flag = true
+        for (let key of Object.keys(val)) {
+          if (!['btnText', 'callback'].includes(key)) {
+            flag = false
+            break
+          }
         }
+        if (flag) {
+          val['btnText'] = val['btnText'] || '关闭'
+        }
+        return flag
+      }
+    },
+    // toast出现位置
+    position: {
+      default: 'top',
+      validator (val) {
+        return ['top', 'middle', 'bottom'].includes(val)
+      }
     }
+  },
+  mounted () {
+    this.autoClose()
+  },
+  computed: {
+    toastClass () {
+      return `show-on-${this.position}`
+    }
+  },
+  methods: {
+    autoClose () {
+      setTimeout(() => {
+        this.close()
+      }, this.duration)
+    },
+    close () {
+      this.$el.remove()
+      this.$emit('closed')
+      this.$destroy()
+    },
+    userCustClose () {
+      this.close()
+      this.closeBtn.callback(this)
+    },
+    componentMethod () {
+      // console.log('我是组件方法')
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -94,7 +94,7 @@ export default {
              opacity: 1;
              transform: translateY(0)
          }
-     }  
+     }
      @keyframes fade-in {
          0%{
              opacity: 0;
@@ -102,7 +102,7 @@ export default {
          100%{
              opacity: 1;
          }
-     } 
+     }
      @keyframes slide-up {
          0%{
              opacity: 0;
@@ -112,7 +112,7 @@ export default {
              opacity: 1;
              transform: translateY(0)
          }
-     } 
+     }
      .outer{
         z-index: 30;
         position: fixed;
@@ -160,5 +160,3 @@ export default {
         }
     }
 </style>
-
-

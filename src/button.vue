@@ -1,37 +1,38 @@
 <template>
-    <button class="s-button test-cls" :class="`ico-${iconPosition}`"
-      @click="$emit('click')">
-      <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
-      <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
-      <div class="btn-content">
-          <slot></slot>
-      </div>
-    </button>
+  <button class="s-button test-cls" :class="`ico-${iconPosition}`"
+    @click="$emit('click')">
+    <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
+    <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
+    <div class="btn-content">
+        <slot></slot>
+    </div>
+  </button>
+
 </template>
 <script>
 import Icon from './icon'
 export default {
-    name:'s-button',
-    components:{
-      's-icon': Icon
+  name: 's-button',
+  components: {
+    's-icon': Icon
+  },
+  props: {
+    'loading': {
+      type: Boolean,
+      default: false
     },
-    props:{
-        'loading':{
-          type: Boolean,
-          default: false
-        },
-        'icon':{
-            type:String,
-            required:false
-        }, 
-        'iconPosition':{
-            type: String,
-            default: 'left',
-            validator: function(val){
-              return val === 'left' || val === 'right'
-            }
-        }
+    'icon': {
+      type: String,
+      required: false
+    },
+    'iconPosition': {
+      type: String,
+      default: 'left',
+      validator: function (val) {
+        return val === 'left' || val === 'right'
+      }
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -84,5 +85,3 @@ $border-color-hover: #666;
   }
 
 </style>
-
-
