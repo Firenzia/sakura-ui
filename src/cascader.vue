@@ -44,6 +44,7 @@ export default {
     toggle(){
       this.popoverVisible = !this.popoverVisible
     }
+    
   },
   components:{
     's-cascader-item': CascaderItem

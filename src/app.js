@@ -29,6 +29,11 @@ import ToastPlugin from './plugins/toast'
 import Cascader from './cascader'
 import CascaderItem from './cascader-item'
 
+import db from './db/data'
+function ajax(parentId = 0){
+    return db.filter(item => item.parent_id === parentId)
+}
+
 Vue.use(ToastPlugin)
 
 Vue.component('s-button-group', ButtonGroup)
@@ -101,12 +106,12 @@ new Vue({
               }
             ]
           }
-        ]
+        ],
+        ajaxOptions: ajax()
     },
     methods:{
-        say(e){
-            console.log('trigger say')
-            console.log(e)
+        xxx(){
+            console.log('will change source')
         }
     },
     mounted(){

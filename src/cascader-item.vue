@@ -19,6 +19,13 @@
 </template>
 <script>
 import Icon from './icon'
+import db from './db/data'
+
+function ajax(parentId = 0){
+  return db.filter(item => item.parent_id === parentId)
+}
+console.log(ajax())
+
 export default {
   name:'s-cascader-item',
   props:{
@@ -35,8 +42,7 @@ export default {
   },
   data(){
     return {
-      key1:[],
-      key2:[],
+
       curItem:{}
     }
   },
@@ -44,13 +50,6 @@ export default {
     's-icon': Icon
   },
   methods:{
-    setLevel1(item){
-      this.key1= item.children
-      this.key2 =[]
-    },
-    setLevel2(item){
-      this.key2=item.children
-    },
     setNextOption(item){
       this.curItem = item
       //  子组件要修改props 只能通过事件
@@ -80,6 +79,8 @@ export default {
     .left{
       border:1px solid $border-color;
       padding:.5em;
+      overflow: auto;
+      max-height: 300px;
       > div{
         padding-bottom:.3em
       }
