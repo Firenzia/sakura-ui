@@ -15,6 +15,7 @@
 </template>
 <script>
 export default {
+  name: 's-toast',
   props: {
     // 默认2s自动关闭
     duration: {

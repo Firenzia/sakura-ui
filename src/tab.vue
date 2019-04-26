@@ -42,7 +42,7 @@ export default {
     // this.eventBus.$emit("update:selected", this.selected)
     if (this.tabPosition === 'left') {
       this.$children.forEach(child => {
-        child.align = child.$options.name === 's-tab-head' ? 'left':''
+        child.align = child.$options.name === 's-tab-head' ? 'left' : ''
       })
     }
   }

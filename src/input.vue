@@ -17,6 +17,7 @@
 <script>
 import Icon from './icon'
 export default {
+  name: 's-input',
   components: {
     's-icon': Icon
   },

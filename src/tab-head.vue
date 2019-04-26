@@ -21,11 +21,11 @@ export default {
       return `tab-${this.align}`
     },
     headClass () {
-      let headDirection = this.align === 'top' ? 'column':'row'
+      let headDirection = this.align === 'top' ? 'column' : 'row'
       return `head-in-${headDirection}`
     },
     itemWrapperClass () {
-      let itemDirection = this.align === 'top' ? 'row':'column'
+      let itemDirection = this.align === 'top' ? 'row' : 'column'
       return `item-in-${itemDirection}`
     },
     lineStyle () {
@@ -35,7 +35,7 @@ export default {
           width: '100px',
           borderBottom: '2px solid #3ba0e9'
         }
-      } else{
+      } else {
         mixinStyleObj = {
           height: '20px',
           borderLeft: '2px solid #3ba0e9'
@@ -54,7 +54,7 @@ export default {
         if (this.align === 'top') {
           this.$refs.line.style.width = `${width}px`
           this.$refs.line.style.left = `${left - tabHeadStyle.left}px`
-        }else {
+        } else {
           this.$refs.line.style.height = `${height}px`
           this.$refs.line.style.top = `${top - tabHeadStyle.top}px`
         }

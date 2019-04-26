@@ -1,17 +1,27 @@
 <template>
   <div>
-     <div>{{selected}}</div>
+     <!-- <div>{{selected}}</div>
      <s-cascader
     :options="ajaxOptions"
     :selected.sync="selected"
     @update:selected="xxx" >
   </s-cascader>
+  </div> -->
+    <s-slide :selected=selected>
+      <s-slide-item>
+        <div class="box" name="1">123</div>
+      </s-slide-item>
+      <s-slide-item>
+        <div class="box" name="2">456</div>
+      </s-slide-item>
+      <s-slide-item>
+        <div class="box" name="3">789</div>
+      </s-slide-item>
+    </s-slide>
   </div>
 </template>
 <script>
 import db from './db/data'
-
-import Cascader from './cascader'
 
 function ajax (parentId = 0) {
   return new Promise((resolve, reject) => {
@@ -20,10 +30,12 @@ function ajax (parentId = 0) {
   })
 }
 
+ajax()
+
 export default {
   data () {
     return {
-      selected: [],
+      selected: '1',
       ajaxOptions1: [],
       ajaxOptions: [{
         label: '美国',
@@ -64,9 +76,9 @@ export default {
     //   this.ajaxOptions = value
     // })
   },
-  components: {
-    's-cascader': Cascader
-  },
+  // components: {
+  //   's-cascader': Cascader
+  // },
   methods: {
     // 父组件来修改selected, 选中某个，设置children是下一个
     xxx ($event) {
@@ -79,5 +91,8 @@ export default {
 </script>
 <style lang="scss">
  @import './static/scss/global.scss';
-
+ .box{
+   width:100px;
+   height: 100px;
+ }
 </style>

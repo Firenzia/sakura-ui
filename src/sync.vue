@@ -6,6 +6,7 @@
 </template>
 <script>
 export default {
+  name: 's-sync',
   props: ['number'],
   methods: {
     changeNumber () {

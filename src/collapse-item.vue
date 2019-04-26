@@ -44,7 +44,7 @@ export default {
     this.eventBus.$on('update:selected', (v) => {
       if (v.includes(this.name)) {
         this.visible = true
-      }else {
+      } else {
         this.visible = false
       }
     })
@@ -66,7 +66,7 @@ export default {
       this.visible = !this.visible
       if (this.visible) {
         this.showPane()
-      }else {
+      } else {
         this.closePane()
       }
     }

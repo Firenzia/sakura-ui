@@ -11,6 +11,7 @@
 </template>
 <script>
 export default {
+  name: 's-popover',
   data () {
     return {
       visible: false
@@ -63,7 +64,7 @@ export default {
       }, 0)
     },
     documentClickHandler (e) {
-      if (!(e.target === this.$refs.popover || this.$refs.popover && this.$refs.popover.contains(e.target))) {
+      if (!(e.target === this.$refs.popover || this.$refs.popover.contains(e.target))) {
         this.close()
       }
     },

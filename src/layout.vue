@@ -5,32 +5,31 @@
 </template>
 <script>
 export default {
-    name:'s-layout',
-    data(){
-        return {
-            layoutClass:{
-                hasSidebar: false
-            }
-        }
-    },
-    props:{
-        height:{
-            type: [Number, String]
-        }
-    },
-    computed: {
-        heightSetting (){
-            return `height:${this.height}px`
-        }
-    },
-    mounted(){
-        this.$children.forEach( child=>{
-            if(child.$options.name==='s-sider'){
-                this.layoutClass.hasSidebar= true
-            }
-
-        })
+  name: 's-layout',
+  data () {
+    return {
+      layoutClass: {
+        hasSidebar: false
+      }
     }
+  },
+  props: {
+    height: {
+      type: [Number, String]
+    }
+  },
+  computed: {
+    heightSetting () {
+      return `height:${this.height}px`
+    }
+  },
+  mounted () {
+    this.$children.forEach(child => {
+      if (child.$options.name === 's-sider') {
+        this.layoutClass.hasSidebar = true
+      }
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -44,5 +43,3 @@ export default {
         }
     }
 </style>
-
-

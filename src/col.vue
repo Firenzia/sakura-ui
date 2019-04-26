@@ -13,10 +13,10 @@ export default {
   name: 's-col',
   props: {
     span: {
-      type: [ Number, String]
+      type: [Number, String]
     },
     offset: {
-      type: [ Number, String]
+      type: [Number, String]
     },
     xs: { validator: validatorFunc },
     sm: { validator: validatorFunc },
@@ -39,7 +39,7 @@ export default {
   computed: {
     // xs、sm、md、lg 和 xl
     colClasses () {
-      let { span, offset, npc, wpc, xs, sm, md, lg, xl } = this
+      let { span, offset, xs, sm, md, lg, xl } = this
 
       return [...this.createClass('', { span, offset }),
         ...this.createClass('xs-', xs),
