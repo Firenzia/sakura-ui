@@ -187,6 +187,10 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 
 ## 2 animation
 ## 3 slider
+技术点：使用了vue的过渡组件（适用场景：在插入、更新或者移除 DOM 时，v-if， v-show, 动态组件）,slide-item是块状元素，纵向排列，让上一个元素在离场动画变成绝对定位脱离文档流从而让第二个元素出现在第一个元素的默认位置上。
+组件数据变化会触发updated
+思想： 父组件控制数据selected, 传给子组件，子组件知道出现哪个就让哪个动画形式出现
+
 ## 4 nav
 ## 5 form
 ## 6 pagination

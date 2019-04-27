@@ -7,15 +7,15 @@
     @update:selected="xxx" >
   </s-cascader>
   </div> -->
-    <s-slide :selected=selected>
-      <s-slide-item>
-        <div class="box" name="1">123</div>
+    <s-slide :selected.sync="selected">
+      <s-slide-item name="1">
+        <div class="box" >123</div>
       </s-slide-item>
-      <s-slide-item>
-        <div class="box" name="2">456</div>
+      <s-slide-item name="2">
+        <div class="box" >456</div>
       </s-slide-item>
-      <s-slide-item>
-        <div class="box" name="3">789</div>
+      <s-slide-item name="3">
+        <div class="box">789</div>
       </s-slide-item>
     </s-slide>
   </div>
@@ -71,7 +71,8 @@ export default {
       ]
     }
   },
-  created () {
+  mounted () {
+
     // ajax(0).then(value => {
     //   this.ajaxOptions = value
     // })
@@ -94,5 +95,6 @@ export default {
  .box{
    width:100px;
    height: 100px;
+   background: #ccc;
  }
 </style>

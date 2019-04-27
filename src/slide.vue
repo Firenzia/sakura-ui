@@ -1,10 +1,9 @@
 <template>
   <div class="s-slide">
      <div class="s-window">
-
-     </div>
-     <div class="item-wrapper">
-       <slot></slot>
+        <!-- <div class="slide-wrapper"> -->
+          <slot></slot>
+        <!-- </div> -->
      </div>
   </div>
 </template>
@@ -14,23 +13,54 @@ export default {
   props: {
     selected: {
       type: String
+    },
+    autoPlay: {
+      type: Boolean,
+      default: true
+    }
+  },
+  created () {
+  },
+  mounted () {
+    this.updateChildren()
+    this.playAutomatically()
+  },
+  updated () {
+    this.updateChildren()
+  },
+  methods: {
+    getSelected () {
+      return this.selected || this.$children[0].name
+    },
+    playAutomatically () {
+      let names = this.$children.map(vm => vm.name)
+
+      setInterval(() => {
+        // 定时修改selected
+        let idx = names.indexOf(this.getSelected())
+        if (idx === names.length - 1) {
+          idx = -1
+        }
+        this.$emit('update:selected', names[idx + 1])
+      }, 3000)
+    },
+    updateChildren () {
+      this.$children.forEach(vm => {
+        vm.selected = this.getSelected()
+      })
     }
   }
 }
 </script>
 <style lang="scss" scoped>
   .s-slide{
-    position: relative
-  }
-  .s-window{
     border:1px solid black;
-    height:100px;
-    width: 100px;
+    display: inline-block;
+    .s-window{
+      border:1px solid red;
+      position: relative;
 
+    }
   }
-  .item-wrapper{
-    position: absolute;
-    top:0;
-    left:0
-  }
+
 </style>
