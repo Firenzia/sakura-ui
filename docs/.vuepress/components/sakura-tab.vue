@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>左边标签页</p>
-    <s-tab tab-position="left" selected="herb">
+    <p>当前选中的标签是： <span class="highlight">{{selected}}</span></p>
+    <s-tab tab-position="left" :selected.sync="selected">
       <s-tab-head>
         <s-tab-item name="flower">
           flower
@@ -17,12 +18,12 @@
       </s-tab-body>
     </s-tab>
 
-    <p style="margin-top:60px;">顶部标签页</p>
-    <s-tab selected="herb">
+    <p style="margin-top:80px;">顶部标签页</p>
+    <s-tab selected.sync="herb">
       <s-tab-head>
         <s-tab-item name="bee">bee</s-tab-item>
         <s-tab-item name="flower" disabled>
-          flower
+          你点不到我
           <s-icon name="setting" slot="icon"></s-icon>
         </s-tab-item>
         <s-tab-item name="grass">grass</s-tab-item>
@@ -52,6 +53,7 @@ import Icon from "../../../src/icon";
 export default {
   data() {
     return {
+      selected:'herb',
       code: `
         <s-tab tab-position="left" selected="herb">
         <s-tab-head>
@@ -83,5 +85,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.highlight{
+  color:#3ba0e9;
+  font-weight: bold;
+}
 </style>
 

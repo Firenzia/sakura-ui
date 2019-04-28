@@ -1,5 +1,27 @@
 <template>
   <div>
+    <s-tab :selected.sync="selected">
+        <s-tab-head>
+            <s-tab-item name="bee">
+                bee
+            </s-tab-item>
+            <s-tab-item name="flower" disabled>
+                flower
+                <s-icon name="setting" slot="icon"></s-icon>
+            </s-tab-item>
+            <s-tab-item name="grass">grass</s-tab-item>
+            <s-tab-item name="herb">herb</s-tab-item>
+            <s-tab-item name="tree">tree</s-tab-item>
+        </s-tab-head>
+        <s-tab-body>
+            <s-tab-pane name="bee">This is bee</s-tab-pane>
+            <s-tab-pane name="flower">This is flower</s-tab-pane>
+            <s-tab-pane name="grass">This is grass</s-tab-pane>
+            <s-tab-pane  name="herb">This is herb</s-tab-pane>
+            <s-tab-pane  name="tree">This is tree</s-tab-pane>
+    </s-tab-body>
+    {{selected}}
+</s-tab>
      <!-- <div>{{selected}}</div>
      <s-cascader
     :options="ajaxOptions"
@@ -7,7 +29,8 @@
     @update:selected="xxx" >
   </s-cascader>
   </div> -->
-    <s-slide :selected.sync="selected">
+
+    <!-- <s-slide :selected.sync="selected">
       <s-slide-item name="1">
         <div class="box" >1</div>
       </s-slide-item>
@@ -23,7 +46,7 @@
       <s-slide-item name="5">
         <div class="box">5</div>
       </s-slide-item>
-    </s-slide>
+    </s-slide> -->
   </div>
 </template>
 <script>
@@ -41,7 +64,7 @@ ajax()
 export default {
   data () {
     return {
-      selected: [],
+      selected: 'herb',
       ajaxOptions1: [],
       ajaxOptions: [{
         label: '美国',

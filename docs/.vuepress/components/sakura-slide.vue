@@ -1,5 +1,6 @@
 <template>
   <div >
+    <p>当前出现第 <span class="highlight">{{selected}} </span>张</p>
     <s-slide :selected.sync="selected" class="slide-wrapper">
       <s-slide-item name="1">
         <div class="box" >1</div>
@@ -65,5 +66,13 @@ export default {
    width:600px;
    height: 200px;
    background: #ccc;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 60px;
  }
+ .highlight{
+  color:#3ba0e9;
+  font-weight: bold;
+}
 </style>
