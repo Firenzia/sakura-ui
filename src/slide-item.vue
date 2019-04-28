@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="slide-item" v-show="visible" :class="{reverse}">
+    <div class="slide-item" v-show="visible" :class="{'reverse':this.reverse}">
     <slot></slot>
   </div>
   </transition>
@@ -42,15 +42,19 @@ export default {
      transition: all 1s;
    }
    .slide-enter{
-     transform: translateX(100%);
+     transform: translateX(100%) ;
      opacity: 0;
    }
-   .slide-enter.reverse{
-    //  transform: translateX(-100%);
-    background: blue
+   .reverse{
+     &.slide-enter{
+      transform: translateX(-100%) ;
+     }
+      &.slide-leave-to{
+      transform: translateX(100%) ;
+    }
    }
    .slide-leave-to{
-     transform: translateX(-100%) scale(.5);
+     transform: translateX(-100%);
      opacity: 0;
    }
   //  .slide-leave-to.reverse{

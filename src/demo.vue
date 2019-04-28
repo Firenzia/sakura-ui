@@ -9,13 +9,19 @@
   </div> -->
     <s-slide :selected.sync="selected">
       <s-slide-item name="1">
-        <div class="box" >123</div>
+        <div class="box" >1</div>
       </s-slide-item>
       <s-slide-item name="2">
-        <div class="box" >456</div>
+        <div class="box" >2</div>
       </s-slide-item>
       <s-slide-item name="3">
-        <div class="box">789</div>
+        <div class="box">3</div>
+      </s-slide-item>
+      <s-slide-item name="4">
+        <div class="box">4</div>
+      </s-slide-item>
+      <s-slide-item name="5">
+        <div class="box">5</div>
       </s-slide-item>
     </s-slide>
   </div>
@@ -93,8 +99,8 @@ export default {
 <style lang="scss">
  @import './static/scss/global.scss';
  .box{
-   width:100px;
-   height: 100px;
+   width:200px;
+   height: 200px;
    background: #ccc;
  }
 </style>

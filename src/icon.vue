@@ -1,5 +1,6 @@
 <template>
-    <svg  class="s-icon" aria-hidden="true">
+    <svg  @click="clickHandler"
+         class="s-icon" aria-hidden="true">
         <use :xlink:href="`#i-${name}`"></use>
     </svg>
 </template>
@@ -7,7 +8,12 @@
 import './svg'
 export default {
   name: 's-icon',
-  props: ['name']
+  props: ['name'],
+  methods: {
+    clickHandler () {
+      this.$emit('click')
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

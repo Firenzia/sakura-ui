@@ -2,6 +2,12 @@
   <div class="s-slide">
      <div class="s-window">
         <slot></slot>
+        <s-icon name="left"
+          class="ico prev"
+          @click="seePrev"></s-icon>
+        <s-icon name="right"
+         class="ico next"
+         @click="seeNext"></s-icon>
      </div>
      <div class="s-dot">
         <span v-for="(n, index) in childLength"
@@ -12,7 +18,6 @@
   </div>
 </template>
 <script>
-import { setTimeout } from 'timers'
 export default {
   name: 's-slide',
   props: {
@@ -27,58 +32,93 @@ export default {
   },
   data () {
     return {
-      childLength: 0
+      childLength: 0,
+      lastIndex: 0
     }
   },
   computed: {
     selectedIndex () {
-      return this.getChildrenNames().indexOf(this.selected)
+      return this.namesList.indexOf(this.selected)
+    },
+    namesList () {
+      let arr = []
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 's-slide-item') {
+          arr.push(vm.name)
+        }
+      })
+      return arr
     }
   },
   created () {
   },
   mounted () {
-    this.updateChildren()
+    this.init()
     this.playAutomatically()
-    this.childLength = this.$children.length
+    this.childLength = this.getSlideItemCount()
   },
+  //  在父组件修改了select被执行
   updated () {
     this.updateChildren()
   },
   methods: {
-    getChildrenNames () {
-      return this.$children.map(item => item.name)
+    getSlideItemCount () {
+      let count = 0
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 's-slide-item') {
+          count++
+        }
+      })
+      return count
     },
-    getSelected () {
-      return this.selected || this.$children[0].name
+    init () {
+      this.checkSelected()
+      this.updateChildren()
+    },
+    checkSelected () {
+      if (!this.selected) {
+        this.$emit('update:selected', this.$children[0].name)
+      }
     },
     playAutomatically () {
-      let names = this.getChildrenNames()
+      let names = this.namesList
 
       let run = () => {
         // 定时修改selected
-        let idx = names.indexOf(this.getSelected())
+        let idx = this.selectedIndex === -1 ? 0 : this.selectedIndex
         if (idx === names.length - 1) {
-          idx = -1
+          idx = 0
+        } else {
+          idx += 1
         }
-        this.$emit('update:selected', names[idx + 1])
-        setTimeout(run, 5000)
+        this.getLastAndSetNext(names[idx])
+        setTimeout(run, 4000)
       }
-      setTimeout(run, 5000)
+      setTimeout(run, 4000)
     },
     changeSelect (index) {
-      this.$emit('update:selected', this.getChildrenNames()[index])
+      this.getLastAndSetNext(this.namesList[index])
     },
+    // 通知父组件去修改select
+    getLastAndSetNext (val) {
+      this.lastIndex = this.selectedIndex
+      this.$emit('update:selected', val)
+    },
+    //  在父组件修改了select被执行
     updateChildren () {
       this.$children.forEach(vm => {
-        vm.selected = this.getSelected()
-        let currentSelectIndex = this.getChildrenNames().indexOf(this.getSelected())
-        let childIndex = this.getChildrenNames().indexOf(vm.name)
-        if (childIndex < currentSelectIndex) {
-          console.log(childIndex)
-        }
-        vm.reverse = childIndex < currentSelectIndex
+        console.log(this.selected)
+        vm.selected = this.selected
+        vm.reverse = this.lastIndex > this.selectedIndex
       })
+    },
+    seePrev () {
+      let prevIndex = this.selectedIndex === 0 ? this.namesList.length - 1 : this.selectedIndex - 1
+      this.getLastAndSetNext(this.namesList[prevIndex])
+    },
+    seeNext () {
+      let nextIndex = this.selectedIndex === this.namesList.length - 1 ? 0 : this.selectedIndex + 1
+      this.getLastAndSetNext(this.namesList[nextIndex])
     }
   }
 }
@@ -91,10 +131,28 @@ export default {
       border:1px solid red;
       position: relative;
       overflow: hidden;
+      .ico{
+        position: absolute;
+        &.prev{
+          top:50%;
+          left:10%;
+          transform: translateY(-50%)
+        }
+        &.next{
+          top:50%;
+          right:10%;
+          transform: translateY(-50%)
+        }
+      }
     }
     .s-dot{
       .index-active{
         background: red
+      }
+      > span{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
       }
     }
   }
