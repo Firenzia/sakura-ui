@@ -35,7 +35,7 @@ ajax()
 export default {
   data () {
     return {
-      selected: '1',
+      selected: undefined,
       ajaxOptions1: [],
       ajaxOptions: [{
         label: '美国',
