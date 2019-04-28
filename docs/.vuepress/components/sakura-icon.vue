@@ -13,7 +13,7 @@ export default {
     return {
       code: `
         <s-icon name="setting"></s-icon>
-    `.replace(/^\s+|\t+/gm, '')
+    `.replace(/^ {8}/gm, "").trim()
     }
   },
   components:{

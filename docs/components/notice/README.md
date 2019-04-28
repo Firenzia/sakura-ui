@@ -3,13 +3,13 @@ title: 'Notice'
 sidebarDepth: 2
 ---
 
-## Toast
+## Toast  消息
 <ClientOnly>
   <sakura-toast/>
 </ClientOnly>
 
 
-## Popover
+## Popover 弹出框
 <ClientOnly>
   <sakura-popover/>
 </ClientOnly>

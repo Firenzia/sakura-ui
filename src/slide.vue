@@ -1,23 +1,26 @@
 <template>
   <div class="s-slide">
-     <div class="s-window">
+     <div class="s-window"
+          @mouseenter= "pause"
+          @mouseleave = "start">
         <slot></slot>
         <s-icon name="left"
           class="ico prev"
-          @click="seePrev"></s-icon>
+          @click="onClickPrev"></s-icon>
         <s-icon name="right"
          class="ico next"
-         @click="seeNext"></s-icon>
+         @click="onClickNext"></s-icon>
      </div>
      <div class="s-dot">
-        <span v-for="(n, index) in childLength"
+        <span v-for="(n, index) in slideItemLength"
         :key="index"
         @click ="changeSelect(index)"
-        :class="{'index-active':selectedIndex=== index}">{{n-1}}</span>
+        :class="{'index-active':selectedIndex=== index}">{{n}}</span>
      </div>
   </div>
 </template>
 <script>
+import icon from './icon'
 export default {
   name: 's-slide',
   props: {
@@ -28,13 +31,22 @@ export default {
     autoPlay: {
       type: Boolean,
       default: true
+    },
+    duration: {
+      type: Number,
+      default: 5000
     }
   },
   data () {
     return {
-      childLength: 0,
-      lastIndex: 0
+      slideItemLength: 0,
+      lastIndex: 0,
+      isReverse: false,
+      timerId: undefined
     }
+  },
+  components: {
+    's-icon': icon
   },
   computed: {
     selectedIndex () {
@@ -54,14 +66,20 @@ export default {
   },
   mounted () {
     this.init()
-    this.playAutomatically()
-    this.childLength = this.getSlideItemCount()
   },
   //  在父组件修改了select被执行
   updated () {
     this.updateChildren()
   },
   methods: {
+    init () {
+      this.checkSelectedValue()
+      this.updateChildren()
+      this.slideItemLength = this.getSlideItemCount()
+      if (this.autoPlay) {
+        this.playAutomatically()
+      }
+    },
     getSlideItemCount () {
       let count = 0
       this.$children.forEach(vm => {
@@ -71,70 +89,75 @@ export default {
       })
       return count
     },
-    init () {
-      this.checkSelected()
-      this.updateChildren()
-    },
-    checkSelected () {
+    checkSelectedValue () {
       if (!this.selected) {
         this.$emit('update:selected', this.$children[0].name)
       }
     },
     playAutomatically () {
+      if (this.timerId) { return }
       let names = this.namesList
-
-      let run = () => {
-        // 定时修改selected
+      let run = () => { // 定时修改selected
         let idx = this.selectedIndex === -1 ? 0 : this.selectedIndex
         if (idx === names.length - 1) {
           idx = 0
         } else {
           idx += 1
         }
-        this.getLastAndSetNext(names[idx])
-        setTimeout(run, 4000)
+        this.isReverse = false
+        this.setNewSelected(idx)
+        this.timerId = setTimeout(run, this.duration)
       }
-      setTimeout(run, 4000)
+      this.timerId = setTimeout(run, this.duration)
     },
     changeSelect (index) {
-      this.getLastAndSetNext(this.namesList[index])
+      this.setNewSelected(index)
+      this.isReverse = this.selectedIndex > index
     },
-    // 通知父组件去修改select
-    getLastAndSetNext (val) {
+    // 1 通知父组件去修改select
+    setNewSelected (newIndex) {
       this.lastIndex = this.selectedIndex
-      this.$emit('update:selected', val)
+      this.$emit('update:selected', this.namesList[newIndex])
     },
-    //  在父组件修改了select被执行
+    // 2 在父组件修改了select被执行, 1执行后执行2
     updateChildren () {
       this.$children.forEach(vm => {
         if (vm.$options.name === 's-slide-item') {
-          console.log(this.selected)
           vm.selected = this.selected
-          vm.reverse = this.lastIndex > this.selectedIndex
+          vm.reverse = this.isReverse
         }
       })
     },
-    seePrev () {
+    onClickPrev () {
+      this.isReverse = true
       let prevIndex = this.selectedIndex === 0 ? this.namesList.length - 1 : this.selectedIndex - 1
-      this.getLastAndSetNext(this.namesList[prevIndex])
+      this.setNewSelected(prevIndex)
     },
-    seeNext () {
+    onClickNext () {
+      this.isReverse = false
       let nextIndex = this.selectedIndex === this.namesList.length - 1 ? 0 : this.selectedIndex + 1
-      this.getLastAndSetNext(this.namesList[nextIndex])
+      this.setNewSelected(nextIndex)
+    },
+    pause () {
+      window.clearTimeout(this.timerId)
+    },
+    start () {
+      this.playAutomatically()
+      this.timerId = undefined
     }
   }
 }
 </script>
 <style lang="scss" scoped>
   .s-slide{
-    border:1px solid black;
     display: inline-block;
+    position: relative;
     .s-window{
-      border:1px solid red;
       position: relative;
       overflow: hidden;
       .ico{
         position: absolute;
+        color:#fff;
         &.prev{
           top:50%;
           left:10%;
@@ -148,13 +171,30 @@ export default {
       }
     }
     .s-dot{
+      position: absolute;
+      bottom:10px;
+      left:50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       .index-active{
-        background: red
+        background: lightblue;
+        color: #fff;
       }
       > span{
         display: inline-block;
-        width: 40px;
-        height: 40px;
+        width: 16px;
+        height: 16px;
+        font-size:12px;
+        line-height: 40px;
+        border-radius:50%;
+        margin-right: .2em;
+        background: #fff;
+        color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

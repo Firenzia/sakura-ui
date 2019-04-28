@@ -2,23 +2,23 @@
 title: 'Basic'
 sidebarDepth: 2
 ---
-## Icon
+## Icon 图标
 <ClientOnly>
   <sakura-icon/>
 </ClientOnly>
 
-## Button
+## Button 按钮
 <ClientOnly>
   <sakura-button/>
 </ClientOnly>
 
 
-## Layout
+## Layout 布局
 <ClientOnly>
   <sakura-layout/>
 </ClientOnly>
 
-## Container
+## Container 容器
 <ClientOnly>
   <sakura-container/>
 </ClientOnly>

@@ -1,7 +1,9 @@
 <template>
-   <div>
-      <div class="content" @click="toggle">{{content}}</div>
-      <div class="popper" v-if="popoverVisible">
+   <div class="s-cascader">
+      <div class="content" @click="toggle" ref="content">
+        {{content}}
+      </div>
+      <div class="popper" v-if="popoverVisible" ref="popper">
           <s-cascader-item
             :options="options"
             :selected="selected"
@@ -32,12 +34,24 @@ export default {
   },
   created () {
   },
+  mounted () {
+    this.addDocumentListener()
+  },
   computed: {
     content () {
       return this.selected.map(x => x.label).join('/')
     }
   },
   methods: {
+    addDocumentListener () {
+      let docClickHandler = (e) => {
+        if (this.$refs.popper.contains(e.target) || this.$refs.content.contains(e.target)) {
+          return false
+        }
+        this.popoverVisible = false
+      }
+      window.document.addEventListener('click', docClickHandler)
+    },
     onItemUpdateSelected (newSelected) {
       this.$emit('update:selected', newSelected)
     },
@@ -52,18 +66,23 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+  .s-cascader{
+    display: inline-block;
+    position: relative;
+  }
   .content{
     width: 200px;
-    height: 40px;
+    height: 24px;
     border: 1px solid #ccc;
-    display: flex;
+    display: inline-flex;
     justify-content: flex-start;
     align-items: center;
-    padding:.6em
+    padding:.6em;
   }
   .popper{
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
+    position: absolute;
+    z-index: 100
   }
 </style>

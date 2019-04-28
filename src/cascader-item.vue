@@ -1,7 +1,10 @@
 <template>
   <div class="item-wrapper">
     <div class="left" v-if="options && options.length>0">
-        <div v-for="(item,index) in this.options" :key="index" @click="setNextOption(item)">
+        <div v-for="(item,index) in this.options"
+          :class="{'active-item': selected && selected[level] &&item.label=== selected[level].label}"
+          :key="index"
+          @click="setNextOption(item)">
           {{item.label}}
           <s-icon v-if="item.children" name="right" style="transform: scale(.7)"></s-icon>
         </div>
@@ -44,7 +47,6 @@ export default {
   },
   data () {
     return {
-
       curItem: {}
     }
   },
@@ -58,6 +60,7 @@ export default {
       selectedCopy[this.level] = item
       selectedCopy.splice(this.level + 1)
       this.$emit('update:selected', selectedCopy)
+      console.log()
     },
     // 递归的组件也要监听内部的$emit事件，此法同cascader.vue里面的事件传播一样
     onRecursiveUpdateSelected (newSelected) {
@@ -67,6 +70,9 @@ export default {
   computed: {
     childOption () {
       return this.selected[this.level].children || []
+    },
+    isActive () {
+      return { 'active-item': true }
     }
   }
 }
@@ -77,13 +83,19 @@ export default {
     display:flex;
     align-items: flex-start;
     justify-content: flex-start;
+
     .left{
       border:1px solid $border-color;
-      padding:.5em;
+
       overflow: auto;
       max-height: 300px;
+       background: #fff;
+      flex-shrink: 0;
       > div{
-        padding-bottom:.3em
+        padding:.5em;
+        &.active-item{
+          background: lightblue;
+        }
       }
     }
   }

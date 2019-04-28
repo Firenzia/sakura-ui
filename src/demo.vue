@@ -41,7 +41,7 @@ ajax()
 export default {
   data () {
     return {
-      selected: undefined,
+      selected: [],
       ajaxOptions1: [],
       ajaxOptions: [{
         label: '美国',
@@ -70,6 +70,15 @@ export default {
             children: [
               { label: '苏州' },
               { label: '南京' }
+            ]
+          },
+          {
+            label: '云南',
+            children: [
+              { label: '大理' },
+              { label: '丽江' },
+              { label: '香格里拉' },
+              { label: '西双版纳' }
             ]
           }
         ]
