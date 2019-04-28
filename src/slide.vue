@@ -107,9 +107,11 @@ export default {
     //  在父组件修改了select被执行
     updateChildren () {
       this.$children.forEach(vm => {
-        console.log(this.selected)
-        vm.selected = this.selected
-        vm.reverse = this.lastIndex > this.selectedIndex
+        if (vm.$options.name === 's-slide-item') {
+          console.log(this.selected)
+          vm.selected = this.selected
+          vm.reverse = this.lastIndex > this.selectedIndex
+        }
       })
     },
     seePrev () {
