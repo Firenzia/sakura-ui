@@ -239,3 +239,63 @@
 <test-comp :number.sync="number2"></test-comp>
 <p>.sync语法糖解决props双向绑定问题，让父组件写法更简洁，子组件需要配合触发'update:xxx'事件</p>
 <test-comp :number="number" @update:number="number=$event"></test-comp>
+
+<!-- cascader -->
+<!-- import db from './db/data'
+
+
+function ajax (parentId = 0) {
+  return new Promise((resolve, reject) => {
+    let result = db.filter(item => item.parent_id === parentId)
+    resolve(result)
+  })
+}
+
+ajax() -->
+<div>{{selected}}</div>
+<s-cascader
+    :options="ajaxOptions"
+    :selected.sync="selected"
+    @update:selected="xxx" >
+</s-cascader>
+[{
+    label: '美国',
+    children: [
+      {
+        label: '德克萨斯',
+        children: [
+          { label: '休斯顿' },
+          { label: '达拉斯' }
+        ]
+      }
+    ]
+  },
+  {
+    label: '中国',
+    children: [
+      {
+        label: '广东',
+        children: [
+          { label: '汕头' },
+          { label: '揭阳' }
+        ]
+      },
+      {
+        label: '江苏',
+        children: [
+          { label: '苏州' },
+          { label: '南京' }
+        ]
+      },
+      {
+        label: '云南',
+        children: [
+          { label: '大理' },
+          { label: '丽江' },
+          { label: '香格里拉' },
+          { label: '西双版纳' }
+        ]
+      }
+    ]
+  }
+  ]

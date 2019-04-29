@@ -1,117 +1,109 @@
 <template>
   <div>
 
-     <!-- <div>{{selected}}</div>
-     <s-cascader
-    :options="ajaxOptions"
-    :selected.sync="selected"
-    @update:selected="xxx" >
-  </s-cascader>
-  </div> -->
+   <div class="form-wrapper">
+    <form class="form" @submit.prevent="onSubmit">
+      <h1>登录</h1>
+      <s-form-item label="邮箱" :error="errors.name">
+        <s-input type="text" v-model="user.name"></s-input>
+      </s-form-item>
+      <s-form-item label="密码" :error="errors.region">
+        <s-input type="password" v-model="user.region"></s-input>
+      </s-form-item>
+      <div>
+        <s-button class="ok" type="submit">提交</s-button>
+      </div>
+    </form>
+   </div>
 
-    <s-slide :selected.sync="selected">
-      <s-slide-item name="1">
-        <div class="box" >1</div>
-      </s-slide-item>
-      <s-slide-item name="2">
-        <div class="box" >2</div>
-      </s-slide-item>
-      <s-slide-item name="3">
-        <div class="box">3</div>
-      </s-slide-item>
-      <s-slide-item name="4">
-        <div class="box">4</div>
-      </s-slide-item>
-      <s-slide-item name="5">
-        <div class="box">5</div>
-      </s-slide-item>
-    </s-slide>
   </div>
 </template>
 <script>
-import db from './db/data'
-
-function ajax (parentId = 0) {
-  return new Promise((resolve, reject) => {
-    let result = db.filter(item => item.parent_id === parentId)
-    resolve(result)
-  })
+import formMixin from './form-mixin'
+let func = (val) => {
+  if (val === 'Bingo') {
+    console.log('throw')
+    throw new Error('有问题阿')
+  } else { return true }
 }
-
-ajax()
-
 export default {
   data () {
     return {
-      selected: '1',
-      ajaxOptions1: [],
-      ajaxOptions: [{
-        label: '美国',
-        children: [
-          {
-            label: '德克萨斯',
-            children: [
-              { label: '休斯顿' },
-              { label: '达拉斯' }
-            ]
-          }
-        ]
+
+      selected: 'culture',
+      user: {
+        name: '',
+        region: ''
       },
-      {
-        label: '中国',
-        children: [
-          {
-            label: '广东',
-            children: [
-              { label: '汕头' },
-              { label: '揭阳' }
-            ]
-          },
-          {
-            label: '江苏',
-            children: [
-              { label: '苏州' },
-              { label: '南京' }
-            ]
-          },
-          {
-            label: '云南',
-            children: [
-              { label: '大理' },
-              { label: '丽江' },
-              { label: '香格里拉' },
-              { label: '西双版纳' }
-            ]
-          }
+      rules: {
+        name: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
+          { pattern: /123/g, message: '格式错误', trigger: 'blur' },
+          { validator: function (val) { if (val === 'Bingo') { return new Error('有问题阿') } else { return true } }, trigger: 'blur' }
+        ],
+        region: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' },
+          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
+          { pattern: /123/g, message: '格式错误', trigger: 'blur' },
+          { validator: func, trigger: 'blur' }
         ]
       }
-      ]
+
+    }
+  },
+  mixins: [formMixin],
+  methods: {
+    onSubmit () {
+      this.validate(this.user)
+      console.log(this.errors)
     }
   },
   mounted () {
-
-    // ajax(0).then(value => {
-    //   this.ajaxOptions = value
-    // })
-  },
-  // components: {
-  //   's-cascader': Cascader
-  // },
-  methods: {
-    // 父组件来修改selected, 选中某个，设置children是下一个
-    xxx ($event) {
-      console.log('xxx1', this.selected[0].id)
-
-      // this.$set(this.$selected, 0)
-    }
+  //   let func = (val) => {
+  //     if (val === 'Bingo') {
+  //       console.log('throw')
+  //       throw new Error('有问题阿')
+  //     } else { return true }
+  //   }
+  //   let v = new Validator()
+  //   let data = { name: '123', region: 'Bingo' }
+  //   let rules = {
+  //     name: [
+  //       { required: true, message: '请输入活动名称', trigger: 'blur' },
+  //       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
+  //       { pattern: /123/g, message: '格式错误', trigger: 'blur' },
+  //       { validator: function (val) { if (val === 'Bingo') { return new Error('有问题阿') } else { return true } }, trigger: 'blur' }
+  //     ],
+  //     region: [
+  //       { required: true, message: '请输入活动名称', trigger: 'blur' },
+  //       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
+  //       { pattern: /123/g, message: '格式错误', trigger: 'blur' },
+  //       { validator: func, trigger: 'blur' }
+  //     ]
+  //   }
+  //   let msg = v.validate(data, rules)
+  //   console.log('msg', msg)
   }
 }
 </script>
 <style lang="scss">
  @import './static/scss/global.scss';
- .box{
-   width:200px;
-   height: 200px;
-   background: #ccc;
- }
+.form {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 36px;
+    min-height: 60vh;
+    &-wrapper {
+      display: flex;justify-content: center;
+    }
+    .controls {
+    }
+    .ok {
+      display: block;
+      width: 100%;
+      margin-top: 24px;
+    }
+  }
 </style>
