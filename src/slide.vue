@@ -96,14 +96,10 @@ export default {
     },
     playAutomatically () {
       if (this.timerId) { return }
-      let names = this.namesList
+
       let run = () => { // 定时修改selected
         let idx = this.selectedIndex === -1 ? 0 : this.selectedIndex
-        if (idx === names.length - 1) {
-          idx = 0
-        } else {
-          idx += 1
-        }
+        idx += 1
         this.isReverse = false
         this.setNewSelected(idx)
         this.timerId = setTimeout(run, this.duration)
@@ -117,6 +113,8 @@ export default {
     // 1 通知父组件去修改select
     setNewSelected (newIndex) {
       this.lastIndex = this.selectedIndex
+      if (newIndex === this.namesList.length) { newIndex = 0 }
+      if (newIndex === -1) { newIndex = this.namesList.length - 1 }
       this.$emit('update:selected', this.namesList[newIndex])
     },
     // 2 在父组件修改了select被执行, 1执行后执行2
@@ -130,12 +128,12 @@ export default {
     },
     onClickPrev () {
       this.isReverse = true
-      let prevIndex = this.selectedIndex === 0 ? this.namesList.length - 1 : this.selectedIndex - 1
+      let prevIndex = this.selectedIndex - 1
       this.setNewSelected(prevIndex)
     },
     onClickNext () {
       this.isReverse = false
-      let nextIndex = this.selectedIndex === this.namesList.length - 1 ? 0 : this.selectedIndex + 1
+      let nextIndex = this.selectedIndex + 1
       this.setNewSelected(nextIndex)
     },
     pause () {

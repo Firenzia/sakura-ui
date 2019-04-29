@@ -203,3 +203,8 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 ## 9 sticky
 ## 10 datepicker
 ## 11 router
+
+bugs
+1. cascader 用户怎传selected 
+2. slider刚出场不应该有动画
+3. 组件使用v-model
