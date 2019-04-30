@@ -1,7 +1,8 @@
 <template>
   <div>
     <p></p>
-    <s-collapse :selected.sync="arr" style="width:600px">
+    <!-- test -->
+    <s-collapse v-model="selected1" style="width:600px">
       <s-collapse-item title="香蕉 Banana" name="1">
         <div>香蕉是淀粉质丰富的有益水果。</div>
       </s-collapse-item>
@@ -15,10 +16,10 @@
         <div>柠檬富含维生素C、糖类、钙、磷、铁、维生素B1、维生素B2、烟酸、奎宁酸、柠檬酸、苹果酸、橙皮苷、柚皮苷、香豆精、高量钾元素和低量钠元素等，对人体十分有益。</div>
       </s-collapse-item>
     </s-collapse>
-    <p>你当前选择了{{arr}}</p>
+    <p>你当前选择了&nbsp;<span class="highlight">{{selected1}}</span></p>
 
     <p style="margin:60px 0px 16px">手风琴效果</p>
-    <s-collapse :selected.sync="value" accordion style="width:600px;">
+    <s-collapse v-model="selected2" accordion style="width:600px;">
       <s-collapse-item title="丰城秀吉" name="1">
         <div>（1537年3月17日-1598年9月18日）日本战国时代、安土桃山时代大名、天下人，著名政治家，继室町幕府之后，首次以“天下人”的称号统一日本的战国三杰之一。本是足轻（下级步兵），后因侍奉织田信长而崛起。</div>
       </s-collapse-item>
@@ -29,7 +30,7 @@
         <div>（1534年6月23日-1582年6月21日）织田信长于永禄十一年（1568年）至天正十年（1582年）间推翻了名义上管治日本逾200年的室町幕府，并使从应仁之乱起持续百年以上的战国乱世步向终结。织田信长被日本民众评选为“2014年日本人最喜爱的历史人物第一名”。</div>
       </s-collapse-item>
     </s-collapse>
-    <p>你当前选择了{{value}}</p>
+    <p >你当前选择了&nbsp;<span class="highlight">{{selected2}}</span></p>
 
     <pre><code>{{code}}</code></pre>
   </div>
@@ -41,11 +42,11 @@ import CollapseItem from "../../../src/collapse-item";
 export default {
   data() {
     return {
-      arr: ["1", "2"],
-      value: "3",
+      selected1: ["1", "2"],
+      selected2: "3",
       code: `
         <template>
-          <s-collapse :selected.sync="arr" style="width:600px">
+          <s-collapse v-model="selected1" style="width:600px">
             <s-collapse-item title="香蕉 Banana" name="1">
               <div>香蕉是淀粉质丰富的有益水果。</div>
             </s-collapse-item>
@@ -70,4 +71,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+ .highlight{
+  color:#3ba0e9;
+  font-weight: bold;
+}
 </style>

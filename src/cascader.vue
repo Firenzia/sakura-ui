@@ -45,7 +45,7 @@ export default {
   methods: {
     addDocumentListener () {
       let docClickHandler = (e) => {
-        if (this.$refs.popper.contains(e.target) || this.$refs.content.contains(e.target)) {
+        if ((this.$refs.popper && this.$refs.popper.contains(e.target)) || this.$refs.content.contains(e.target)) {
           return false
         }
         this.popoverVisible = false

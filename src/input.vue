@@ -4,6 +4,7 @@
         :readonly="readonly"
         :disabled="disabled"
         :value="value"
+        :placeholder="placeholder"
         @input="$emit('input',$event.target.value)"
         @change="$emit('change',$event.target.value)"
         @focus="$emit('focus',$event.target.value)"
@@ -37,6 +38,9 @@ export default {
       default: false
     },
     error: {
+      type: String
+    },
+    placeholder: {
       type: String
     }
   }

@@ -12,3 +12,8 @@ sidebarDepth: 2
 <ClientOnly>
   <sakura-slide/>
 </ClientOnly>
+
+## Sticky
+<ClientOnly>
+  <sakura-slide/>
+</ClientOnly>

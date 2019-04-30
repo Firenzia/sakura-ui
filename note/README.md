@@ -201,6 +201,13 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 ## 7 table
 ## 8 uploader
 ## 9 sticky
+原理：元素距离文档的距离（top+scrollY）大于scrollY 变成fiexed定位
+使用watch
+bugs: 只有第一次获取top
+      因为fixed脱离文档流导致内容变化可能让滚动条消失，所以让里面的元素fixed,外部元素用js设置高度
+      定位元素的left top
+mounted的时候改了有副作用的代码，如添加监听，要移除beforeDestory()
+否则会造成内存泄露，webpack热更新会移除旧组件，旧的还会监听window的事件，但是这时候可能会找不到dom（因为已经被移除了）
 ## 10 datepicker
 ## 11 router
 

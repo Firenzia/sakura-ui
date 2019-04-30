@@ -51,11 +51,9 @@ export default {
       this.$children.forEach(vm => {
         let name = vm.$props.name
         vm.$children.forEach(input => {
-          console.log('blur', input)
           input.$on('blur', () => {
             let obj = { [name]: this.model[name] }
             this.eventTriggerModel = Object.assign(this.eventTriggerModel, obj)
-            console.log('u blur', this.eventTriggerModel)
             this.validate(this.eventTriggerModel)
           })
         })
@@ -65,7 +63,12 @@ export default {
       const rules = this.rules
       const v = this.validator
       this.errors = v.validate(formData, rules)
-      console.log('error', this.errors)
+      this.boardcast()
+    },
+    reset (formData) {
+      let copy = { ...formData }
+      Object.keys(copy).forEach(x => { copy[x] = '' })
+      this.errors = {}
       this.boardcast()
     },
     boardcast () {

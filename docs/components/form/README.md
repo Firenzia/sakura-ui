@@ -7,6 +7,11 @@ sidebarDepth: 2
   <sakura-input/>
 </ClientOnly>
 
+## Form 表单
+<ClientOnly>
+  <sakura-form/>
+</ClientOnly>
+
 ## Cascader 级联选择器
 <ClientOnly>
   <sakura-cascader/>
