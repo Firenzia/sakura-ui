@@ -1,7 +1,7 @@
 <template>
   <div>
    <div class="form-wrapper">
-    <s-form class="form" @submit.prevent="onSubmit" :rules="rule">
+    <s-form class="form" @submit.prevent="onSubmit" :rules="rules">
       <h1>登录</h1>
       <s-form-item label="姓名" :error="errors.name" name="name">
         <s-input type="text" v-model="user.name"  @blur="validate(user)"></s-input>
