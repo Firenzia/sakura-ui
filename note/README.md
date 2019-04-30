@@ -208,3 +208,4 @@ bugs
 1. cascader 用户怎传selected 
 2. slider刚出场不应该有动画
 3. 组件使用v-model
+
