@@ -1,52 +1,56 @@
 <template>
   <div>
-
    <div class="form-wrapper">
-    <form class="form" @submit.prevent="onSubmit">
+    <s-form class="form" @submit.prevent="onSubmit" :rules="rule">
       <h1>登录</h1>
-      <s-form-item label="邮箱" :error="errors.name">
-        <s-input type="text" v-model="user.name"></s-input>
+      <s-form-item label="姓名" :error="errors.name" name="name">
+        <s-input type="text" v-model="user.name"  @blur="validate(user)"></s-input>
       </s-form-item>
-      <s-form-item label="密码" :error="errors.region">
-        <s-input type="password" v-model="user.region"></s-input>
+      <s-form-item label="年龄" :error="errors.age" name="age">
+        <s-input type="password" v-model="user.age"></s-input>
       </s-form-item>
       <div>
         <s-button class="ok" type="submit">提交</s-button>
       </div>
-    </form>
+    </s-form>
    </div>
 
   </div>
 </template>
 <script>
 import formMixin from './form-mixin'
-let func = (val) => {
-  if (val === 'Bingo') {
-    console.log('throw')
-    throw new Error('有问题阿')
-  } else { return true }
-}
+
 export default {
   data () {
+    var checkName = (val) => {
+      if (val === 'Bingo') {
+        throw new Error('有问题阿')
+      } else { return true }
+    }
+    var checkAge = (val) => {
+      if (parseInt(val) > 30) {
+        throw new Error('不能超过30岁')
+      } else { return true }
+    }
     return {
 
       selected: 'culture',
       user: {
         name: '',
-        region: ''
+        age: ''
       },
       rules: {
         name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
-          { pattern: /123/g, message: '格式错误', trigger: 'blur' },
-          { validator: function (val) { if (val === 'Bingo') { return new Error('有问题阿') } else { return true } }, trigger: 'blur' }
+          { required: true, message: '请输入名字', trigger: 'blur' },
+          { lengthControl: [3, 5], message: '长度在 3 到 5 个字符', trigger: 'blur' },
+          { pattern: /(\D)+/, message: '格式错误', trigger: 'blur' },
+          { validator: checkName, trigger: 'blur' }
         ],
-        region: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
-          { pattern: /123/g, message: '格式错误', trigger: 'blur' },
-          { validator: func, trigger: 'blur' }
+        age: [
+          { required: true, message: '请输入年龄', trigger: 'blur' },
+          { lengthControl: [ null, 2 ], message: '长度不能超过2', trigger: 'blur' },
+          { pattern: /\d/, message: '必须是数字', trigger: 'blur' },
+          { validator: checkAge, trigger: 'blur' }
         ]
       }
 
@@ -60,30 +64,6 @@ export default {
     }
   },
   mounted () {
-  //   let func = (val) => {
-  //     if (val === 'Bingo') {
-  //       console.log('throw')
-  //       throw new Error('有问题阿')
-  //     } else { return true }
-  //   }
-  //   let v = new Validator()
-  //   let data = { name: '123', region: 'Bingo' }
-  //   let rules = {
-  //     name: [
-  //       { required: true, message: '请输入活动名称', trigger: 'blur' },
-  //       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
-  //       { pattern: /123/g, message: '格式错误', trigger: 'blur' },
-  //       { validator: function (val) { if (val === 'Bingo') { return new Error('有问题阿') } else { return true } }, trigger: 'blur' }
-  //     ],
-  //     region: [
-  //       { required: true, message: '请输入活动名称', trigger: 'blur' },
-  //       { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' },
-  //       { pattern: /123/g, message: '格式错误', trigger: 'blur' },
-  //       { validator: func, trigger: 'blur' }
-  //     ]
-  //   }
-  //   let msg = v.validate(data, rules)
-  //   console.log('msg', msg)
   }
 }
 </script>

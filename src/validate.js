@@ -8,18 +8,18 @@ class Validator {
     for (let item of Object.entries(rules)) { // [[name,[namerule]]]
       let checkName = item[0]
       for (let rule of item[1]) {
-        let validatorKeysList = Object.keys(rule).filter(x => ['min', 'max', 'pattern', 'validator', 'required'].includes(x))
-        for (let key of validatorKeysList) {
-          let res = this[key](formData[checkName], rule)
-          if (!res) {
-            console.log(checkName, key)
-            errs[checkName] = rule.message
-            break
-          }
-          if (typeof res === 'string') {
-            errs[checkName] = res
-            break
-          }
+        let validatorKey = Object.keys(rule).filter(x => ['lengthControl', 'pattern', 'validator', 'required'].includes(x))[0]
+
+        let res = this[validatorKey](formData[checkName], rule)
+        if (!res) {
+          console.log(checkName, 'checked failed in', validatorKey)
+          errs[checkName] = rule.message
+          break
+        }
+        if (typeof res === 'string') {
+          console.log(checkName, 'checked failed in', validatorKey)
+          errs[checkName] = res
+          break
         }
       }
     }
@@ -30,8 +30,13 @@ class Validator {
     return !(val === undefined || val === '')
   }
 
-  min (val, rule) {
-    return val.toString().length >= rule.min
+  lengthControl (val, rule) {
+    let flag = true
+    let dataLength = val.toString().length
+    let [min, max] = rule.lengthControl
+    if (min && dataLength < min) { flag = false }
+    if (max && dataLength > max) { flag = false }
+    return flag
   }
 
   max (val, rule) {
@@ -39,8 +44,8 @@ class Validator {
   }
 
   pattern (val, rule) {
-    console.log('pattern', rule.pattern.test(val), rule.pattern, val)
-    return rule.pattern.test(val)
+    let res = rule.pattern.test(val)
+    return res
   }
 
   validator (val, rule) {
