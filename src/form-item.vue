@@ -38,6 +38,8 @@ export default {
     error (v) {
       if (v) {
         this.$children[0].$el.classList.add('error')
+      } else {
+        this.$children[0].$el.classList.remove('error')
       }
     }
   }
