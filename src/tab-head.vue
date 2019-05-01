@@ -47,7 +47,7 @@ export default {
   mounted () {
     // todo
     this.eventBus.$on('update:selected', (name, vm) => {
-      // console.log('tab head 监听事件 设置line');
+      // console.log('tab head 监听事件 设置line')
       this.$nextTick(() => {
         let tabHeadStyle = this.$refs.tabHead.getBoundingClientRect()
         let { width, left, height, top } = vm.$refs.item.getBoundingClientRect()

@@ -8,7 +8,7 @@ import Vue from 'vue'
 export default {
   name: 's-tab',
   props: {
-    selected: {
+    value: {
       type: String
     },
     tabPosition: {
@@ -32,8 +32,8 @@ export default {
     this.$children.forEach(child => {
       if (child.$options.name === 's-tab-head') {
         child.$children.forEach(grandChild => {
-          if (grandChild.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, grandChild)
+          if (grandChild.name === this.value) {
+            this.eventBus.$emit('update:selected', this.value, grandChild)
           }
         })
       }

@@ -1,12 +1,13 @@
 <template>
   <div>
-     <s-cascader
-        :options="options"
-        :selected.sync="selected"
-      >
-    </s-cascader>
-
-        <pre><code>{{code}}</code></pre> 
+     <sakura-card>
+       <s-cascader
+          :options="options"
+          :selected.sync="selected"
+        >
+       </s-cascader>
+       <template v-slot:code><code v-html="code"></code></template>
+     </sakura-card>
 
   </div>
 </template>
@@ -58,10 +59,6 @@ export default {
       }
       ],
       code: `
-         <s-cascader
-            :options="options"
-            :selected.sync="selected">
-        </s-cascader>
     `.replace(/^ {8}/gm, "").trim()
     }
   },
