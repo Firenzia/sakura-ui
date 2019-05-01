@@ -33,6 +33,7 @@ export default {
     border-radius: 8px;
     box-shadow: 0 0 3px 0 #ccc;
     .card-content{
+      padding:14px;
       border-bottom:1px solid #ccc;
     }
     .card-operation{

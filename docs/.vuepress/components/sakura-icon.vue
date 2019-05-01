@@ -1,18 +1,57 @@
 <template>
-      <div>
-        <s-icon name="setting"></s-icon>
-
-         <pre><code>{{code}}</code></pre> 
-    
+  <div>
+    <sakura-card>
+      <div class="ico-list">
+        <div v-for="(item, index) in list" class="ico-wrapper">
+          <s-icon :name="item" class="ico" :color="item==='flower3e'?'green':''"></s-icon>
+          <div class="ico-name">{{item}}</div>
+        </div>
       </div>
+      <template v-slot:code><code v-html="code"></code></template>
+    </sakura-card>
+
+     <div class="attr">Attributes</div>
+     <table>
+       <thead>
+         <tr>
+           <th>参数</th>
+           <th>说明</th>
+           <th>类型</th>
+           <th>可选值</th>
+           <th>默认值</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>name</td>
+           <td>图标名称</td>
+           <td>String</td>
+           <td>-</td>
+           <td>-</td>
+         </tr>
+         <tr>
+           <td>color</td>
+           <td>图标颜色, 支持常见颜色和十六进制颜色</td>
+           <td>String</td>
+           <td>-</td>
+           <td>-</td>
+         </tr>
+       </tbody>
+     </table>
+  </div>
 </template>
 <script>
 import icon from '../../../src/icon'
 export default {
   data(){
     return {
+      list:['flower3e','flower4f','Flower','icecream1','icecream','food','movie','payment',
+            'nickname','call','visible','Incoming_call','previous','selection','protect','conversation',
+           ],
       code: `
-        <s-icon name="setting"></s-icon>
+        <span class="code-row"><span>&lt;template&gt;</span></span>
+           <span class="code-row"><span>&lt;s-icon&gt;name=<span class="code-string">"setting"</span><span>&nbsp;color=</span><span class="code-string">"orange"</span>&gt;&lt;/s-button&gt;</span></span>
+        <span class="code-row"><span>&lt;template&gt;</span></span>
     `.replace(/^ {8}/gm, "").trim()
     }
   },
@@ -22,6 +61,26 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  .ico-list{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ico-wrapper{
+    width:140px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border:1px solid #ccc;
+    .ico{
+      width:2.4em !important;
+      height: 2.4em !important;
+    }
+    .ico-name{
+      margin-top:20px;
+    }
+  }
 
 </style>
 

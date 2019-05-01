@@ -1,6 +1,6 @@
 <template>
     <svg  @click="clickHandler"
-         class="s-icon" aria-hidden="true">
+         class="s-icon" aria-hidden="true" :style="{color}">
         <use :xlink:href="`#i-${name}`"></use>
     </svg>
 </template>
@@ -8,7 +8,7 @@
 import './svg'
 export default {
   name: 's-icon',
-  props: ['name'],
+  props: ['name', 'color'],
   methods: {
     clickHandler () {
       this.$emit('click')

@@ -1,13 +1,12 @@
 <template>
    <div >
-
-     <sakura-card>
+    <sakura-card>
         <s-sticky :offset-top="top">
         <div class="box">滚动下看我是不是被黏住了~</div>
       </s-sticky>
 
       <template v-slot:code><code v-html="code"></code></template>
-     </sakura-card>
+    </sakura-card>
 
     <div class="attr">Attributes</div>
      <table>
@@ -23,7 +22,7 @@
        <tbody>
          <tr>
            <td>offset-top</td>
-           <td>发生粘滞条件距离浏览器视窗垂直距离</td>
+           <td>发生粘滞条件距离浏览器视窗垂直距离, 单位px</td>
            <td>Number</td>
            <td>-</td>
            <td>0</td>

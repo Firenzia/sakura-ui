@@ -25,7 +25,7 @@ export default {
   name: 's-slide',
   props: {
     // 当前选中的name
-    selected: {
+    value: {
       type: String
     },
     autoPlay: {
@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     selectedIndex () {
-      return this.namesList.indexOf(this.selected)
+      return this.namesList.indexOf(this.value)
     },
     namesList () {
       let arr = []
@@ -90,7 +90,7 @@ export default {
       return count
     },
     checkSelectedValue () {
-      if (!this.selected) {
+      if (!this.value) {
         this.$emit('update:selected', this.$children[0].name)
       }
     },
@@ -115,13 +115,14 @@ export default {
       this.lastIndex = this.selectedIndex
       if (newIndex === this.namesList.length) { newIndex = 0 }
       if (newIndex === -1) { newIndex = this.namesList.length - 1 }
-      this.$emit('update:selected', this.namesList[newIndex])
+      // this.$emit('update:selected', this.namesList[newIndex])
+      this.$emit('input', this.namesList[newIndex])
     },
     // 2 在父组件修改了select被执行, 1执行后执行2
     updateChildren () {
       this.$children.forEach(vm => {
         if (vm.$options.name === 's-slide-item') {
-          vm.selected = this.selected
+          vm.selected = this.value
           vm.reverse = this.isReverse
         }
       })

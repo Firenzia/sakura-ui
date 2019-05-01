@@ -55,6 +55,7 @@ $border-color-hover: #666;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
+    min-width: 70px;
     &:hover {
       border-color: $border-color-hover;
     }
