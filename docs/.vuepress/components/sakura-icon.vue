@@ -3,7 +3,7 @@
     <sakura-card>
       <div class="ico-list">
         <div v-for="(item, index) in list" class="ico-wrapper">
-          <s-icon :name="item" class="ico" :color="item==='flower3e'?'green':''"></s-icon>
+          <s-icon :name="item" class="ico" :color="selectList.includes(item) ?'#E6A4A5':''"></s-icon>
           <div class="ico-name">{{item}}</div>
         </div>
       </div>
@@ -45,8 +45,14 @@ import icon from '../../../src/icon'
 export default {
   data(){
     return {
-      list:['flower3e','flower4f','Flower','icecream1','icecream','food','movie','payment',
-            'nickname','call','visible','Incoming_call','previous','selection','protect','conversation',
+      selectList:['flower','star-fill','brush-fill','home','gift-fill','movie'],
+      list:['clover','shamrock','flower','ice-cream','icecream','food','movie','payment',
+            'nickname','call','visible','incoming_call','previous','selection','protect','conversation',
+             'privac_open','favoriteslist','home','musiclist','cancel','edit','audio','QQ-circle-fill',
+             'wechat-fill','apple-fill','apple','phone-fill','fire','heart','linechart','down-circle',
+            'warn-fill','star-fill','star','gift-fill','discovery','alipay','warning','remind',
+             'label','clock','camera','brush-fill','gps-fill','error','loading','right',
+              'setting','left','download','thumbup'
            ],
       code: `
         <span class="code-row"><span>&lt;template&gt;</span></span>
@@ -73,9 +79,15 @@ export default {
     justify-content: center;
     align-items: center;
     border:1px solid #ccc;
+     &:hover{
+        color:#B74D55;
+        border:1px solid #B74D55;
+        box-shadow: 0 0 3px 0 #B74D55;
+      }
     .ico{
       width:2.4em !important;
       height: 2.4em !important;
+     
     }
     .ico-name{
       margin-top:20px;

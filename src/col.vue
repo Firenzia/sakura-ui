@@ -13,10 +13,12 @@ export default {
   name: 's-col',
   props: {
     span: {
-      type: [Number, String]
+      type: [Number, String],
+      deault: 24
     },
     offset: {
-      type: [Number, String]
+      type: [Number, String],
+      default: 0
     },
     xs: { validator: validatorFunc },
     sm: { validator: validatorFunc },

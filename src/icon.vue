@@ -8,7 +8,7 @@
 import './svg'
 export default {
   name: 's-icon',
-  props: ['name', 'color'],
+  props: ['name', 'color', 'hoverColor'],
   methods: {
     clickHandler () {
       this.$emit('click')

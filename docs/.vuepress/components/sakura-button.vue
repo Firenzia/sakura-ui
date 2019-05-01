@@ -1,7 +1,7 @@
 <template>
   <div>
     <sakura-card>
-      <s-button icon="setting" icon-position="right">按钮</s-button>
+      <s-button icon="heart" icon-position="right">按钮</s-button>
       <s-button loading icon="download">加载中</s-button>
       <s-button-group>
           <s-button icon="left" icon-position="left">前一页</s-button>

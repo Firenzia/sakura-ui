@@ -20,7 +20,7 @@ export default {
     // 默认2s自动关闭
     duration: {
       type: Number,
-      default: 10000
+      default: 6000
     },
     message: {
       type: String

@@ -24,7 +24,6 @@ export default {
         return ['top', 'bottom', 'left', 'right']
       }
     },
-    title: {},
     trigger: {
       default: 'click',
       type: String,
@@ -32,7 +31,6 @@ export default {
         return ['click', 'hover'].includes(val)
       }
     },
-    width: {},
     content: {
       type: String
     }
@@ -189,7 +187,7 @@ export default {
          }
           &::after{
            border-right:10px solid #fff;
-           right:98%;
+           right:99%;
            top:20%;
          }
       }
