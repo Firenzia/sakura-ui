@@ -202,7 +202,6 @@ document监听函数如果被点击的target是popover或者被popover包含, �
 ## 8 uploader
 ## 9 sticky
 原理：元素距离文档的距离（top+scrollY）大于scrollY 变成fiexed定位
-使用watch
 bugs: 只有第一次获取top
       因为fixed脱离文档流导致内容变化可能让滚动条消失，所以让里面的元素fixed,外部元素用js设置高度
       定位元素的left top
