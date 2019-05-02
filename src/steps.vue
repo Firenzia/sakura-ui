@@ -1,5 +1,5 @@
 <template>
-  <div class="s-steps">
+  <div class="s-steps" :class="`steps-direction-${direction}`">
     <slot></slot>
   </div>
 </template>
@@ -15,6 +15,13 @@ export default {
     },
     stepFinishColor: {
       type: String
+    },
+    direction:{
+      type: String,
+      validator(val){
+        return ['vertical','horizontal'].includes(val)
+      },
+      default:'horizontal'
     }
   },
   mounted () {
@@ -23,13 +30,10 @@ export default {
   },
   methods:{
     setStepStyle(){
-      console.log(this.space)
-      if(this.space || this.stepFinishColor){
-        this.$children.forEach(vm => {
-        vm.lineWidth = this.space
-        vm.stepFinishColor= this.stepFinishColor
-      })
-      }
+      this.$children.forEach(vm => {
+        if(this.space) { vm.lineWidth = this.space }
+        if(this.stepFinishColor) { vm.stepFinishColor= this.stepFinishColor }
+      })     
     },
     boardcast(){
         this.$children.forEach(vm => {
@@ -46,6 +50,12 @@ export default {
 .s-steps{
   display: flex;
   border:1px solid black;
+  &.steps-direction-horizontal{
+    flex-direction: row;
+  }
+  &.steps-direction-vertical{
+    flex-direction: column;
+  }
 }
 
 </style>
