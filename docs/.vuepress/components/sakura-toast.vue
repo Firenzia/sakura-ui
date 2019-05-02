@@ -78,7 +78,7 @@ export default {
       this.$toast({
         message: "我从天而降啦啦啦~~。",
         closeBtn: {
-          btnText: "",
+          btnText: "关闭",
           callback: function(toast) {
             console.log("用户说他知道啦");
             console.log(toast.componentMethod());

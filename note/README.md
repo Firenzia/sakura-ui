@@ -213,5 +213,9 @@ mounted的时候改了有副作用的代码，如添加监听，要移除beforeD
 bugs
 1. cascader 用户怎传selected 
 2. slider刚出场不应该有动画
-3. 组件使用v-model
 
+<span class="code-string">
+ <span class="code-row"><span></span></span>
+
+ 代码 layout container input cascader tab toast popover
+attr : tab

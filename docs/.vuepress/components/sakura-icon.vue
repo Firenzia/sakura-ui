@@ -52,7 +52,7 @@ export default {
              'wechat-fill','apple-fill','apple','phone-fill','fire','heart','linechart','down-circle',
             'warn-fill','star-fill','star','gift-fill','discovery','alipay','warning','remind',
              'label','clock','camera','brush-fill','gps-fill','error','loading','right',
-              'setting','left','download','thumbup'
+              'setting','left','download','thumbup','tick','false'
            ],
       code: `
         <span class="code-row"><span>&lt;template&gt;</span></span>
