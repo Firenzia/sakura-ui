@@ -13,15 +13,32 @@ export default {
     space: {
       type: [Number, String]
     },
-    finishStyle: {
+    stepFinishColor: {
       type: String
     }
   },
   mounted () {
-    let childCount = this.$children.length
-    this.$children.forEach(vm => {
-      vm.stepCounts = childCount
-    })
+    this.boardcast()
+    this.setStepStyle()
+  },
+  methods:{
+    setStepStyle(){
+      console.log(this.space)
+      if(this.space || this.stepFinishColor){
+        this.$children.forEach(vm => {
+        vm.lineWidth = this.space
+        vm.stepFinishColor= this.stepFinishColor
+      })
+      }
+    },
+    boardcast(){
+        this.$children.forEach(vm => {
+        vm.active = this.active
+      })
+    }
+  },
+  updated(){
+    this.boardcast()
   }
 }
 </script>
