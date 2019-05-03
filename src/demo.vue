@@ -15,7 +15,7 @@
     </s-steps>
 
     <p>vertical</p>
-    <s-steps :active="active" step-finish-color="lightblue" direction="vertical" style="height:260px">
+    <s-steps :active="active" step-finish-color="lightblue" direction="vertical" space="80" style="height:300px">
       <s-step title="步骤 1"  ></s-step>
       <s-step title="步骤 2"  ></s-step>
       <s-step title="步骤 3" ></s-step>

@@ -8,7 +8,8 @@ export default {
   name: 's-steps',
   props: {
     active: {
-      type: Number
+      type: Number,
+      default:0
     },
     space: {
       type: [Number, String]
@@ -31,7 +32,7 @@ export default {
   methods:{
     setStepStyle(){
       this.$children.forEach(vm => {
-        if(this.space) { vm.lineWidth = this.space }
+        if(this.space) { vm.lineSpan = this.space }
         if(this.stepFinishColor) { vm.stepFinishColor= this.stepFinishColor }
         if(this.direction){ vm.direction = this.direction }
       })     
@@ -50,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 .s-steps{
   display: flex;
-  border:1px solid black;
+  padding:.5em;
   &.steps-direction-horizontal{
     flex-direction: row;
   }

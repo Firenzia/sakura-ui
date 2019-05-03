@@ -19,6 +19,7 @@
   </div>
 </template>
 <script>
+import Icon from './icon.vue'
 export default {
   name: 's-step',
    props: {
@@ -36,7 +37,7 @@ export default {
     return {
       index: 0,
       active:0,
-      lineWidth: undefined,
+      lineSpan: undefined,
       stepFinishColor: '#d4b1b5',
       direction: 'horizontal'
     }
@@ -59,11 +60,15 @@ export default {
       return this.index <= this.active?{color: this.stepFinishColor}:false
     },
     stepStyle(){
-      if(this.lineWidth && this.description === 'horizontal'){
-        return {
-          width: this.lineWidth+'px',
-          flexGrow: 0
+      if(this.lineSpan){
+        let baseStyle = {flexGrow: 0}
+        const map = {
+          'horizontal': {width: this.lineSpan+'px'},
+          'vertical': {height: this.lineSpan+'px'}
         }
+        return Object.assign(baseStyle, map[this.direction])
+      }else{
+        return false
       }
     },
     beforeActiveHighlight(){
@@ -72,6 +77,9 @@ export default {
     toActiveHighlight(){
       return this.index <= this.active
     }
+  },
+  components:{
+    's-icon':Icon
   },
   mounted(){
     this.setIndex()
@@ -90,6 +98,25 @@ export default {
   &.step-vertical{
     display: flex;
     flex-direction: row;
+     .step-head{
+      width:30px;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      position: relative;
+        .line{
+          height: 100%;
+          width: 2px;
+          background: #ccc;
+        }
+      }
+      .step-main{
+        padding:0 .4em;
+        .title{
+          padding:.2em 0;
+        }
+      }
   }
   .step-head{
     height:30px;
@@ -100,13 +127,10 @@ export default {
       width: 100%;
       height: 2px;
       background: #ccc;
-  
-
     }
     .ico{
       width:26px;
       height:26px;
-      // border:2px solid #ccc;
       background:#fff;
       border-radius:50%;
       display: flex;

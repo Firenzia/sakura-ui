@@ -8,3 +8,9 @@ sidebarDepth: 2
   <sakura-tab/>
 </ClientOnly>
 
+## Steps 步骤条
+<ClientOnly>
+  <sakura-steps/>
+</ClientOnly>
+
+
