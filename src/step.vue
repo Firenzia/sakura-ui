@@ -1,5 +1,5 @@
 <template>
-  <div class="s-step" :style="stepStyle">
+  <div class="s-step" :style="stepStyle" :class="`step-${direction}`">
     <div class="step-head">
       <div class="line" :style="lineStyle"></div>
       <div class="ico" :style="icoWrapperStyle">
@@ -37,7 +37,8 @@ export default {
       index: 0,
       active:0,
       lineWidth: undefined,
-      stepFinishColor: '#d4b1b5'
+      stepFinishColor: '#d4b1b5',
+      direction: 'horizontal'
     }
   },
   computed: {
@@ -58,7 +59,7 @@ export default {
       return this.index <= this.active?{color: this.stepFinishColor}:false
     },
     stepStyle(){
-      if(this.lineWidth){
+      if(this.lineWidth && this.description === 'horizontal'){
         return {
           width: this.lineWidth+'px',
           flexGrow: 0
@@ -86,6 +87,10 @@ export default {
 <style lang="scss" scoped>
 
 .s-step{
+  &.step-vertical{
+    display: flex;
+    flex-direction: row;
+  }
   .step-head{
     height:30px;
     display: flex;

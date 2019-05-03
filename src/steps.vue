@@ -33,6 +33,7 @@ export default {
       this.$children.forEach(vm => {
         if(this.space) { vm.lineWidth = this.space }
         if(this.stepFinishColor) { vm.stepFinishColor= this.stepFinishColor }
+        if(this.direction){ vm.direction = this.direction }
       })     
     },
     boardcast(){
