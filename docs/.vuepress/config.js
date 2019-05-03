@@ -1,7 +1,7 @@
 module.exports = {
     base:'/sakura-ui/',
     title: 'Sakura UI',
-    description: 'Just playing around',
+    description: 'Inspiration from heian sakura',
     themeConfig: {
         nav: [
           { text: 'Home', link: '/' },
