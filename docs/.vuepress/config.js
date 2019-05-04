@@ -3,12 +3,11 @@ module.exports = {
     title: 'Sakura UI',
     description: 'Inspiration from heian sakura',
     head: [
-      ['link', { rel: 'icon', href: './favicon.png' }]
-   ],
+      ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ],
     themeConfig: {
       nav: [
         { text: 'Home', link: '/' },
-        // { text: 'Guide', link: '/guide/' },
         { text: 'Github', link: 'https://github.com/Firenzia/sakura-ui/' },
       ],
       sidebar: [
