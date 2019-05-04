@@ -28,8 +28,6 @@
       <s-step title="步骤 3" description="2005年我小学毕业" icon="shamrock"></s-step>
     </s-steps>
 
-    
-
   <button @click="set">click</button>
   </div>
 </template>
@@ -42,8 +40,8 @@ export default {
     }
   },
   methods: {
-    set(){
-      if(this.active===3){
+    set () {
+      if (this.active === 3) {
         this.active = 0
         return
       }

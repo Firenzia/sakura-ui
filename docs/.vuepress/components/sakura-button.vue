@@ -1,12 +1,44 @@
 <template>
   <div>
+    <h3>基础用法</h3>
     <sakura-card>
-      <s-button icon="heart" icon-position="right">按钮</s-button>
-      <s-button loading icon="download">加载中</s-button>
+      <s-button>default</s-button>
+      <s-button type="primary">primary</s-button>
+      <s-button type="info">info</s-button>
+      <s-button type="success">success</s-button>
+      <s-button type="warning">warning</s-button>
+      <s-button type="danger">danger</s-button>
+    
+      <template v-slot:code><code v-html="code1"></code></template>
+    </sakura-card>
+
+     <h3>禁用状态</h3>
+    <sakura-card>
+      <s-button disabled type="primary">disabled</s-button>
+      <template v-slot:code><code v-html="code"></code></template>
+    </sakura-card>
+
+    <h3>图标按钮</h3>
+    <sakura-card>
+      <s-button  icon="home"  type="primary">home</s-button>
+      <s-button  icon="phone-fill" type="primary" icon-position="right">call</s-button>
+      <s-button  icon="visible"  type="primary">show password</s-button>
+      <template v-slot:code><code v-html="code"></code></template>
+    </sakura-card>
+
+    <h3>加载中</h3>
+    <sakura-card>
+      <s-button  loading icon="download"  type="primary">加载中</s-button>
+
+      <template v-slot:code><code v-html="code"></code></template>
+    </sakura-card>
+
+    <h3>按钮组</h3>
+    <sakura-card>
       <s-button-group>
-          <s-button icon="left" icon-position="left">前一页</s-button>
-          <s-button>中间</s-button>
-          <s-button icon="right" icon-position="right">后一页</s-button>
+          <s-button icon="left" icon-position="left">prev</s-button>
+          <s-button>middle</s-button>
+          <s-button icon="right" icon-position="right">next</s-button>
       </s-button-group>
 
       <template v-slot:code><code v-html="code"></code></template>
@@ -25,23 +57,37 @@
        </thead>
        <tbody>
          <tr>
+           <td>type</td>
+           <td>按钮类型</td>
+           <td>string</td>
+           <td>primary, info, success, warning, danger</td>
+           <td>-</td>
+         </tr>
+         <tr>
+           <td>disabled</td>
+           <td>按钮是否禁用</td>
+           <td>boolean</td>
+           <td>-</td>
+           <td>false</td>
+         </tr>
+         <tr>
            <td>icon</td>
            <td>按钮上图标名称</td>
-           <td>String</td>
+           <td>string</td>
            <td>-</td>
            <td>-</td>
          </tr>
          <tr>
            <td>icon-position</td>
            <td>图标在按钮的左右位置</td>
-           <td>String</td>
+           <td>string</td>
            <td>left, right</td>
            <td>0</td>
          </tr>
          <tr>
            <td>loading</td>
            <td>显示加载中图标</td>
-           <td>Boolean</td>
+           <td>boolean</td>
            <td>-</td>
            <td>false</td>
          </tr>

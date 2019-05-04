@@ -22,74 +22,74 @@
 import Icon from './icon.vue'
 export default {
   name: 's-step',
-   props: {
+  props: {
     title: {
       type: String
     },
-    description:{
+    description: {
       type: String
     },
-    icon:{
+    icon: {
       type: String
     }
   },
-  data () { 
+  data () {
     return {
       index: 0,
-      active:0,
+      active: 0,
       lineSpan: undefined,
       stepFinishColor: '#d4b1b5',
       direction: 'horizontal'
     }
   },
   computed: {
-    lineStyle(){
-      return this.index < this.active?{backgroundColor: this.stepFinishColor}:false
+    lineStyle () {
+      return this.index < this.active ? { backgroundColor: this.stepFinishColor } : false
     },
-    icoWrapperStyle(){
-      let baseStyle = !this.icon?{border:'2px solid #ccc'} :{}
-      if(this.index <= this.active){
-        Object.assign(baseStyle,{borderColor: this.stepFinishColor} )
+    icoWrapperStyle () {
+      let baseStyle = !this.icon ? { border: '2px solid #ccc' } : {}
+      if (this.index <= this.active) {
+        Object.assign(baseStyle, { borderColor: this.stepFinishColor })
       }
       return baseStyle
     },
-    icoStyle(){
-      return this.index <= this.active?{color:this.stepFinishColor}:false
+    icoStyle () {
+      return this.index <= this.active ? { color: this.stepFinishColor } : false
     },
-    contentStyle(){
-      return this.index <= this.active?{color: this.stepFinishColor}:false
+    contentStyle () {
+      return this.index <= this.active ? { color: this.stepFinishColor } : false
     },
-    stepStyle(){
-      if(this.lineSpan){
-        let baseStyle = {flexGrow: 0}
+    stepStyle () {
+      if (this.lineSpan) {
+        let baseStyle = { flexGrow: 0 }
         const map = {
-          'horizontal': {width: this.lineSpan+'px'},
-          'vertical': {height: this.lineSpan+'px'}
+          'horizontal': { width: this.lineSpan + 'px' },
+          'vertical': { height: this.lineSpan + 'px' }
         }
         return Object.assign(baseStyle, map[this.direction])
-      }else{
+      } else {
         return false
       }
     },
-    beforeActiveHighlight(){
+    beforeActiveHighlight () {
       return this.index < this.active
     },
-    toActiveHighlight(){
+    toActiveHighlight () {
       return this.index <= this.active
     }
   },
-  components:{
-    's-icon':Icon
+  components: {
+    's-icon': Icon
   },
-  mounted(){
+  mounted () {
     this.setIndex()
   },
-  methods:{
-    setIndex() {
-      this.index=Array.from(this.$parent.$el.children).indexOf(this.$el)+1
+  methods: {
+    setIndex () {
+      this.index = Array.from(this.$parent.$el.children).indexOf(this.$el) + 1
     }
   }
- 
+
 }
 </script>
 <style lang="scss" scoped>
@@ -100,7 +100,7 @@ export default {
     flex-direction: row;
      .step-head{
       width:30px;
-      height: 100%;
+      height: auto;
       display: flex;
       align-items: flex-start;
       justify-content: center;
@@ -142,7 +142,7 @@ export default {
 
     }
   }
-  
+
   .step-main{
     .title{
       padding:.5em 0;

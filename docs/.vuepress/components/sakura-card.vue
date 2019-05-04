@@ -2,7 +2,7 @@
   <div class=card>
      <div class="card-content">
        <slot></slot>
-       <div >
+       <div>
         <pre v-if="codeVisible"><slot name="code"></slot></pre>
       </div>
     </div>

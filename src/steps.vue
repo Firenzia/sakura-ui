@@ -9,7 +9,7 @@ export default {
   props: {
     active: {
       type: Number,
-      default:0
+      default: 0
     },
     space: {
       type: [Number, String]
@@ -17,33 +17,33 @@ export default {
     stepFinishColor: {
       type: String
     },
-    direction:{
+    direction: {
       type: String,
-      validator(val){
-        return ['vertical','horizontal'].includes(val)
+      validator (val) {
+        return ['vertical', 'horizontal'].includes(val)
       },
-      default:'horizontal'
+      default: 'horizontal'
     }
   },
   mounted () {
     this.boardcast()
     this.setStepStyle()
   },
-  methods:{
-    setStepStyle(){
+  methods: {
+    setStepStyle () {
       this.$children.forEach(vm => {
-        if(this.space) { vm.lineSpan = this.space }
-        if(this.stepFinishColor) { vm.stepFinishColor= this.stepFinishColor }
-        if(this.direction){ vm.direction = this.direction }
-      })     
+        if (this.space) { vm.lineSpan = this.space }
+        if (this.stepFinishColor) { vm.stepFinishColor = this.stepFinishColor }
+        if (this.direction) { vm.direction = this.direction }
+      })
     },
-    boardcast(){
-        this.$children.forEach(vm => {
+    boardcast () {
+      this.$children.forEach(vm => {
         vm.active = this.active
       })
     }
   },
-  updated(){
+  updated () {
     this.boardcast()
   }
 }

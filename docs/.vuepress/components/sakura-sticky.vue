@@ -6,6 +6,7 @@
       </s-sticky>
 
       <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:script><article v-html="cont"></article></template>
     </sakura-card>
 
     <div class="attr">Attributes</div>
@@ -36,10 +37,11 @@ import Sticky from '../../../src/sticky'
 export default {
   data(){
     return {
+      cont:'',
       top:54,
       code: `
         <span class="code-row"><span>&lt;template&gt;</span></span>
-          <span class="code-row"> <span>&lt;s-sticky&nbsp;</span><span >:offset-top=</span><span class="code-string">"top"</span><span>&gt;</span></span>
+          <span class="code-row"><span>&lt;s-sticky&nbsp;</span><span >:offset-top=</span><span class="code-string">"top"</span><span>&gt;</span></span>
             <span class="code-row"><span>&lt;</span><span>div&nbsp;class=</span><span class="code-string">"box"</span><span>&gt;&nbsp;滚动下看我是不是被黏住了~&lt;/div&gt;</span>
           <span class="code-row"><span>&lt;/s-sticky&gt;</span></span>
         <span class="code-row"><span>&lt;/template&gt;</span></span>
@@ -56,6 +58,7 @@ export default {
   components:{
       's-sticky':Sticky
   }
+  
 }
 </script>
 <style lang="scss" scoped>

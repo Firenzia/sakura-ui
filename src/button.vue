@@ -1,5 +1,5 @@
 <template>
-  <button class="s-button test-cls" :class="`ico-${iconPosition}`"
+  <button class="s-button" :class="btnClass"
     @click="$emit('click')">
     <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
     <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
@@ -17,6 +17,16 @@ export default {
     's-icon': Icon
   },
   props: {
+    'type': {
+      type: String,
+      validator (val) {
+        return ['primary', 'info', 'success', 'warning', 'danger'].includes(val)
+      }
+    },
+    'disabled': {
+      type: Boolean,
+      default: false
+    },
     'loading': {
       type: Boolean,
       default: false
@@ -32,6 +42,15 @@ export default {
         return val === 'left' || val === 'right'
       }
     }
+  },
+  computed: {
+    btnClass () {
+      let classList = []
+      if (this.iconPosition) classList.push(`ico-${this.iconPosition}`)
+      if (this.type) classList.push(`btn-${this.type}`)
+      if (this.disabled) classList.push(`btn-disabled`)
+      return classList.join(' ')
+    }
   }
 }
 </script>
@@ -44,6 +63,12 @@ $border-radius: 4px;
 $color: #333;
 $border-color: #999;
 $border-color-hover: #666;
+
+$color-primary: #d4b1b5;
+$color-info: #607d8b;
+$color-success: #66bb6a;
+$color-warning: #ff8f00;
+$color-danger: #f44336;
  .s-button {
     font-size: $font-size;
     height: $button-height;
@@ -82,6 +107,71 @@ $border-color-hover: #666;
          > .btn-content{
             order:1;
         }
+    }
+    // disabled
+    &.btn-disabled{
+      cursor: not-allowed;
+      opacity: .7;
+      &:hover, &:active{
+        opacity: .7;
+      }
+    }
+
+    //  type
+    &.btn-primary{
+      background: $color-primary;
+      border-color:$color-primary;
+      color:#fff;
+      &:hover{
+        opacity:.85
+      }
+      &:active{
+        opacity:.7
+      }
+    }
+    &.btn-info{
+      background: $color-info;
+      border-color:$color-info;
+      color:#fff;
+      &:hover{
+        opacity:.85
+      }
+      &:active{
+        opacity:.7
+      }
+    }
+    &.btn-success{
+      background: $color-success;
+      border-color:$color-success;
+      color:#fff;
+      &:hover{
+        opacity:.85
+      }
+      &:active{
+        opacity:.7
+      }
+    }
+    &.btn-warning{
+      background: $color-warning;
+      border-color:$color-warning;
+      color:#fff;
+      &:hover{
+        opacity:.85
+      }
+      &:active{
+        opacity:.7
+      }
+    }
+    &.btn-danger{
+      background: $color-danger;
+      border-color:$color-danger;
+      color:#fff;
+      &:hover{
+        opacity:.85
+      }
+      &:active{
+        opacity:.7
+      }
     }
   }
 
