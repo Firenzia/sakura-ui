@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin:60px">
     <s-datepicker></s-datepicker>
   </div>
 </template>
