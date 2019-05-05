@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import Icon from './icon.vue'
+import Icon from '../icon/icon'
 export default {
   name: 's-step',
   props: {

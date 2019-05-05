@@ -84,8 +84,8 @@
 </template>
 <script>
 // todo 补充code
-import Popover from "../../../src/popover";
-import Button from "../../../src/button";
+import Popover from "../../../src/notice/popover";
+import Button from "../../../src/button/button";
 export default {
   data() {
     return {

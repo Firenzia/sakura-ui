@@ -1,9 +1,9 @@
 <template>
   <div>
     <sakura-card>
-      <s-input v-model="测试" @change="changeHandler"  class="input"></s-input>
-      <s-input v-model="只读" readonly id="readonly" class="input"></s-input>
-      <s-input v-model="不可点击" disabled class="input"></s-input>
+      <s-input value="测试" @change="changeHandler"  class="input"></s-input>
+      <s-input value="只读" readonly id="readonly" class="input"></s-input>
+      <s-input value="不可点击" disabled class="input"></s-input>
       <s-input error="有问题哦" class="input"></s-input>
       <div>
         <s-input v-model="msg" class="input"></s-input>
@@ -72,7 +72,7 @@
   </div>
 </template>
 <script>
-import Input from "../../../src/input";
+import Input from "../../../src/form/input";
 export default {
   data() {
     return {

@@ -122,12 +122,12 @@
   </div>
 </template>
 <script>
-import Tab from "../../../src/tab";
-import TabHead from "../../../src/tab-head";
-import TabItem from "../../../src/tab-item";
-import TabBody from "../../../src/tab-body";
-import TabPane from "../../../src/tab-pane";
-import Icon from "../../../src/icon";
+import Tab from "../../../src/tab/tab";
+import TabHead from "../../../src/tab/tab-head";
+import TabItem from "../../../src/tab/tab-item";
+import TabBody from "../../../src/tab/tab-body";
+import TabPane from "../../../src/tab/tab-pane";
+import Icon from "../../../src/icon/icon";
 export default {
   data() {
     return {

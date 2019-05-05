@@ -97,8 +97,8 @@
   </div>
 </template>
 <script>
-import btn from '../../../src/button'
-import btnGroup from '../../../src/button-group'
+import btn from '../../../src/button/button'
+import btnGroup from '../../../src/button/button-group'
 export default {
   data(){
     return {

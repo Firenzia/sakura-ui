@@ -85,10 +85,10 @@
   </div>
 </template>
 <script>
-import Form from "../../../src/form";
-import FormItem from "../../../src/form-item";
-import Button from  "../../../src/button";
-import Input from  "../../../src/input";
+import Form from "../../../src/form/form";
+import FormItem from "../../../src/form/form-item";
+import Button from  "../../../src/button/button";
+import Input from  "../../../src/form/input";
 export default {
   data () {
     var checkName = (val) => {

@@ -33,7 +33,7 @@
   </div>
 </template>
 <script>
-import Sticky from '../../../src/sticky'
+import Sticky from '../../../src/sticky/sticky'
 export default {
   data(){
     return {

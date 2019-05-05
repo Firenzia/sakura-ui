@@ -21,13 +21,13 @@
   </div>
 </template>
 <script>
-import Icon from './icon'
-import db from './db/data'
+import Icon from '../icon/icon.vue'
+// import db from './db/data'
 
-function ajax (parentId = 0) {
-  return db.filter(item => item.parent_id === parentId)
-}
-console.log(ajax())
+// function ajax (parentId = 0) {
+//   return db.filter(item => item.parent_id === parentId)
+// }
+// console.log(ajax())
 
 export default {
   name: 's-cascader-item',
@@ -78,7 +78,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import './common.scss';
+  $border-color: #ccc;
   .item-wrapper{
     display:flex;
     align-items: flex-start;

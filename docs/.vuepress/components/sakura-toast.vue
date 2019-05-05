@@ -59,7 +59,7 @@
 <script>
 import Vue from "vue";
 import ToastPlugin from "../../../src/plugins/toast";
-import Button from '../../../src/button'
+import Button from '../../../src/button/button'
 
 Vue.use(ToastPlugin);
 export default {

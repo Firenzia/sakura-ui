@@ -134,11 +134,11 @@
 </div>
 </template>
 <script>
-import Layout from "../../../src/layout";
-import Header from "../../../src/header";
-import Content from "../../../src/content";
-import Sider from "../../../src/sider";
-import Footer from "../../../src/footer";
+import Layout from "../../../src/container/layout";
+import Header from "../../../src/container/header";
+import Content from "../../../src/container/content";
+import Sider from "../../../src/container/sider";
+import Footer from "../../../src/container/footer";
 export default {
   data() {
     return {

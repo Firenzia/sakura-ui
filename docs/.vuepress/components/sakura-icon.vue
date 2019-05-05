@@ -41,7 +41,7 @@
   </div>
 </template>
 <script>
-import icon from '../../../src/icon'
+import icon from '../../../src/icon/icon'
 export default {
   data(){
     return {

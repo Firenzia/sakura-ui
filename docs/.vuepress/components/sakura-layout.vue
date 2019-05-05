@@ -178,8 +178,8 @@
   </div>
 </template>
 <script>
-import Row from "../../../src/row";
-import Col from "../../../src/col";
+import Row from "../../../src/layout/row";
+import Col from "../../../src/layout/col";
 export default {
   data() {
     return {

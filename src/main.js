@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Demo from './demo.vue'
 
 Vue.config.productionTip = false
-const context = require.context('./', false, /^((?!demo\.vue).)+\.vue$/)
+const context = require.context('./', true, /^((?!demo\.vue).)+\.vue$/)
 try {
   context.keys().forEach(path => {
     let res = context(path)

@@ -130,8 +130,8 @@
   </div>
 </template>
 <script>
-import Steps from '../../../src/steps'
-import Step from '../../../src/step'
+import Steps from '../../../src/step/steps'
+import Step from '../../../src/step/step'
 export default {
   data(){
     return {

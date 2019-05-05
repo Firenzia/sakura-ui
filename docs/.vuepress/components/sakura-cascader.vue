@@ -12,7 +12,7 @@
   </div>
 </template>
 <script>
-import Cascader from '../../../src/cascader'
+import Cascader from '../../../src/cascader/cascader'
 export default {
   data(){
     return {

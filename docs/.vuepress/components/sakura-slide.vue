@@ -84,8 +84,8 @@
   </div>
 </template>
 <script>
-import Slide from '../../../src/slide'
-import SlideItem from '../../../src/slide-item'
+import Slide from '../../../src/slide/slide'
+import SlideItem from '../../../src/slide/slide-item'
 export default {
   data(){
     return {
