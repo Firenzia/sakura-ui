@@ -16,7 +16,8 @@ export default {
       arr.push(i)
     }
     return arr
-  }
+  },
+  getDateInfo
 }
 
 function getDateInfo (dateObj) {
