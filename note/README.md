@@ -209,7 +209,9 @@ bugs: 只有第一次获取top
       定位元素的left top
 mounted的时候改了有副作用的代码，如添加监听，要移除beforeDestory()
 否则会造成内存泄露，webpack热更新会移除旧组件，旧的还会监听window的事件，但是这时候可能会找不到dom（因为已经被移除了）
+
 ## 10 datepicker
+使用 scoped 后，父组件的样式将不会渗透到子组件中。 /deep/ https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 ## 11 router
 
 ## 12 steps
@@ -224,4 +226,18 @@ bugs
 
  代码 layout container input cascader tab toast popover
 attr : tab  
-icon 加图标
+
+selectStart??
+1 range
+2 add btn 今天 清除 关闭popover
+3 选中日期后关闭
+4 每次打开都是天 popover触发事件
+5 input 校验 同步
+7 start date 0 1
+8 暴露的事件
+9 年 月 选择
+
+# todo
+input icon
+code markdown
+

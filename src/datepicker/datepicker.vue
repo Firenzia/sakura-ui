@@ -4,6 +4,8 @@
       placement="bottom"
       trigger="click"
       >
+      <s-input slot="reference" :value="value" icon="calendar" @input="setValue"></s-input>
+
       <div class="date-panel" slot="content">
         <div class="date-panel-header">
           <span class="ico-wrapper">
@@ -22,12 +24,12 @@
             <div class="date-panel-day">
               <span v-for="(item, index) in daysInAWeek" :key="index" class="date-cell">{{item}}</span>
             </div>
-           <div class="date-panel-date" v-for="(item1, index1) in helper.getRange(1,6)" :key="index1">
-             <span v-for="(item2, index2) in helper.getRange(1,7)" :key="index2"
-               @click="selectDate(visibleDays[index1*7+index2])"
+           <div class="date-panel-date" v-for="(item1, i) in helper.getRange(1,6)" :key="i">
+             <span v-for="(item2, j) in helper.getRange(1,7)" :key="j"
+               @click="selectDate(getVisibleDate (i, j))"
                class="date-cell"
-               :class="getDateClass(visibleDays[index1*7+index2])">
-                {{visibleDays[index1*7+index2].getDate()}}
+               :class="getDateClass(visibleDays[i*7+j])">
+                {{getVisibleDate (i, j).getDate()}}
              </span>
           </div>
           </template>
@@ -42,11 +44,11 @@
         </div>
 
         <div class="action">
-          <span>today</span>
+          <s-button>today</s-button>
+           <s-button style="margin-left:16px">clear</s-button>
         </div>
       </div>
 
-      <s-input slot="reference" :value="value" icon="calendar">点击出现日期</s-input>
     </s-popover>
   </div>
 </template>
@@ -108,10 +110,22 @@ export default {
     this.checkValue()
   },
   methods: {
+    setValue ($event) {
+      // console.log(e, e.target)
+      this.$emit('input', $event)
+    },
+    getVisibleDate (i, j) {
+      return this.visibleDays[i * 7 + j]
+    },
     checkValue () {
     },
     getDateClass (date) {
       let classList = []
+
+      if (helper.isInSameDay(date, new Date())) {
+        classList.push('today')
+      }
+
       if (helper.isInSameDay(date, new Date(this.value))) {
         classList.push('selected-date')
       }
@@ -196,17 +210,27 @@ $selected-color:lightseagreen;
       &.prev-month,&.next-month{
         color: grey;
       }
+      &.today{
+        color:$selected-color;
+        border:1px solid $selected-color;
+      }
       &:hover{
         background:$selected-color;
         opacity: .5;
         color:#fff;
       }
       &.selected-date{
-         background:$selected-color;;
-         color:#fff;
+         background:$selected-color;
+         color:#fff !important;
       }
     }
 
   }
+}
+.action{
+  margin:10px 0;
+  display: flex;
+  justify-content: flex-end;
+
 }
 </style>

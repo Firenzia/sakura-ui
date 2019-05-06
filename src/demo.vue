@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      selectedDate: '2019-05-06'
+      selectedDate: '2019-05-05'
     }
   },
   methods: {
