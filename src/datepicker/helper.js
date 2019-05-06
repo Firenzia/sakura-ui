@@ -29,7 +29,8 @@ export default {
     let { date: date1, month: month1, year: year1 } = getDateInfo(dateA)
     let { date: date2, month: month2, year: year2 } = getDateInfo(dateB)
     return date1 === date2 && month1 === month2 && year1 === year2
-  }
+  },
+  getDateInfo
 
 }
 function normalizedForDoubleDigits (num) {
