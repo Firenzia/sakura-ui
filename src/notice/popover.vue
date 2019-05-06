@@ -133,7 +133,7 @@ export default {
     }
   }
   .popover{
-      max-width: 200px;
+      max-width: 300px;
       border:1px solid #ccc;
       position: absolute;
       padding:.5em 1em;
