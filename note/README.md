@@ -223,4 +223,5 @@ bugs
  <span class="code-row"><span></span></span>
 
  代码 layout container input cascader tab toast popover
-attr : tab 
+attr : tab  
+icon 加图标

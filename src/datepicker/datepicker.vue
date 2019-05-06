@@ -6,11 +6,15 @@
       >
       <div class="date-panel" slot="content">
         <div class="date-panel-header">
-          <span >&lt;&lt;</span>
-          <span>&lt;</span>
+          <span class="ico-wrapper">
+            <s-icon class="ico" name="left1" @click="setYear(-1)"></s-icon>
+            <s-icon class="ico" name="left2" @click="setMonth(-1)"></s-icon>
+          </span>
           <span @click="changeModel">{{display.year}}年{{display.month+1}}月</span>
-          <span >&gt;&gt;</span>
-          <span>&gt;</span>
+          <span class="ico-wrapper">
+            <s-icon class="ico" name="right1" @click="setMonth(1)"></s-icon>
+            <s-icon class="ico" name="right2" @click="setYear(1)"></s-icon>
+          </span>
         </div>
 
         <div class="date-panel-body">
@@ -20,6 +24,7 @@
             </div>
            <div class="date-panel-date" v-for="(item1, index1) in helper.getRange(1,6)" :key="index1">
              <span v-for="(item2, index2) in helper.getRange(1,7)" :key="index2"
+               @click="selectDate(visibleDays[index1*7+index2])"
                class="date-cell"
                :class="getDateClass(visibleDays[index1*7+index2])">
                 {{visibleDays[index1*7+index2].getDate()}}
@@ -41,7 +46,7 @@
         </div>
       </div>
 
-      <s-input slot="reference">点击出现日期</s-input>
+      <s-input slot="reference" :value="value" icon="calendar">点击出现日期</s-input>
     </s-popover>
   </div>
 </template>
@@ -50,7 +55,16 @@ import helper from './helper'
 export default {
   name: 's-datepicker',
   props: {
-    beginDay: 0 || 1, // todo
+    value: {
+      type: String,
+      required: false
+    },
+    beginDay: {
+      required: false,
+      validator (val) {
+        return [0, 1].includes(val)
+      }
+    },
     range: {
       type: Array,
       default () { return [new Date(2008, 0, 1), new Date(2019, 4, 9)] },
@@ -65,8 +79,8 @@ export default {
       model: 'day',
       helper: helper,
       display: {
-        year: 2019,
-        month: 4
+        year: new Date().getFullYear(),
+        month: new Date().getMonth()
       }
     }
   },
@@ -91,20 +105,36 @@ export default {
     }
   },
   mounted () {
-
+    this.checkValue()
   },
   methods: {
+    checkValue () {
+    },
     getDateClass (date) {
+      let classList = []
+      if (helper.isInSameDay(date, new Date(this.value))) {
+        classList.push('selected-date')
+      }
       switch (date.getMonth()) {
         case this.display.month:
-          return 'available-month'
+          classList.push('available-month')
+          break
         case this.display.month - 1:
-          return 'prev-month'
+          classList.push('prev-month')
+          break
         case this.display.month + 1:
-          return 'next-month'
+          classList.push('next-month')
+          break
         default:
           break
       }
+      return classList.join(' ')
+    },
+    setYear (num) {
+      this.display.year = this.display.year + num
+    },
+    setMonth (num) {
+      this.display.month = this.display.month + num
     },
     changeYear (e) {
       this.display.year = e.target.value - 0 // string转number
@@ -114,19 +144,37 @@ export default {
     },
     changeModel () {
       this.model = this.model === 'day' ? 'month' : 'day'
+    },
+    selectDate (date) {
+      this.$emit('input', helper.getFormatDate(date))
     }
   }
 }
 </script>
-<style>
-.popover{
-  max-width: none;
-}
-</style>
 
 <style lang="scss" scoped>
+$selected-color:lightseagreen;
+.date-panel-header{
+  display: flex;
+  justify-content: space-between;
+  padding:.2em 0 .6em;
+  width:224px;
+  .ico-wrapper{
+    font-size:.7em;
+    font-weight:bold;
+    .ico{
+       &:nth-child(1){
+         margin-right: 14px;
+       }
+       &:hover{
+         color: $selected-color;
+       }
+    }
+  }
+}
 
 .date-panel-body{
+  border-bottom:1px solid #ccc;
   .date-cell{
     display: inline-block;
     width: 32px;
@@ -135,16 +183,27 @@ export default {
     text-align: center;
   }
   .date-panel-day{
-    border-bottom:1px solid grey;
+    border-bottom:1px solid #ccc;
+    font-size:14px;
   }
   .date-panel-date {
     span{
-      // display: flex;
+      font-size:12px;
+
       &.available-month{
         color: black;
       }
       &.prev-month,&.next-month{
         color: grey;
+      }
+      &:hover{
+        background:$selected-color;
+        opacity: .5;
+        color:#fff;
+      }
+      &.selected-date{
+         background:$selected-color;;
+         color:#fff;
       }
     }
 
