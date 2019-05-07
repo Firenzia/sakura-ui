@@ -30,6 +30,12 @@ export default {
     let { date: date2, month: month2, year: year2 } = getDateInfo(dateB)
     return date1 === date2 && month1 === month2 && year1 === year2
   },
+  isValidDate (str) {
+    if (/\d{4}-\d{2}-\d{2}/.test(str) === false) {
+      return false
+    }
+    return !isNaN(new Date(str).getTime())
+  },
   getDateInfo
 
 }

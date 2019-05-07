@@ -3,8 +3,10 @@
       <s-popover
       placement="bottom"
       trigger="click"
+      @open="showPanel"
+      ref="popover"
       >
-      <s-input slot="reference" :value="value" icon="calendar" @input="setValue"></s-input>
+      <s-input slot="reference" :value="formattedValue" icon="calendar" @input="setValue" ref="inputWrapper"></s-input>
 
       <div class="date-panel" slot="content">
         <div class="date-panel-header">
@@ -12,7 +14,14 @@
             <s-icon class="ico" name="left1" @click="setYear(-1)"></s-icon>
             <s-icon class="ico" name="left2" @click="setMonth(-1)"></s-icon>
           </span>
-          <span @click="changeModel">{{display.year}}年{{display.month+1}}月</span>
+          <span>
+            <span class="label-year" @click="changeModel('year')">
+              {{display.year}}年
+             </span>
+            <span class="label-month" @click="changeModel('month')">
+              {{display.month+1}}月
+            </span>
+          </span>
           <span class="ico-wrapper">
             <s-icon class="ico" name="right1" @click="setMonth(1)"></s-icon>
             <s-icon class="ico" name="right2" @click="setYear(1)"></s-icon>
@@ -33,7 +42,8 @@
              </span>
           </div>
           </template>
-          <template v-else-if="model === 'month'">
+          <!-- year -->
+          <template v-else-if="model === 'year'">
              <select name="year" id="" @change="changeYear" v-model="display.year">
                 <option :value="item" v-for="(item, index) in shownYears" :key="index">{{item}}</option>
              </select>
@@ -41,11 +51,20 @@
                 <option :value="item" v-for="(item, index) in helper.getRange(0,11)" :key="index">{{item+1}}</option>
              </select>
           </template>
+          <!-- month -->
+          <template v-else>
+             <div @click="changeModel('day')">122</div>
+             <div class="month-wrapper">
+               <div v-for="(item, index) in monthInAYear"
+                  :key="index"
+                 class="month-item">{{item}}月</div>
+             </div>
+          </template>
         </div>
 
-        <div class="action">
-          <s-button>today</s-button>
-           <s-button style="margin-left:16px">clear</s-button>
+        <div class="action" v-show="model==='day'">
+          <s-button @click="setTodaySelected">today</s-button>
+           <s-button style="margin-left:16px" @click="clear">clear</s-button>
         </div>
       </div>
 
@@ -58,7 +77,7 @@ export default {
   name: 's-datepicker',
   props: {
     value: {
-      type: String,
+      type: [Date, String],
       required: false
     },
     beginDay: {
@@ -78,6 +97,7 @@ export default {
   data () {
     return {
       daysInAWeek: ['一', '二', '三', '四', '五', '六', '日'],
+      monthInAYear: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
       model: 'day',
       helper: helper,
       display: {
@@ -87,6 +107,13 @@ export default {
     }
   },
   computed: {
+    formattedValue: {
+      get: function () {
+        return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
+      },
+      set: function (newVal) {
+      }
+    },
     visibleDays () {
       let { year, month } = this.display
       let defaultObj = new Date(year, month, 28)
@@ -107,17 +134,19 @@ export default {
     }
   },
   mounted () {
-    this.checkValue()
   },
   methods: {
     setValue ($event) {
-      // console.log(e, e.target)
-      this.$emit('input', $event)
+      if (!helper.isValidDate($event)) {
+        console.log(this.$refs.inputWrapper.$refs.input)
+        this.formattedValue = helper.getFormatDate(this.value)
+        this.$refs.inputWrapper.$refs.input.value = this.formattedValue
+        return
+      }
+      this.$emit('input', new Date($event))
     },
     getVisibleDate (i, j) {
       return this.visibleDays[i * 7 + j]
-    },
-    checkValue () {
     },
     getDateClass (date) {
       let classList = []
@@ -126,7 +155,7 @@ export default {
         classList.push('today')
       }
 
-      if (helper.isInSameDay(date, new Date(this.value))) {
+      if (this.value instanceof Date && helper.isInSameDay(date, this.value)) {
         classList.push('selected-date')
       }
       switch (date.getMonth()) {
@@ -156,11 +185,26 @@ export default {
     changeMonth (e) {
       this.display.month = e.target.value - 0
     },
-    changeModel () {
-      this.model = this.model === 'day' ? 'month' : 'day'
+    changeModel (model) {
+      this.model = model
     },
     selectDate (date) {
-      this.$emit('input', helper.getFormatDate(date))
+      this.$emit('input', date)
+      this.closePanel()
+    },
+    showPanel () {
+      this.model = 'day'
+    },
+    closePanel () {
+      this.$refs.popover.close()
+    },
+    setTodaySelected () {
+      this.$emit('input', new Date())
+      this.closePanel()
+    },
+    clear () {
+      this.$emit('input', '')
+      this.closePanel()
     }
   }
 }
@@ -168,11 +212,18 @@ export default {
 
 <style lang="scss" scoped>
 $selected-color:lightseagreen;
+.date-panel{
+}
 .date-panel-header{
   display: flex;
   justify-content: space-between;
   padding:.2em 0 .6em;
   width:224px;
+  .label-year,.label-month{
+    &:hover{
+      color:$selected-color
+    }
+  }
   .ico-wrapper{
     font-size:.7em;
     font-weight:bold;
@@ -188,7 +239,7 @@ $selected-color:lightseagreen;
 }
 
 .date-panel-body{
-  border-bottom:1px solid #ccc;
+
   .date-cell{
     display: inline-block;
     width: 32px;
@@ -228,9 +279,22 @@ $selected-color:lightseagreen;
   }
 }
 .action{
-  margin:10px 0;
+  border-top:1px solid #ccc;
+  padding:10px 0 4px;
   display: flex;
   justify-content: flex-end;
-
+  /deep/ button{
+    font-size:12px;
+    height: 28px;
+  }
+}
+// month panel
+.month-wrapper{
+  width: 180px;
+  display: flex;
+  flex-wrap: wrap;
+  .month-item{
+    width: 60px;
+  }
 }
 </style>

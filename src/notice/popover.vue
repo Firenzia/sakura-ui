@@ -97,13 +97,18 @@ export default {
     },
     open () {
       this.visible = true
+      this.$emit('open')
     },
     close () {
       this.visible = false
       this.trigger === 'click' && document.removeEventListener('click', this.documentClickHandler)
+      this.$emit('close')
     },
     clickHandler () {
       this.visible = !this.visible
+      if (this.visible) {
+        this.$emit('open')
+      }
       if (this.visible) {
         this.onShow()
       }

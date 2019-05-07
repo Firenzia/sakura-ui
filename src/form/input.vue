@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper" :class="{error}">
         <input type="text"
+        ref="input"
         :readonly="readonly"
         :disabled="disabled"
         :value="value"

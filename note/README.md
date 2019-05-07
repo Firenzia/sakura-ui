@@ -229,10 +229,12 @@ attr : tab
 
 selectStart??
 1 range
-2 add btn 今天 清除 关闭popover
-3 选中日期后关闭
-4 每次打开都是天 popover触发事件
-5 input 校验 同步
+2 done add btn 今天 清除 关闭popover
+3 done 选中日期后关闭
+4 done  每次打开都是天 popover触发事件
+5 done input 校验 同步 
+   // 用原生js 改 input
+   // 使用Date的getTime()方法，Invalid Date对象返回的是一个NaN, 使用isNaN()判断 https://www.jianshu.com/p/43b383b03ec9
 7 start date 0 1
 8 暴露的事件
 9 年 月 选择
