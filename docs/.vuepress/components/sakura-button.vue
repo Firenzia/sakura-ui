@@ -9,7 +9,9 @@
       <s-button type="warning">warning</s-button>
       <s-button type="danger">danger</s-button>
     
-      <template v-slot:code><code v-html="code1"></code></template>
+      <template v-slot:code><code>123355555</code></template>
+ 
+      <pre v-highlightjs style="background:#000"><code class="vue">{{test}}</code></pre>
     </sakura-card>
 
      <h3>禁用状态</h3>
@@ -96,12 +98,29 @@
 
   </div>
 </template>
+
 <script>
 import btn from '../../../src/button/button'
 import btnGroup from '../../../src/button/button-group'
+import Vue from 'vue'
+import VueHighlightJS from 'vue-highlightjs'
+
+// Tell Vue.js to use vue-highlightjs
+Vue.use(VueHighlightJS)
 export default {
   data(){
     return {
+      test:`
+      <h3>加载中</h3>
+    <sakura-card>
+      <s-button  loading icon="download"  type="primary">加载中</s-button>
+
+      <template v-slot:code><code v-html="code"></code></template>
+    </sakura-card>
+      export default {
+      data(){
+        return {a:1}
+       `      ,
       code: `
         <span class="code-row"><span>&lt;template&gt;</span></span>
           <span class="code-row"><span>&lt;s-button&nbsp;icon=</span><span class="code-string">"setting"</span><span>&nbsp;icon-position=</span><span class="code-string">"right"</span><span>&gt;</span><span>按钮&lt;/s-button&gt;</span></span>
@@ -121,7 +140,12 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 
 </style>
+<style>
+.hljs-comment,.hljs-quote{color:#d4d0ab}.hljs-variable,.hljs-template-variable,.hljs-tag,.hljs-name,.hljs-selector-id,.hljs-selector-class,.hljs-regexp,.hljs-deletion{color:#ffa07a}.hljs-number,.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-type,.hljs-params,.hljs-meta,.hljs-link{color:#f5ab35}.hljs-attribute{color:#ffd700}.hljs-string,.hljs-symbol,.hljs-bullet,.hljs-addition{color:#abe338}.hljs-title,.hljs-section{color:#00e0e0}.hljs-keyword,.hljs-selector-tag{color:#dcc6e0}.hljs{display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}@media screen and (-ms-high-contrast:active){.hljs-addition,.hljs-attribute,.hljs-built_in,.hljs-builtin-name,.hljs-bullet,.hljs-comment,.hljs-link,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-string,.hljs-symbol,.hljs-type,.hljs-quote{color:highlight}.hljs-keyword,.hljs-selector-tag{font-weight:bold}}
+</style>
+
 

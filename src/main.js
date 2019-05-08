@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import Demo from './demo.vue'
+import VueHighlightJS from 'vue-highlightjs'
+
+// Tell Vue.js to use vue-highlightjs
+Vue.use(VueHighlightJS)
 
 Vue.config.productionTip = false
 const context = require.context('./', true, /^((?!demo\.vue).)+\.vue$/)
