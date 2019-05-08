@@ -12,6 +12,12 @@ sidebarDepth: 2
   <sakura-form/>
 </ClientOnly>
 
+## datepicker 日期选择器
+<ClientOnly>
+  <sakura-datepicker/>
+</ClientOnly>
+
+
 ## Cascader 级联选择器
 <ClientOnly>
   <sakura-cascader/>

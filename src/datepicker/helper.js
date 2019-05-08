@@ -40,6 +40,10 @@ export default {
     let { date, year } = getDateInfo(dateObj)
     return new Date(year, newMonth, date)
   },
+  setNewYear (dateObj, newYear) {
+    let { date, month } = getDateInfo(dateObj)
+    return new Date(newYear, month, date)
+  },
   getDateInfo
 
 }
