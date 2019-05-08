@@ -212,6 +212,10 @@ mounted的时候改了有副作用的代码，如添加监听，要移除beforeD
 
 ## 10 datepicker
 使用 scoped 后，父组件的样式将不会渗透到子组件中。 /deep/ https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
+输入框用computed 依赖是value
+选择下方日期或者修改输入框会通过$emit修改value,
+当输入框输入不合法日期后，使用js原生方法将输入框value手动修改为正确的值，同时用computed属性的set方法修改computed的值
+
 ## 11 router
 
 ## 12 steps

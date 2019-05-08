@@ -1,12 +1,16 @@
 <template>
   <div>
+     {{value}},
+      {{ helper.getFormatDate(value)}}
       <s-popover
+      class="datepicker-popover"
       placement="bottom"
       trigger="click"
       @open="showPanel"
       ref="popover"
       >
-      <s-input slot="reference" :value="formattedValue" icon="calendar" @input="setValue" ref="inputWrapper"></s-input>
+
+      <s-input slot="reference" :value="formattedValue" icon="calendar" @blur="setValue" ref="inputWrapper" class="datepicker-input"></s-input>
 
       <div class="date-panel" slot="content">
         <div class="date-panel-header">
@@ -29,7 +33,7 @@
         </div>
 
         <div class="date-panel-body">
-          <template v-if="model === 'day'">
+          <div v-if="model === 'day'">
             <div class="date-panel-day">
               <span v-for="(item, index) in daysInAWeek" :key="index" class="date-cell">{{item}}</span>
             </div>
@@ -41,25 +45,25 @@
                 {{getVisibleDate (i, j).getDate()}}
              </span>
           </div>
-          </template>
+          </div>
           <!-- year -->
-          <template v-else-if="model === 'year'">
+          <div v-show="model === 'year'">
              <select name="year" id="" @change="changeYear" v-model="display.year">
                 <option :value="item" v-for="(item, index) in shownYears" :key="index">{{item}}</option>
              </select>
                <select name="year" id=""  @change="changeMonth" v-model="display.month">
                 <option :value="item" v-for="(item, index) in helper.getRange(0,11)" :key="index">{{item+1}}</option>
              </select>
-          </template>
+          </div>
           <!-- month -->
-          <template v-else>
-             <div @click="changeModel('day')">122</div>
+          <div v-show="model==='month'">
              <div class="month-wrapper">
                <div v-for="(item, index) in monthInAYear"
                   :key="index"
+                  @click="changeMonth(index)"
                  class="month-item">{{item}}月</div>
              </div>
-          </template>
+          </div>
         </div>
 
         <div class="action" v-show="model==='day'">
@@ -138,9 +142,7 @@ export default {
   methods: {
     setValue ($event) {
       if (!helper.isValidDate($event)) {
-        console.log(this.$refs.inputWrapper.$refs.input)
-        this.formattedValue = helper.getFormatDate(this.value)
-        this.$refs.inputWrapper.$refs.input.value = this.formattedValue
+        this.$refs.inputWrapper.$refs.input.value = helper.getFormatDate(this.value)
         return
       }
       this.$emit('input', new Date($event))
@@ -178,12 +180,16 @@ export default {
     },
     setMonth (num) {
       this.display.month = this.display.month + num
+      this.changeMonth(this.display.month)
     },
     changeYear (e) {
       this.display.year = e.target.value - 0 // string转number
     },
-    changeMonth (e) {
-      this.display.month = e.target.value - 0
+    changeMonth (monthIndex) {
+      this.display.month = monthIndex
+      let newDate = helper.setNewMonth(this.value, monthIndex)
+      this.$emit('input', newDate)
+      this.changeModel('day')
     },
     changeModel (model) {
       this.model = model
@@ -196,6 +202,7 @@ export default {
       this.model = 'day'
     },
     closePanel () {
+      console.log('close panel')
       this.$refs.popover.close()
     },
     setTodaySelected () {
@@ -212,6 +219,15 @@ export default {
 
 <style lang="scss" scoped>
 $selected-color:lightseagreen;
+.datepicker-popover{
+  /deep/ .reference{
+    border:none !important;
+  }
+  /deep/ .datepicker-input{
+    position: relative;
+    top:8px;
+  }
+}
 .date-panel{
 }
 .date-panel-header{
@@ -290,11 +306,20 @@ $selected-color:lightseagreen;
 }
 // month panel
 .month-wrapper{
-  width: 180px;
+  width: 220px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  margin: 0 auto;
   .month-item{
+    font-size: 14px;
     width: 60px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    &:hover{
+      color:$selected-color
+    }
   }
 }
 </style>

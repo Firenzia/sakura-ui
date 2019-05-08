@@ -100,12 +100,14 @@ export default {
       this.$emit('open')
     },
     close () {
+      console.log('popover close 1')
       this.visible = false
       this.trigger === 'click' && document.removeEventListener('click', this.documentClickHandler)
       this.$emit('close')
     },
     clickHandler () {
       this.visible = !this.visible
+      if (!this.visible)console.log('popover close 2')
       if (this.visible) {
         this.$emit('open')
       }

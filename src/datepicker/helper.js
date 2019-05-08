@@ -36,6 +36,10 @@ export default {
     }
     return !isNaN(new Date(str).getTime())
   },
+  setNewMonth (dateObj, newMonth) {
+    let { date, year } = getDateInfo(dateObj)
+    return new Date(year, newMonth, date)
+  },
   getDateInfo
 
 }
