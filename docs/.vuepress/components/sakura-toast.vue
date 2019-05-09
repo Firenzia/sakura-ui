@@ -2,7 +2,7 @@
   <div>
     <sakura-card>
       <s-button @click="showToast">点我</s-button>
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
      <div class="attr">Attributes</div>
@@ -66,7 +66,23 @@ export default {
   data() {
     return {
       code: `
-
+        <s-button @click="showToast">点我</s-button>
+        export default {
+          methods: {
+            showToast() {
+              this.$toast({
+                message: "我从天而降啦啦啦~~。",
+                closeBtn: {
+                  btnText: "关闭",
+                  callback: function(toast) {
+                    console.log("用户说他知道啦");
+                    console.log(toast.componentMethod());
+                  }
+                }
+              });
+            }
+          }
+        }
     `.replace(/^ {8}/gm, "").trim()
     };
   },

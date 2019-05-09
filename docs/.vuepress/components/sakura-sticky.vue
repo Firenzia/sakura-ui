@@ -5,8 +5,7 @@
         <div class="box">滚动下看我是不是被黏住了~</div>
       </s-sticky>
 
-      <template v-slot:code><code v-html="code"></code></template>
-      <template v-slot:script><article v-html="cont"></article></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
     <div class="attr">Attributes</div>
@@ -40,19 +39,10 @@ export default {
       cont:'',
       top:54,
       code: `
-        <span class="code-row"><span>&lt;template&gt;</span></span>
-          <span class="code-row"><span>&lt;s-sticky&nbsp;</span><span >:offset-top=</span><span class="code-string">"top"</span><span>&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>div&nbsp;class=</span><span class="code-string">"box"</span><span>&gt;&nbsp;滚动下看我是不是被黏住了~&lt;/div&gt;</span>
-          <span class="code-row"><span>&lt;/s-sticky&gt;</span></span>
-        <span class="code-row"><span>&lt;/template&gt;</span></span>
-        <span class="code-row"><span>&lt;script&gt;</span></span>
-          <span class="code-row"><span>export default {</span></span>
-            <span class="code-row"><span>data() {</span></span>
-              <span class="code-row"><span>return { top: 60 }</span></span>
-            <span class="code-row"><span>}</span></span>
-          <span class="code-row"><span>}</span></span>
-        <span class="code-row"><span>&lt;/script&gt;</span></span>
-    `.replace(/^ {8}/gm, '').trim()
+        <s-sticky :offset-top="top">
+          <div class="box">滚动下看我是不是被黏住了~</div>
+        </s-sticky>
+      `.replace(/^ {8}/gm, '').trim()
     }
   },
   components:{

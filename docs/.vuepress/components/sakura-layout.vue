@@ -24,7 +24,7 @@
       </s-col>
      </s-row>
 
-     <template v-slot:code><code v-html="code1"></code></template>
+     <template v-slot:code><pre v-highlightjs><code class="vue">{{code1}}</code></pre></template>
     </sakura-card>
 
     <h3>分栏偏移</h3>
@@ -41,7 +41,7 @@
         </s-col>
       </s-row>
 
-      <template v-slot:code><code v-html="code2"></code></template>
+       <template v-slot:code><pre v-highlightjs><code class="vue">{{code2}}</code></pre></template>
     </sakura-card>
 
     <h3>分栏间隔</h3>
@@ -61,7 +61,7 @@
         </s-col>
       </s-row>
 
-      <template v-slot:code><code v-html="code3"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code3}}</code></pre></template>
     </sakura-card>
 
 
@@ -79,7 +79,7 @@
         </s-col>
       </s-row>
 
-      <template v-slot:code><code v-html="code4"></code></template>
+       <template v-slot:code><pre v-highlightjs><code class="vue">{{code4}}</code></pre></template>
     </sakura-card>
 
      <div class="attr">Row Attributes</div>
@@ -184,40 +184,69 @@ export default {
   data() {
     return {
       code1: `
-        // 响应式
-        <s-row class="row-bg" align="left">
-          <s-col span="8" :xs="{span:2}" :md="{span:10}">
-            <div class="demo-col">1</div>
+        <s-row class="row-bg">
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
           </s-col>
-          <s-col span="8" :xs="{span:10}" :md="{span:2}">
-            <div class="demo-col">2</div>
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#E3CBA8"></div>
           </s-col>
-          <s-col span="8" :xs="{span:2}" :md="{span:3}">
-            <div class="demo-col">3</div>
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#BF827E"></div>
+          </s-col>
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#f69e9f"></div>
+          </s-col>
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#fce6e6"></div>
+          </s-col>
+          <s-col span="4">
+            <div class="demo-col" style="backgroundColor:#5f4d58"></div>
           </s-col>
         </s-row>
-
-        // 设置gutter
+    `.replace(/^ {8}/gm, "").trim(),
+      code2:`
+        <s-row class="row-bg">
+          <s-col span="6">
+            <div class="demo-col"  style="backgroundColor:#d4b1b5"></div>
+          </s-col>
+          <s-col span="6">
+            <div class="demo-col"  style="backgroundColor:#E3CBA8"></div>
+          </s-col>
+          <s-col span="6" offset="6">
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
+          </s-col>
+        </s-row>
+      `.replace(/^ {8}/gm, "").trim(),
+      code3:`
         <s-row class="row-bg" gutter="20">
           <s-col span="6">
-            <div class="demo-col">1</div>
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
           </s-col>
           <s-col span="6">
-            <div class="demo-col">2</div>
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
           </s-col>
           <s-col span="6">
-            <div class="demo-col">3</div>
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
           </s-col>
           <s-col span="6">
-            <div class="demo-col">4</div>
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
           </s-col>
         </s-row>
-
-    `
-        .replace(/^ {8}/gm, "").trim(),
-      code2:'',
-      code3:'',
-      code4:''
+      `.replace(/^ {8}/gm, "").trim(),
+      code4:`
+        <s-row class="row-bg" align="left">
+          <s-col span="8" :xl="{span:1}" :md="{span:10}" >
+            <div class="demo-col" style="backgroundColor:#d4b1b5"></div>
+          </s-col>
+          <s-col span="8" :xl="{span:10}" :md="{span:2}">
+            <div class="demo-col" style="backgroundColor:#E3CBA8"></div>
+          </s-col>
+          <s-col span="8" :xl="{span:2}" :md="{span:3}">
+            <div class="demo-col" style="backgroundColor:#BF827E"></div>
+          </s-col>
+        </s-row>
+      `.replace(/^ {8}/gm, "").trim()
     }
   },
   components: {

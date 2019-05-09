@@ -9,7 +9,7 @@
       </s-steps>
       <button @click="set1">click</button>
 
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code1}}</code></pre></template>
     </sakura-card>
 
     <h3>自定义完成样式提示颜色</h3>
@@ -21,7 +21,7 @@
       </s-steps>
       <button @click="set2">click</button>
       
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code2}}</code></pre></template>
     </sakura-card>
 
     <h3>带图标的步骤条</h3>
@@ -33,7 +33,7 @@
        </s-steps>
       <button @click="set3">click</button>
       
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code3}}</code></pre></template>
     </sakura-card>
 
     <h3>垂直步骤条</h3>
@@ -45,7 +45,7 @@
       </s-steps>
       <button @click="set4">click</button>
       
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code4}}</code></pre></template>
     </sakura-card>
 
     <div class="attr">Steps Attributes</div>
@@ -139,34 +139,34 @@ export default {
       active2: 2,
       active3: 3,
       active4: 1,
-      code: `
-       <span class="code-row"><span>&lt;template&gt;</span></span>
-          <span class="code-row"> <span>&lt;s-slide&nbsp;v-model=<span class="code-string">"selected"</span><span>&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"1"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>1<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">2"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>2<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"3"</span></span>
-              <span class="code-row"><span>&lt;div&gt;</span>3<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"4"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>4<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"4"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>5<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-          <span class="code-row"><span>&lt;/s-slide&gt;</span></span>
-        <span class="code-row"><span>&lt;/template&gt;</span></span>
-        <span class="code-row"><span>&lt;script&gt;</span></span>
-          <span class="code-row"><span>export default {</span></span>
-            <span class="code-row"><span>data() {</span></span>
-              <span class="code-row"><span>return { selected: "1" }</span></span>
-            <span class="code-row"><span>}</span></span>
-          <span class="code-row"><span>}</span></span>
-        <span class="code-row"><span>&lt;/script&gt;</span></span>
-    `.replace(/^ {8}/gm, "").trim()
+      code1: `
+        <s-steps :active="active1">
+          <s-step title="步骤 1"  ></s-step>
+          <s-step title="步骤 2" ></s-step>
+          <s-step title="步骤 3"></s-step>
+        </s-steps>
+      `.replace(/^ {8}/gm, "").trim(),
+      code2: `
+        <s-steps :active="active2" step-finish-color="#409eff">
+          <s-step title="步骤 1"  ></s-step>
+          <s-step title="步骤 2"  ></s-step>
+          <s-step title="步骤 3" ></s-step>
+        </s-steps>
+      `.replace(/^ {8}/gm, "").trim(),
+      code3: `
+        <s-steps :active="active3" space="200" >
+          <s-step title="步骤 1" description="1992年我出生" icon="shamrock"></s-step>
+          <s-step title="步骤 2" description="1999年我上学前班" icon="shamrock"></s-step>
+          <s-step title="步骤 3" description="2005年我小学毕业" icon="shamrock"></s-step>
+        </s-steps>
+      `.replace(/^ {8}/gm, "").trim(),
+      code4: `
+        <s-steps :active="active4"  direction="vertical" style="height:300px">
+          <s-step title="步骤 1"></s-step>
+          <s-step title="步骤 2"></s-step>
+          <s-step title="步骤 3"></s-step>
+        </s-steps>
+      `.replace(/^ {8}/gm, "").trim(),
     }
   },
   methods: {

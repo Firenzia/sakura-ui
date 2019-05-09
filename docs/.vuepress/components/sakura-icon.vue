@@ -7,7 +7,7 @@
           <div class="ico-name">{{item}}</div>
         </div>
       </div>
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
      <div class="attr">Attributes</div>
@@ -55,10 +55,8 @@ export default {
               'setting','left','download','thumbup','tick','false'
            ],
       code: `
-        <span class="code-row"><span>&lt;template&gt;</span></span>
-           <span class="code-row"><span>&lt;s-icon&gt;name=<span class="code-string">"setting"</span><span>&nbsp;color=</span><span class="code-string">"orange"</span>&gt;&lt;/s-button&gt;</span></span>
-        <span class="code-row"><span>&lt;template&gt;</span></span>
-    `.replace(/^ {8}/gm, "").trim()
+         <s-icon name="shamrock" color="orange"></s-icon>
+      `.replace(/^\s*/gm, '').trim()
     }
   },
   components:{

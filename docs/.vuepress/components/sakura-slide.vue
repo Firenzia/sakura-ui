@@ -20,7 +20,7 @@
         </s-slide-item>
       </s-slide>
 
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
     <div class="attr">Slide Attributes</div>
@@ -91,32 +91,23 @@ export default {
     return {
       selected:'1',
       code: `
-       <span class="code-row"><span>&lt;template&gt;</span></span>
-          <span class="code-row"> <span>&lt;s-slide&nbsp;v-model=<span class="code-string">"selected"</span><span>&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"1"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>1<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">2"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>2<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"3"</span></span>
-              <span class="code-row"><span>&lt;div&gt;</span>3<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"4"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>4<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-            <span class="code-row"><span>&lt;</span><span>s-slide-item&nbsp;name=</span><span class="code-string">"4"</span>&gt;</span>
-              <span class="code-row"><span>&lt;div&gt;</span>5<span>&lt;/div&gt;</span></span>
-            <span class="code-row"><span>&lt;/s-slide-item&gt;</span></span>
-          <span class="code-row"><span>&lt;/s-slide&gt;</span></span>
-        <span class="code-row"><span>&lt;/template&gt;</span></span>
-        <span class="code-row"><span>&lt;script&gt;</span></span>
-          <span class="code-row"><span>export default {</span></span>
-            <span class="code-row"><span>data() {</span></span>
-              <span class="code-row"><span>return { selected: "1" }</span></span>
-            <span class="code-row"><span>}</span></span>
-          <span class="code-row"><span>}</span></span>
-        <span class="code-row"><span>&lt;/script&gt;</span></span>
+        <s-slide v-model="selected" class="slide-wrapper">
+          <s-slide-item name="1">
+            <div class="box">1</div>
+          </s-slide-item>
+          <s-slide-item name="2"> 
+            <div class="box" >2</div>
+          </s-slide-item>
+          <s-slide-item name="3">
+            <div class="box">3</div>
+          </s-slide-item>
+          <s-slide-item name="4">
+            <div class="box">4</div>
+          </s-slide-item>
+          <s-slide-item name="5">
+            <div class="box">5</div>
+          </s-slide-item>
+        </s-slide>
     `.replace(/^ {8}/gm, "").trim()
     }
   },

@@ -4,7 +4,7 @@
     <sakura-card>
        <s-datepicker v-model="selectedDate"></s-datepicker>
     
-      <template v-slot:code><code v-html="code1"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
     <div class="attr">Attributes</div>
@@ -67,6 +67,14 @@ export default {
     return {
       selectedDate: new Date('2019-05-05'),
       code: `
+        <s-datepicker v-model="selectedDate"></s-datepicker>
+        export default {
+          data(){
+            return {
+               selectedDate: new Date('2019-05-05')
+               }
+            }
+        }
     `.replace(/^ {8}/gm, '').trim()
     }
   },

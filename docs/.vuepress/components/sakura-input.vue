@@ -10,7 +10,7 @@
         {{msg}}
       </div>
 
-      <template v-slot:code><code v-html="code"></code></template>
+      <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
 
      <div class="attr">Attributes</div>

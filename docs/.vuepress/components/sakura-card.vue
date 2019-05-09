@@ -3,7 +3,7 @@
      <div class="card-content">
        <slot></slot>
        <div>
-        <pre v-if="codeVisible"><slot name="code"></slot></pre>
+        <div v-if="codeVisible"><slot name="code"></slot></div>
       </div>
     </div>
     <div class="card-operation" @click="toggle">
