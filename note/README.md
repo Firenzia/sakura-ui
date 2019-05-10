@@ -202,6 +202,7 @@ done
 ## 6 pagination
 ## 7 table
 ## 8 uploader
+.+
 ## 9 sticky
 原理：元素距离文档的距离（top+scrollY）大于scrollY 变成fiexed定位
 bugs: 只有第一次获取top

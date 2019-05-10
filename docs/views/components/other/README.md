@@ -1,5 +1,5 @@
 ---
-title: 'Other'
+title: 'Other 其他'
 sidebarDepth: 2
 ---
 ## Sticky 粘滞组件

@@ -3,7 +3,7 @@ home: true
 navbar: false
 heroImage: 
 actionText: Get Started →
-actionLink: /components/basic/
+actionLink: views/components/basic/
 footer: Inspired by Sakura
 ---
 <ClientOnly>

@@ -15,19 +15,26 @@ module.exports = {
               title: '开发指南',
               collapsable: true,
               children: [
-                'guide/install.md',
-                'guide/get-started.md'
+                'views/guide/install.md',
+                'views/guide/get-started.md'
+              ]
+            },
+            {
+              title: '设计',
+              collapsable: true,
+              children: [
+                'views/design/color/',
               ]
             },
             {
               title: '组件',
               collapsable: true,
               children: [
-                'components/basic/',
-                'components/form/',
-                'components/navigation/',
-                'components/notice/',
-                'components/other/'
+                'views/components/basic/',
+                'views/components/form/',
+                'views/components/navigation/',
+                'views/components/notice/',
+                'views/components/other/'
               ]
             },
         ]
