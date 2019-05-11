@@ -1,7 +1,7 @@
 <template>
    <div class="s-cascader">
       <div class="content" @click="toggle" ref="content">
-        {{content}}
+        {{content || '请点击选择'}}
       </div>
       <div class="popper" v-if="popoverVisible" ref="popper">
           <s-cascader-item

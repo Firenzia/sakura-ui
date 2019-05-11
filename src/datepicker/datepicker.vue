@@ -89,10 +89,11 @@ export default {
   name: 's-datepicker',
   props: {
     value: {
-      type: [Date, String],
+      type: Date,
       required: false
     },
     beginDay: {
+      type: Number,
       required: false,
       validator (val) {
         return [0, 1].includes(val)

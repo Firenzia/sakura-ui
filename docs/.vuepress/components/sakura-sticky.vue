@@ -7,28 +7,6 @@
 
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
-
-    <div class="attr">Attributes</div>
-     <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th> 
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>offset-top</td>
-           <td>发生粘滞条件距离浏览器视窗垂直距离, 单位px</td>
-           <td>Number</td>
-           <td>-</td>
-           <td>0</td>
-         </tr>
-       </tbody>
-     </table>
   </div>
 </template>
 <script>

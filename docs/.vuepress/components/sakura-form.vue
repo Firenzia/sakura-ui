@@ -3,6 +3,7 @@
      <sakura-card>
        <div class="form-wrapper">
         <s-form  :model.sync="user" class="form"  :rules="rules" ref="form">
+          <span>请随意填写下方表单并提交，本例子含多种校验规则，详细可以展开代码查看~</span>
           <h3>登录</h3>
           <s-form-item label="姓名" name="name">
             <s-input type="text" v-model="user.name" placeholder="试一下输入Bingo"></s-input>
@@ -22,65 +23,6 @@
 
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
-
-     <div class="attr">Form Attributes</div>
-     <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th> 
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>icon</td>
-           <td>表单数据对象</td>
-           <td>Object</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>rules</td>
-           <td>表单验证规则, 支持字段长度/字段正则/必要字段/自定义规则校验</td>
-           <td>Object</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-     </table>
-
-     <div class="attr">FormItem Attributes</div>
-     <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th> 
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-          <tr>
-           <td>label</td>
-           <td>标签文本</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>name</td>
-           <td>表单域 model 字段</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-     </table>
-
 
   </div>
 </template>

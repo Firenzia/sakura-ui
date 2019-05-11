@@ -1,5 +1,8 @@
 <template>
-    <div class="wrapper" :class="{error}">
+    <div class="wrapper" :class="{error, disabled ,readonly}">
+        <template v-if="icon">
+          <s-icon :name="icon"></s-icon>
+        </template>
         <input type="text"
         ref="input"
         :readonly="readonly"
@@ -55,15 +58,20 @@ export default {
   $font-size: 12px;
   $box-shadow-color: rgba(0, 0, 0, 0.5);
   $red: #F1453D;
-  .wrapper { font-size: $font-size; display: inline-flex;align-items: center;margin-bottom:1em;
-    > :not(:last-child) {margin-right: .5em; }
-    > input { height: 32px; border: 1px solid $border-color; border-radius: 4px; padding: 0 8px; font-size: inherit;
-      &:hover { border-color: $border-color-hover; }
-      &:focus { box-shadow: inset 0 1px 3px $box-shadow-color; outline: none; }
-      &[disabled], &[readonly] {border-color: #bbb;color: #bbb;cursor: not-allowed; }
+  .wrapper { font-size: $font-size; display: inline-flex;align-items: center;margin-bottom:1em;border:1px solid #ccc;padding:2px 8px;border-radius:4px;
+    &.disabled{
+      background: #bbb;cursor: not-allowed;
+    }
+
+    > input { height: 32px; border-radius: 4px; padding: 0 8px; font-size: inherit;border:none;outline:none;
+      &:hover { }
+      &:focus { outline: none; }
     }
     &.error {
       > input { border-color: $red; }
+    }
+    input:disabled{
+      background: #bbb;
     }
     .icon-error { fill: $red; }
     .errorMessage { color: $red; }

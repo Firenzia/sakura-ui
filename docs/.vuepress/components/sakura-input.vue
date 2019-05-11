@@ -1,73 +1,17 @@
 <template>
   <div>
     <sakura-card>
-      <s-input value="测试" @change="changeHandler"  class="input"></s-input>
+      <s-input value="正常的" @change="changeHandler"  class="input" icon="star"></s-input>
       <s-input value="只读" readonly id="readonly" class="input"></s-input>
-      <s-input value="不可点击" disabled class="input"></s-input>
-      <s-input error="有问题哦" class="input"></s-input>
+      <s-input value="不可输入" disabled class="input" icon="false"></s-input>
+      <!-- <s-input error="有问题哦" class="input"></s-input> -->
       <div>
         <s-input v-model="msg" class="input"></s-input>
-        {{msg}}
+         <div style="color:#7B90D2;font-size:14px"> {{msg}}</div>
       </div>
 
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
-
-     <div class="attr">Attributes</div>
-     <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th> 
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-      <tr>
-           <td>icon</td>
-           <td>图标</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>value/v-model</td>
-           <td>绑定值</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>disabled</td>
-           <td>原生属性，是否只读</td>
-           <td>boolean</td>
-           <td>-</td>
-           <td>false</td>
-         </tr>
-         <tr>
-           <td>readonly</td>
-           <td>原生属性，是否只读</td>
-           <td>boolean</td>
-           <td>-</td>
-           <td>false</td>
-         </tr>
-         <tr>
-           <td>error</td>
-           <td>错误提示</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>placeholder</td>
-           <td>输入框占位文本</td>
-           <td>string</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-     </table>
     
   </div>
 </template>
@@ -81,7 +25,6 @@ export default {
         <s-input value="测试" @change="changeHandler"></s-input>
         <s-input value="只读" readonly id="readonly"></s-input>
         <s-input value="不可点击" disabled></s-input>
-        <s-input error="有问题哦"></s-input>
         <s-input v-model="msg"></s-input>
     `.replace(/^ {8}/gm, "").trim()
     };
@@ -91,7 +34,7 @@ export default {
   },
   methods: {
     changeHandler() {
-      window.alert("input change is triggered");
+      // window.alert("input change is triggered");
     }
   }
 };

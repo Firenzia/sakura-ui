@@ -9,35 +9,6 @@
       </div>
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
-
-     <div class="attr">Attributes</div>
-     <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th>
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>name</td>
-           <td>图标名称</td>
-           <td>String</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>color</td>
-           <td>图标颜色, 支持常见颜色和十六进制颜色</td>
-           <td>String</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-     </table>
   </div>
 </template>
 <script>

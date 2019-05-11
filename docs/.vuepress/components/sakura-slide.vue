@@ -22,65 +22,6 @@
 
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
-
-    <div class="attr">Slide Attributes</div>
-    <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th>
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>v-model</td>
-           <td>第一次出现选中(如果是手风琴模式，绑定值类型需要为string，否则为array)</td>
-           <td>string / array</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-        <tr>
-           <td>autoPlay</td>
-           <td>是否自动播放</td>
-           <td>Boolean</td>
-           <td>-</td>
-           <td>true</td>
-         </tr>
-          <tr>
-           <td>duration</td>
-           <td>播放动画间隔</td>
-           <td>Number</td>
-           <td>-</td>
-           <td>5000毫秒</td>
-         </tr>
-       </tbody>
-    </table>
-
-     <div class="attr">SlideItem Attributes</div>
-    <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th>
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>name</td>
-           <td>唯一标志符</td>
-           <td>String</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-    </table>
-
   </div>
 </template>
 <script>

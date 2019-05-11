@@ -41,64 +41,6 @@
        <template v-slot:code><pre v-highlightjs><code class="vue">{{code2}}</code></pre></template>
     </sakura-card>
 
-
-    <div class="attr">Collapse Attributes</div>
-    <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th>
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>v-model</td>
-           <td>当前激活的面板(如果是手风琴模式，绑定值类型需要为string，否则为array)</td>
-           <td>string / array</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-          <tr>
-           <td>accordion</td>
-           <td>是否手风琴模式</td>
-           <td>Boolean</td>
-           <td>-</td>
-           <td>false</td>
-         </tr>
-       </tbody>
-    </table>
-
-     <div class="attr">CollapseItem Attributes</div>
-    <table>
-       <thead>
-         <tr>
-           <th>参数</th>
-           <th>说明</th>
-           <th>类型</th>
-           <th>可选值</th>
-           <th>默认值</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td>name</td>
-           <td>唯一标志符</td>
-           <td>String</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-         <tr>
-           <td>title</td>
-           <td>面板标题</td>
-           <td>String</td>
-           <td>-</td>
-           <td>-</td>
-         </tr>
-       </tbody>
-    </table>
   </div>
 </template>
 <script>
