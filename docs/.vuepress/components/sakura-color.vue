@@ -1,37 +1,61 @@
 <template>
-  <div>
-     <div style="height:50px;width:100%">{{value}} 点击扇子下方白色按钮可以折叠的哦~~</div>
+  <div class="color-wrapper">
+    <div class="palette">
+      <div style="height:50px;width:100%"> 点击扇子上的颜色，还有下方白色按钮可以折叠的哦~~</div>
       <div class="row">
-         <sakura-fan :list="list1" @selectColor="X"></sakura-fan>
-        <sakura-fan :list="list1"  @selectColor="X"></sakura-fan>
+        <sakura-fan :list="list1" @selectColor="changeDisplay" ref="fan1"></sakura-fan>
+        <sakura-fan :list="list2"  @selectColor="changeDisplay" ref="fan2"></sakura-fan>
       </div>
       <div class="row">
-         <sakura-fan :list="list1" @selectColor="X"></sakura-fan>
-        <sakura-fan :list="list1"  @selectColor="X"></sakura-fan>
+        <sakura-fan :list="list3" @selectColor="changeDisplay" ref="fan3"></sakura-fan>
+        <sakura-fan :list="list4"  @selectColor="changeDisplay" ref="fan4"></sakura-fan>
       </div>
       <div class="row">
-         <sakura-fan :list="list1" @selectColor="X"></sakura-fan>
-        <sakura-fan :list="list1"  @selectColor="X"></sakura-fan>
+        <sakura-fan :list="list5" @selectColor="changeDisplay" ref="fan5"></sakura-fan>
+        <sakura-fan :list="list6"  @selectColor="changeDisplay" ref="fan6"></sakura-fan>
       </div>
-
+    </div>
+    <div class="introduction" :style="{backgroundColor:display.color,transition:'1.5s'}">
+      <div class="color-cn">{{display.cnName}}</div>
+      <div class="color-jp">{{display.jpName}}</div>
+      <div class="color-value">{{display.color}}</div>
+    </div>
   </div>
+     
 </template>
 <script>
 import SakuraFan from './sakura-fan'
+import {list1, list2 ,list3,list4, list5,list6} from '../../static/js/color'
 export default {
   name:'sakura-color',
   data(){
     return {
+      display:{
+        cnName:'桜',
+        jpName:'SAKURA',
+        color:'#FEDFE1'
+      },
       value:'',
-      list1:['#DC9FB4','#E16B8C','#8E354A','#F8C3CD','#D0104C','#64363C','#9F353A','#E87A90','#D05A6E','#DB4D6D','#FEDFE1','#9E7A7A']
+      list1,
+      list2,
+      list3,
+      list4,
+      list5,
+      list6
     }
   },
   mounted(){
-   
+   let {fan1,fan2,fan3,fan4,fan5,fan6} = this.$refs
+   let fanList = [fan1,fan2,fan3,fan4,fan5,fan6]
+   fanList.forEach((item,index)=>{
+      setTimeout(()=>{
+        item.isOpen = true
+      },1200*index)
+   })
   },
   methods:{
-    X(v){
-      this.value =v
+    changeDisplay(v){
+      this.display =v
     }
   },
   components:{
@@ -40,6 +64,34 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.color-wrapper{
+  display: flex;
+  flex-direction: row;
+  .palette{
+    width: 720px;
+  }
+  .introduction{
+    flex-grow: 1;
+    background: #DC9FB4;
+    color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    .color-cn{
+      margin:100px 0 30px;
+      font-size: 60px;
+      display: flex;
+      width: 1em;
+    }
+    .color-jp{
+      font-size: 18px;
+    }
+    .color-value{
+      margin-top:20px;
+    }
+  }
+}
  .row{
    margin-bottom:20px;
    /deep/ .fan{

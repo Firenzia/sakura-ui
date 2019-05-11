@@ -1,6 +1,9 @@
 <template>
   <div ref="fan" class="fan">
-     <div class="item" v-for="(color, index) in list" :key="index" :style="getItemStyle(color,index)"></div>
+     <div class="item" v-for="(item, index) in list" 
+     :key="index" 
+     :style="getItemStyle(item.color,index)" 
+     @click="selectColor(item)"></div>
   </div>
 </template>
 <script>
@@ -13,37 +16,42 @@ export default {
   },
   data(){
     return {
-      isOpen: true,
+      isOpen: false,
     }
   },
   mounted(){
-    var dot = document.createElement('div')
-    dot.style.cssText = 'height:14px;width:14px;background:#fff;border-radius:50%;position:absolute;bottom:4px;left:8px'
-    this.$refs.fan.lastChild.appendChild(dot)
-
-    this.$refs.fan.addEventListener('click',(e)=>{
-     if(e.target && e.target.classList){
-       this.$emit('selectColor',e.target.style.backgroundColor)
-     }
-    })
-
-    dot.addEventListener('click',()=>{
-    this.isOpen =!this.isOpen
-    Array.from(this.$refs.fan.children).forEach((item, index)=>{
-      if(this.isOpen){
+    this.addFanDot()
+  },
+  watch:{
+    isOpen(val){
+      Array.from(this.$refs.fan.children).forEach((item, index)=>{
+      if(val){
         let degree = 150/this.list.length*index
         item.style.transform =  `rotate(${degree-73}deg)`  
         }else{
           item.style.transform='none'
         }
-    })
-   
-    })
+      })    
+    }
   },
   methods:{
+    selectColor(item){
+      this.$emit('selectColor',item)
+    },
+
+    addFanDot(){
+      var dot = document.createElement('div')
+      dot.style.cssText = 'height:14px;width:14px;background:#fff;border-radius:50%;position:absolute;bottom:4px;left:8px'
+      
+      this.$refs.fan.lastChild.appendChild(dot)
+      dot.addEventListener('click',()=>{
+        this.isOpen =!this.isOpen
+      })
+  
+    },
     getItemStyle(color,index){
       let degree = 150/this.list.length*index
-      return {backgroundColor: color, transformOrigin: '10px 140px',zIndex:index,transform: `rotate(${degree-73}deg)`}
+      return {backgroundColor: color, transformOrigin: '10px 140px',zIndex:index}
     }
   }
 }
@@ -62,7 +70,10 @@ export default {
   top:10px;
   width: 30px;
   height: 140px;
-  transition: 3s
+  transition: 2s;
+  &:hover{
+    opacity: .65;
+  }
 }
  
 </style>
