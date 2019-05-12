@@ -19,6 +19,7 @@
        npm adduser
        npm publish
        ``` 
+       使用vue cli3 lib模式发布(--target lib)，新建src/index.js，执行记得修改package.json中的"main":"dist/sakura.umd.min.js"，指示入口文件地址
    4. npm link
       在本地开发npm模块的时候，我们可以使用npm link命令，将npm 模块链接到对应的运行项目中去，方便地对模块进行调试和测试
       首先，在开发的npm模块npm-link-module文件夹根目录下使用npm link命令，npm-link-module会根据package.json上的配置，被链接到全局

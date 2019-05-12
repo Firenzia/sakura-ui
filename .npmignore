@@ -1,0 +1,7 @@
+.vscode
+.cache
+docs
+node_modules
+note
+src
+test
