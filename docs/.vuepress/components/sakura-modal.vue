@@ -22,6 +22,10 @@ export default {
     return {
       code: `
         <s-button @click="clickHandler" icon="gift-fill">点我</s-button>
+        import Vue from "vue";
+        import ModalPlugin from "../../../src/plugins/modal";
+
+        Vue.use(ModalPlugin);
         export default {
           methods: {
             clickHandler () {

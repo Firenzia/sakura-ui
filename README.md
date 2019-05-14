@@ -2,62 +2,44 @@
 [![Build Status](https://www.travis-ci.org/Firenzia/sakura-ui.svg?branch=master)](https://www.travis-ci.org/Firenzia/sakura-ui)
 
 ## Introduction
-This is an UI framework based on Vue. The inspiration comes from Sakura :cherry_blossom:.
+This is an UI framework based on Vue. The inspiration comes from Sakura :cherry_blossom:. 
+I haven't finished it completely, so dont't use it in the production development. 
+Hope u will like it~:heart: If u like it, please give me a :star:.
+I wrote an article in **juejin.im** to record some details in building this framework.:point_right: [here](https://juejin.im/post/5cd8b450e51d453a580fa8e1) . 
+U can give me some feedback. :smile:
+
+## demo
+![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab1f527248e169?imageslim)
+![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab1f8f4d386114?imageslim)
+![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab3cec51014934?imageslim)
+
+
 
 ## Usage
 1. Install package [heian-sakura-ui]
    ```
-   npm i heian-sakura-ui
+   npm i -D heian-sakura-ui
    ```
-2. Import Heian-Sakura-UI
+2. Get Started
    ```
-   <template>
-    <div>
-        <s-button icon="setting">你好</s-button>
-    </div>
+    <template>
+        <div id="app">
+            <s-button type="primary">点击报名</s-button>
+        </div>
     </template>
 
     <script>
     import {Button} from 'heian-sakura-ui'
-
+    import 'heian-sakura-ui/dist/sakura.css'
     export default {
-    name: 'HelloWorld',
-    data () {
-        return {
+        name: 'app',
+        components: {
+            's-button':Button
         }
-    },
-    components:{
-        's-button':Button
-    }
     }
     </script>
-    <style>
-    @import 'heian-sakura-ui/dist/index.css';
-    </style>
 
    ```
-3. Global CSS Setting 
-   
-    Besure to set global css property box-sizing.
-    ```
-    *, *:before, *:after{box-sizing:border-box}
-    <!-- Browser Supportment: IE 8+ -->
-    ```
-    
-    Besure to set global style.
-    ```
-    html {
-        --button-height: 32px;
-        --font-size: 14px;
-        --button-bg: white;
-        --button-active-bg: #eee;
-        --border-radius: 4px;
-        --color: #333;
-        --border-color: #999;
-        --border-color-hover: #666;
-    }
-    <!-- Browser Supportment: IE 15+ -->
-    ```
     
 ## Issue
 

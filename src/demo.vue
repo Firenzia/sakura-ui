@@ -1,7 +1,7 @@
 <template>
   <div style="margin:60px">
     <s-datepicker v-model="selectedDate" @showPanel="y" @closePanel="z"></s-datepicker>
-    <!-- <s-button @click="x">点我</s-button> -->
+    {{sum}}
   </div>
 </template>
 <script>
@@ -16,6 +16,15 @@ export default {
     return {
       selectedDate: new Date('2019-05-05')
     }
+  },
+  computed: {
+
+  },
+  mounted () {
+    setTimeout(() => {
+      this.num = 100
+      console.log(this.num)
+    }, 1000)
   },
   methods: {
     y (e) {
@@ -51,8 +60,6 @@ export default {
           'cancelModalCallback': func3
         } })
     }
-  },
-  mounted () {
   }
 }
 </script>

@@ -19,6 +19,10 @@ export default {
     return {
       code: `
         <s-button @click="showToast">点我</s-button>
+        import Vue from "vue";
+        import ToastPlugin from "../../../src/plugins/toast";
+
+        Vue.use(ToastPlugin);
         export default {
           methods: {
             showToast() {

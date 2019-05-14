@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{formattedValue}}
       <s-popover
       class="datepicker-popover"
       placement="bottom"
@@ -7,7 +8,6 @@
       @open="showPanel"
       ref="popover"
       >
-
       <s-input slot="reference" :value="formattedValue" icon="calendar" @blur="setValueManually" ref="inputWrapper" class="datepicker-input"></s-input>
 
       <div class="date-panel" slot="content">
@@ -85,6 +85,7 @@ import Input from '../form/input'
 import Popover from '../notice/popover'
 
 import helper from './helper'
+import { setInterval, setTimeout } from 'timers'
 export default {
   name: 's-datepicker',
   props: {
@@ -127,13 +128,13 @@ export default {
     }
   },
   computed: {
-    formattedValue () {
-      return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
-      // get: function () {
-      //   return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
-      // },
-      // set: function (newVal) {
-      // }
+    formattedValue: {
+      // return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
+      get: function () {
+        return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
+      },
+      set: function (newVal) {
+      }
     },
     visibleDays () {
       let { year, month } = this.display
@@ -189,9 +190,8 @@ export default {
     },
     setValueManually ($event) {
       if (!helper.isValidDate($event)) {
-        console.log('setValueManully')
-        this.formattedValue = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
-        // this.$refs.inputWrapper.$refs.input.value = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
+        // this.formattedValue = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
+        this.$refs.inputWrapper.$refs.input.value = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
         return
       }
       this.$emit('input', new Date($event))
