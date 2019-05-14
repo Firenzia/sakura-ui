@@ -9,6 +9,7 @@ I wrote an article in **juejin.im** to record some details in building this fram
 U can give me some feedback. :smile:
 
 ## demo
+:point_right: [https://firenzia.github.io/sakura-ui/](https://firenzia.github.io/sakura-ui/)</br>
 ![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab1f527248e169?imageslim)
 ![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab1f8f4d386114?imageslim)
 ![avatar](https://user-gold-cdn.xitu.io/2019/5/14/16ab3cec51014934?imageslim)
