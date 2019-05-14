@@ -151,6 +151,7 @@ export default {
         content: '';
         display: block;
         border:10px solid transparent;
+        pointer-events: none;
       }
 
       &.position-top{
