@@ -40,6 +40,13 @@ sidebarDepth: 2
 | :------ | ------ | ------ | ------ | ------ |
 | v-model/value| 绑定值 | Date |- | - |
 | beginDay|一周起始从周几开始 | number|0,1 | 1 |
+
+
+<font size=5>Events</font>
+| 事件名称| 说明 | 回调参数 | 
+| :------ | ------ | ------ |
+| openPanel| 打开日期面板触发 | 组件实例 |
+| closePane| 关闭日期面板触发 | 组件实例|
 </ClientOnly>
 
 

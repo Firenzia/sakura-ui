@@ -1,7 +1,7 @@
 <template>
   <div style="margin:60px">
-    <!-- <s-datepicker v-model="selectedDate"></s-datepicker> -->
-    <s-button @click="x">点我</s-button>
+    <s-datepicker v-model="selectedDate" @showPanel="y" @closePanel="z"></s-datepicker>
+    <!-- <s-button @click="x">点我</s-button> -->
   </div>
 </template>
 <script>
@@ -14,10 +14,16 @@ Vue.use(toast)
 export default {
   data () {
     return {
-      // selectedDate: new Date('2019-05-05')
+      selectedDate: new Date('2019-05-05')
     }
   },
   methods: {
+    y (e) {
+      console.log('i open', e)
+    },
+    z () {
+      console.log('i close')
+    },
     x () {
       let func1 = () => {
         this.$toast({

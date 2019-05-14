@@ -121,18 +121,19 @@ export default {
       model: 'day',
       helper: helper,
       display: {
-        year: new Date().getFullYear(),
-        month: new Date().getMonth()
+        year: (this.value && this.value.getFullYear()) || new Date().getFullYear(),
+        month: (this.value && this.value.getMonth()) || new Date().getMonth()
       }
     }
   },
   computed: {
-    formattedValue: {
-      get: function () {
-        return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
-      },
-      set: function (newVal) {
-      }
+    formattedValue () {
+      return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
+      // get: function () {
+      //   return this.value instanceof Date ? helper.getFormatDate(this.value) : ''
+      // },
+      // set: function (newVal) {
+      // }
     },
     visibleDays () {
       let { year, month } = this.display
@@ -189,7 +190,8 @@ export default {
     setValueManually ($event) {
       if (!helper.isValidDate($event)) {
         console.log('setValueManully')
-        this.$refs.inputWrapper.$refs.input.value = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
+        this.formattedValue = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
+        // this.$refs.inputWrapper.$refs.input.value = this.isDate(this.value) ? helper.getFormatDate(this.value) : ''
         return
       }
       this.$emit('input', new Date($event))
@@ -289,6 +291,7 @@ export default {
     showPanel () {
       this.model = 'day'
       this.resetDisplayInfo() // 每次打开display year month 要重新设置
+      this.$emit('showPanel', this) // 打开面板
     },
     resetDisplayInfo () {
       let displayDateObj = this.value instanceof Date ? this.value : new Date()
@@ -298,6 +301,7 @@ export default {
     },
     closePanel () {
       this.$refs.popover.close()
+      this.$emit('closePanel', this)
     }
 
   }
