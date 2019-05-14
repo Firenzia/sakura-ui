@@ -82,6 +82,7 @@ $color-danger: #f44336;
     vertical-align: middle;
     min-width: 70px;
     &:hover {
+      cursor: pointer;
       border-color: $border-color-hover;
     }
     &:active {

@@ -54,9 +54,11 @@ export default {
         justify-content: flex-start;
         padding:.5em 2em;
         font-weight: bold;
-
+        &:hover{
+          cursor: pointer;
+        }
         &.active{
-            color: #3ba0e9
+            color: #3ba0e9;
         }
         &.disabled{
             cursor: not-allowed;

@@ -40,7 +40,7 @@ export default {
     })
 
     this.eventBus.$on('update:selected', ($event) => {
-      this.$emit('update:selected', $event)
+      this.$emit('input', $event)
     })
 
     // this.eventBus.$emit("update:selected", this.selected)
