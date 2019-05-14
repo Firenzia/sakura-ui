@@ -18,11 +18,11 @@ U can give me some feedback. :smile:
 
 ## Usage
 1. Install package [heian-sakura-ui]
-   ```
+   ```sh
    npm i -D heian-sakura-ui
    ```
 2. Get Started
-   ```
+   ```vue
     <template>
         <div id="app">
             <s-button type="primary">点击报名</s-button>
