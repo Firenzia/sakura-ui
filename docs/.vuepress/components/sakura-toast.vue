@@ -48,7 +48,7 @@ export default {
   methods: {
     showToast() {
       this.$toast({
-        message: "我从天而降啦啦啦~~。",
+        message: "我是消息",
         closeBtn: {
           btnText: "关闭",
           callback: function(toast) {
@@ -60,13 +60,13 @@ export default {
     },
     showToast2() {
       this.$toast({
-        message: "让我从下面出来~~。",
+        message: "我是消息",
         position:'bottom'
       });
     },
     showToast3() {
       this.$toast({
-        message: "惊不惊喜~~",
+        message: "我是消息",
         position:'middle'
       });
     },

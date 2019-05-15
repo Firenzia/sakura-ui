@@ -2,7 +2,7 @@
   <div>
     <sakura-card>
        <s-button @click="clickHandler" icon="gift-fill">点我</s-button>
-      <s-button @click="clickHandler2" icon="discovery" style="margin-left:30px;background:#91AD70" >点我</s-button>
+      <s-button @click="clickHandler2" icon="discovery" type="primary" >点我</s-button>
       <template v-slot:code><pre v-highlightjs><code class="vue">{{code}}</code></pre></template>
     </sakura-card>
   </div>
@@ -100,7 +100,7 @@ export default {
       }
       this.$modal({
         title: '换肤测试',
-        content: '<p style="color:orange">这个颜色你喜欢吗</p>',
+        content: '<p style="color:#d4b1b5">这个颜色你喜欢吗</p>',
         enableContentHtml: true,
         btnConfig: {
           'confirmText': '确认',

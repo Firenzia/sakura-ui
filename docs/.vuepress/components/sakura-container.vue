@@ -140,12 +140,10 @@ export default {
 };
 </script>
 <style>
-.card-content {
-  text-align: center;
-}
 .s-layout {
   width: 100%;
   color: #fff;
+  text-align: center;
 }
 .s-header,
 .s-content,
