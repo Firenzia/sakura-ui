@@ -1,9 +1,9 @@
 class Validator {
-  static add (name, fn) {
+  static add(name, fn) {
     Validator.prototype[name] = fn
   }
 
-  validate (formData, rules) {
+  validate(formData, rules) {
     let errs = {}
     for (let item of Object.entries(rules)) { // [[name,[namerule]]]
       let checkName = item[0]
@@ -26,29 +26,33 @@ class Validator {
     return errs
   }
 
-  required (val) {
+  required(val) {
     return !(val === undefined || val === '')
   }
 
-  lengthControl (val, rule) {
+  lengthControl(val, rule) {
     let flag = true
     let dataLength = val.toString().length
     let [min, max] = rule.lengthControl
-    if (min && dataLength < min) { flag = false }
-    if (max && dataLength > max) { flag = false }
+    if (min && dataLength < min) {
+      flag = false
+    }
+    if (max && dataLength > max) {
+      flag = false
+    }
     return flag
   }
 
-  max (val, rule) {
+  max(val, rule) {
     return val.toString().length <= rule.max
   }
 
-  pattern (val, rule) {
+  pattern(val, rule) {
     let res = rule.pattern.test(val)
     return res
   }
 
-  validator (val, rule) {
+  validator(val, rule) {
     try {
       return rule.validator.call(this, val)
     } catch (e) {

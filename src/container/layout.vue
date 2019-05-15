@@ -1,17 +1,17 @@
 <template>
-    <div class="s-layout" :class="layoutClass" :style="heightSetting">
-        <slot></slot>
-    </div>
+  <div class="s-layout" :class="layoutClass" :style="heightSetting">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
-  name: 's-layout',
-  data () {
+  name: "s-layout",
+  data() {
     return {
       layoutClass: {
         hasSidebar: false
       }
-    }
+    };
   },
   props: {
     height: {
@@ -19,27 +19,27 @@ export default {
     }
   },
   computed: {
-    heightSetting () {
-      return `height:${this.height}px`
+    heightSetting() {
+      return `height:${this.height}px`;
     }
   },
-  mounted () {
+  mounted() {
     this.$children.forEach(child => {
-      if (child.$options.name === 's-sider') {
-        this.layoutClass.hasSidebar = true
+      if (child.$options.name === "s-sider") {
+        this.layoutClass.hasSidebar = true;
       }
-    })
+    });
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-    .s-layout{
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
+.s-layout {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 
-        &.hasSidebar{
-            flex-direction: row;
-        }
-    }
+  &.hasSidebar {
+    flex-direction: row;
+  }
+}
 </style>

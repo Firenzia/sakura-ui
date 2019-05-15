@@ -1,29 +1,34 @@
 <template>
   <div class="form-item">
     <div class="label">
-      <div class="ico" ><span v-show="required" class="required-ico">*</span></div>
+      <div class="ico">
+        <span v-show="required" class="required-ico">*</span>
+      </div>
       <label>{{label}}</label>
     </div>
     <div class="controls">
       <slot></slot>
-      <div class="error">
-        {{error}}
-      </div>
+      <div class="error">{{error}}</div>
     </div>
   </div>
 </template>
 <style scoped lang="scss">
-  .row {padding: 8px 0; display: flex;}
-  label {margin-right: 1em;}
+.row {
+  padding: 8px 0;
+  display: flex;
+}
+label {
+  margin-right: 1em;
+}
 </style>
 <script>
 export default {
-  name: 's-form-item',
-  data () {
+  name: "s-form-item",
+  data() {
     return {
-      error: '',
+      error: "",
       required: false
-    }
+    };
   },
   props: {
     label: {
@@ -35,35 +40,35 @@ export default {
     }
   },
   watch: {
-    error (v) {
+    error(v) {
       if (v) {
-        this.$children[0].$el.classList.add('error')
+        this.$children[0].$el.classList.add("error");
       } else {
-        this.$children[0].$el.classList.remove('error')
+        this.$children[0].$el.classList.remove("error");
       }
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 $hint: lightcoral;
-.error{
-  color:$hint
+.error {
+  color: $hint;
 }
-.form-item{
+.form-item {
   display: flex;
   flex-direction: row;
 }
-.label{
+.label {
   display: flex;
-  .ico{
-    width:20px;
-    height:100%;
+  .ico {
+    width: 20px;
+    height: 100%;
   }
 }
-.required-ico{
+.required-ico {
   display: inline-block;
 
-  color:$hint
+  color: $hint;
 }
 </style>

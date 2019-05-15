@@ -1,5 +1,4 @@
-export default [
-  {
+export default [{
     'id': 1,
     'label': '北京',
     'parent_id': 0,
