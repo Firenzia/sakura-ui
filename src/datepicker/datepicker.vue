@@ -85,7 +85,7 @@ import Input from '../form/input'
 import Popover from '../notice/popover'
 
 import helper from './helper'
-import { setInterval, setTimeout } from 'timers'
+// import { setInterval, setTimeout } from 'timers'
 export default {
   name: 's-datepicker',
   props: {
@@ -319,8 +319,8 @@ $selected-color:lightseagreen;
     top:8px;
   }
 }
-.date-panel{
-}
+// .date-panel{
+// }
 .date-panel-header{
   display: flex;
   justify-content: center;
