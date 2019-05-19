@@ -1,23 +1,24 @@
 <template>
   <div class="modal-wrapper">
-    <div class="mask" :style="modalStyle"></div>
+    <div class="mask" v-show="isVisible" key="mask">
+       <div class="outer-modal">
+         <div class="modal" v-show="isVisible" key="modal">
+            <div class="modal-header">
+              <span class="title">{{title}}</span>
+              <s-icon name="false" ref="closeIco"  class="close-ico"></s-icon>
+            </div>
 
-    <div class="modal" :style="modalStyle">
-      <div class="modal-header">
-        <span class="title">{{title}}</span>
-        <s-icon name="false" ref="closeIco"></s-icon>
-      </div>
+            <div class="modal-body" v-if="enableContentHtml" v-html="content"></div>
+            <div class="modal-body" v-else>{{content}}</div>
 
-      <div class="modal-body" v-if="enableContentHtml" v-html="content"></div>
-      <div class="modal-body" v-else>{{content}}</div>
-
-       <div class="modal-action">
-         <s-button ref="cancelBtn" v-if="btnConfig.cancelText">{{btnConfig.cancelText}}</s-button>
-         <s-button ref="confirmBtn" type="primary">{{btnConfig.confirmText}}</s-button>
+            <div class="modal-action">
+              <s-button ref="cancelBtn" v-if="btnConfig.cancelText">{{btnConfig.cancelText}}</s-button>
+              <s-button ref="confirmBtn" type="primary">{{btnConfig.confirmText}}</s-button>
+            </div>
+          </div>
        </div>
     </div>
   </div>
-
 </template>
 <script>
 import Icon from '../icon/icon'
@@ -99,6 +100,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+ @import "theme";
+
 .modal-wrapper{
   width: 100%;
   height: 100%;
@@ -109,31 +112,40 @@ export default {
   left:0;
   top:0;
   height: 100%;
-  background:#000;
-  opacity: .5;
+  background-color: rgba(0,0,0,0.5)!important;
   z-index: 1000;
 }
-.modal{
-  width:200px;
-  background:#fff;
-  z-index: 1001;
-  position: fixed;
+.outer-modal{
+  position: absolute;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+}
+.modal{
+  animation:slide-down 0.5s;
+  width:200px;
+  background:#fff;
   padding:10px;
-  border-radius: 10px;
+  border-radius: $border-radius;
   min-width: 400px;
+  box-shadow: $box-shadow;
    .modal-header{
     display: flex;
     justify-content: space-between;
-      .title{
+    padding-bottom:8px;
+    border-bottom:1px solid $border-color;
+    .title{
         font-size:18px;
       }
+    }
+    .close-ico:hover{
+      transform: rotate(180deg);
+      transition:all .8s;
     }
 
    .modal-body{
      padding:14px 0;
+     font-size:$font-size;
    }
    .modal-action{
      padding:10px 0;

@@ -1,0 +1,53 @@
+//  主题颜色
+$color-primary: #d4b1b5;
+$color-info: #607d8b;
+$color-success: #66bb6a;
+$color-warning: #ff8f00;
+$color-danger: #f44336;
+
+$button-bg: white;
+$button-active-bg: #eee;
+
+$border-color: #ccc;
+$border-color-hover: #666;
+$border-radius: 4px;
+$box-shadow:0 1px 3px rgba(0,0,0,.3);
+
+$font-size:14px;
+$small-widget-height:32px;
+
+$toast-text-color: #fff;
+
+$selected-color:lightseagreen;
+
+// 下滑
+@keyframes slide-down {
+  0%{
+      opacity: 0;
+      transform: translate(0,-100%)
+  }
+  100%{
+      opacity: 1;
+      transform: translate(0,0)
+  }
+}
+// 淡入
+@keyframes fade-in {
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+// 上滑
+@keyframes slide-up {
+  0%{
+      opacity: 0;
+      transform: translateY(100%)
+  }
+  100%{
+      opacity: 1;
+      transform: translateY(0)
+  }
+}

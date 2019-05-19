@@ -10,6 +10,7 @@ sidebarDepth: 2
 | 参数| 说明 | 类型 | 可选值 | 默认值 |
 | :------ | ------ | ------ | ------ | ------ |
 | message| 消息提示文本 | string | - | - |
+| type| 消息类型 | string | info, success, error, warning| info |
 | duration| 消息出现时长 | number，单位：ms | - | 6000ms |
 | enableHtml	| 允许插入html |boolean | - | false |
 | closeBtn| 自定义关闭按钮文案和回调，有效的key包括”btnTex'(value type:String),'callback'(value type: Function)} |object | - | - |

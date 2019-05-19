@@ -64,16 +64,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+   @import "theme";
   .s-tab-head{
       display: flex;
-    //   flex-direction: column;
+
      &.head-in-row{
          flex-direction: row;
-         border-right:1px solid #ccc;
+         border-right:1px solid $border-color;
      }
      &.head-in-column{
          flex-direction: column;
-          border-bottom:1px solid #ccc;
+          border-bottom:1px solid $border-color;
      }
 
       .item-wrapper{

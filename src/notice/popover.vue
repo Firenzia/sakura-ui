@@ -128,6 +128,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+ @import "theme";
   .wrapper{
     display: inline-block;
     > div{
@@ -146,6 +147,7 @@ export default {
       padding:.5em 1em;
       background: #fff;
       z-index: 100;
+      font-size: $font-size;
       &::before, &::after{
         position: absolute;
         content: '';
@@ -171,7 +173,7 @@ export default {
          }
           &::after{
            border-bottom:10px solid #fff;
-           bottom:99%;
+           bottom:98%;
          }
       }
       &.position-left{

@@ -32,7 +32,8 @@ export default {
               let func1 = () => {
                 this.$toast({
                   message: '报名成功',
-                  duration: 1500 })
+                  duration: 1500,
+                  type:'success' })
               }
               let func2 = () => {
                 this.$toast({
@@ -42,7 +43,8 @@ export default {
               let func3 = () => {
                 this.$toast({
                   message: '你为什么啥都没点就跑了',
-                  duration: 2500 })
+                  duration: 2500,
+                  type:'error'})
               }
               this.$modal({
                 title: '一个来自朋友的邀请',
@@ -68,7 +70,8 @@ export default {
       let func1 = () => {
         this.$toast({
           message: '报名成功',
-          duration: 1500 })
+          duration: 1500,
+          type:'success'})
       }
       let func2 = () => {
         this.$toast({
@@ -78,11 +81,12 @@ export default {
       let func3 = () => {
         this.$toast({
           message: '你为什么啥都没点就跑了',
-          duration: 2500 })
+          duration: 2500,
+          type: 'error' })
       }
       this.$modal({
         title: '一个来自朋友的邀请',
-        content: '今天晚上去大学城吗',
+        content: '今天晚上去大学城吗?',
         btnConfig: {
           'confirmText': '确认',
           'confirmCallback': func1,
@@ -100,7 +104,7 @@ export default {
       }
       this.$modal({
         title: '换肤测试',
-        content: '<p style="color:orange">这个颜色你喜欢吗</p>',
+        content: '<p style="color:#ffa500;margin:0;padding:0">这个颜色你喜欢吗?</p>',
         enableContentHtml: true,
         btnConfig: {
           'confirmText': '确认',

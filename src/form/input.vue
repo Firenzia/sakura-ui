@@ -51,29 +51,35 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  $height: 32px;
-  $border-color: #999;
-  $border-color-hover: #666;
-  $border-radius: 4px;
-  $font-size: 12px;
-  $box-shadow-color: rgba(0, 0, 0, 0.5);
-  $red: #F1453D;
-  .wrapper { font-size: $font-size; display: inline-flex;align-items: center;margin-bottom:1em;border:1px solid #ccc;padding:2px 8px;border-radius:4px;
+  @import "theme";
+
+  .wrapper {
+    font-size: $font-size;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom:1em;
+    border:1px solid $border-color;
+    padding:2px 8px;
+    border-radius:$border-radius;
     &.disabled{
       background: #bbb;cursor: not-allowed;
     }
 
-    > input { height: 32px; border-radius: 4px; padding: 0 8px; font-size: inherit;border:none;outline:none;
-      &:hover { }
+    > input {
+      height: $small-widget-height;
+      border-radius:$border-radius;
+      padding: 0 8px;
+      border:none;
+      outline:none;
       &:focus { outline: none; }
     }
     &.error {
-      > input { border-color: $red; }
+      > input { border-color:$color-danger; }
     }
     input:disabled{
       background: #bbb;
     }
-    .icon-error { fill: $red; }
-    .errorMessage { color: $red; }
+    .icon-error { fill: $color-danger; }
+    .errorMessage { color: $color-danger; }
   }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div style="margin:60px">
-    <s-datepicker v-model="selectedDate" @showPanel="y" @closePanel="z"></s-datepicker>
-    {{sum}}
+    <s-button @click="x">show modal</s-button>
   </div>
 </template>
 <script>
@@ -14,44 +13,37 @@ Vue.use(toast)
 export default {
   data () {
     return {
-      selectedDate: new Date('2019-05-05')
     }
   },
   computed: {
 
   },
   mounted () {
-    setTimeout(() => {
-      this.num = 100
-      console.log(this.num)
-    }, 1000)
   },
   methods: {
-    y (e) {
-      console.log('i open', e)
-    },
-    z () {
-      console.log('i close')
-    },
+
     x () {
       let func1 = () => {
         this.$toast({
           message: '报名成功',
-          duration: 1500 })
+          duration: 1500 ,
+          type:'success'})
       }
       let func2 = () => {
         this.$toast({
           message: '期待你下次再来',
-          duration: 1500 })
+          duration: 1500,
+          type:'info'})
       }
       let func3 = () => {
         this.$toast({
           message: '你为什么啥都没点就跑了',
-          duration: 2500 })
+          duration: 2500,
+          type:'error' })
       }
       this.$modal({
         title: '一个来自朋友的邀请',
-        content: '今天晚上去大学城吗',
+        content: '今天晚上去大学城吗?',
         btnConfig: {
           'confirmText': '确认',
           'confirmCallback': func1,
