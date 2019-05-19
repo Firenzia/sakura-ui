@@ -15,7 +15,7 @@
         <span v-for="(n, index) in slideItemLength"
         :key="index"
         @click ="changeSelect(index)"
-        :class="{'index-active':selectedIndex=== index}">{{n}}</span>
+        :class="{'index-active':selectedIndex=== index}"></span>
      </div>
   </div>
 </template>
@@ -183,14 +183,12 @@ export default {
       }
       > span{
         display: inline-block;
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 4px;
         font-size:12px;
         line-height: 40px;
-        border-radius:50%;
-        margin-right: .2em;
+        margin-right: .4em;
         background: #fff;
-        color: lightblue;
         display: flex;
         justify-content: center;
         align-items: center;
