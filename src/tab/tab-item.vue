@@ -47,21 +47,23 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.s-tab-item {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0.5em 2em;
-  font-weight: bold;
-
-  &.active {
-    color: #3ba0e9;
-  }
-  &.disabled {
-    cursor: not-allowed;
-  }
-  .hasIcon {
-    margin-left: 10px;
-  }
-}
+    .s-tab-item{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding:.5em 2em;
+        font-weight: bold;
+        &:hover{
+          cursor: pointer;
+        }
+        &.active{
+            color: #3ba0e9;
+        }
+        &.disabled{
+            cursor: not-allowed;
+        }
+        .hasIcon{
+            margin-left:10px;
+        }
+    }
 </style>

@@ -69,31 +69,21 @@ $color-info: #607d8b;
 $color-success: #66bb6a;
 $color-warning: #ff8f00;
 $color-danger: #f44336;
-.s-button {
-  font-size: $font-size;
-  height: $button-height;
-  padding: 0 1em;
-  border-radius: $border-radius;
-  border: 1px solid $border-color;
-  background: $button-bg;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  min-width: 70px;
-  &:hover {
-    border-color: $border-color-hover;
-  }
-  &:active {
-    background-color: $button-active-bg;
-  }
-  &:focus {
-    outline: none;
-  }
-  &.ico-left {
-    > .icon {
-      order: 1;
-      margin-right: 0.4em;
+ .s-button {
+    font-size: $font-size;
+    height: $button-height;
+    padding: 0 1em;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $button-bg;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    min-width: 70px;
+    &:hover {
+      cursor: pointer;
+      border-color: $border-color-hover;
     }
     > .btn-content {
       order: 2;
@@ -174,5 +164,4 @@ $color-danger: #f44336;
       opacity: 0.7;
     }
   }
-}
 </style>
