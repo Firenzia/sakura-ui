@@ -9,10 +9,9 @@
       <span
         v-for="(n, index) in slideItemLength"
         :key="index"
-        @click="changeSelect(index)"
-        :class="{'index-active':selectedIndex=== index}"
-      >{{n}}</span>
-    </div>
+        @click ="changeSelect(index)"
+        :class="{'index-active':selectedIndex=== index}"></span>
+     </div>
   </div>
 </template>
 <script>
@@ -195,7 +194,22 @@ export default {
       color: lightblue;
       display: flex;
       justify-content: center;
-      align-items: center;
+      .index-active{
+        background: lightblue;
+        color: #fff;
+      }
+      > span{
+        display: inline-block;
+        width: 24px;
+        height: 4px;
+        font-size:12px;
+        line-height: 40px;
+        margin-right: .4em;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 }

@@ -143,32 +143,58 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.wrapper {
-  display: inline-block;
-  > div {
+ @import "theme";
+  .wrapper{
     display: inline-block;
   }
+  .popover{
+      max-width: 300px;
+      border:1px solid #ccc;
+      position: absolute;
+      padding:.5em 1em;
+      background: #fff;
+      z-index: 100;
+      font-size: $font-size;
+      &::before, &::after{
+        position: absolute;
+        content: '';
+        display: block;
+        border:10px solid transparent;
+        pointer-events: none;
+      }
 
-  .reference {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-}
-.popover {
-  max-width: 300px;
-  border: 1px solid #ccc;
-  position: absolute;
-  padding: 0.5em 1em;
-  background: #fff;
-  z-index: 100;
-  &::before,
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    border: 10px solid transparent;
-    pointer-events: none;
-  }
+      &.position-top{
+         &::before{
+           border-top:10px solid #ccc;
+           top:100%;
+         }
+          &::after{
+           border-top:10px solid #fff;
+           top:98%;
+         }
+      }
+      &.position-bottom{
+        &::before{
+           border-bottom:10px solid #ccc;
+           bottom:100%;
+         }
+          &::after{
+           border-bottom:10px solid #fff;
+           bottom:98%;
+         }
+      }
+      &.position-left{
+        &::before{
+           border-left:10px solid #ccc;
+           left:100%;
+            top:20%;
+         }
+        &::after{
+           border-left:10px solid #fff;
+           left:99%;
+           top:20%;
+         }
+      }
 
   &.position-top {
     &::before {

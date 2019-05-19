@@ -1,6 +1,7 @@
 <template>
-  <button class="s-button" :class="btnClass" @click="$emit('click')">
-    <s-icon v-if="icon && !loading" :name="icon" class="icon"></s-icon>
+  <button class="s-button" :class="btnClass"
+       @click="$emit('click')">
+       <s-icon v-if="icon && !loading" :name="icon" class="icon"  ></s-icon>
     <s-icon v-if="loading" name="loading" class="icon loading"></s-icon>
     <div class="btn-content">
       <slot></slot>
@@ -55,23 +56,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$button-height: 32px;
-$font-size: 14px;
-$button-bg: white;
-$button-active-bg: #eee;
-$border-radius: 4px;
-$color: #333;
-$border-color: #999;
-$border-color-hover: #666;
+ @import "theme";
 
-$color-primary: #d4b1b5;
-$color-info: #607d8b;
-$color-success: #66bb6a;
-$color-warning: #ff8f00;
-$color-danger: #f44336;
  .s-button {
     font-size: $font-size;
-    height: $button-height;
+    height: $small-widget-height;
     padding: 0 1em;
     border-radius: $border-radius;
     border: 1px solid $border-color;

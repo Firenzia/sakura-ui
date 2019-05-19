@@ -48,7 +48,7 @@ export default {
   methods: {
     showToast() {
       this.$toast({
-        message: "我是消息",
+        message: "端午放假三天，请周知",
         closeBtn: {
           btnText: "关闭",
           callback: function(toast) {
@@ -60,14 +60,16 @@ export default {
     },
     showToast2() {
       this.$toast({
-        message: "我是消息",
-        position:'bottom'
+        message: "今日炎日预警，请停止工作回家避暑",
+        position:'bottom',
+        type:'warning'
       });
     },
     showToast3() {
       this.$toast({
-        message: "我是消息",
-        position:'middle'
+        message: "GDG活动报名成功",
+        position:'middle',
+        type:'success'
       });
     },
   }

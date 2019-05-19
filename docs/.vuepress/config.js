@@ -1,3 +1,4 @@
+const path = require('path')
 module.exports = {
     base:'/sakura-ui/',
     title: 'Sakura UI',
@@ -38,5 +39,8 @@ module.exports = {
               ]
             },
         ]
-      }
+      },
+    scss:{ //配置 scss 根目录
+      includePaths: [path.join(__dirname, '../../style')]
+    }
   }

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- {{formattedValue}}   -->
-    <s-popover
+      <s-popover
       class="datepicker-popover"
       placement="bottom"
       trigger="click"
@@ -348,18 +347,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$selected-color: lightseagreen;
-.datepicker-popover {
-  /deep/ .reference {
-    border: none !important;
+@import "theme";
+
+.datepicker-popover{
+  /deep/ .reference{
+    border:none !important;
   }
   /deep/ .datepicker-input {
     position: relative;
     top: 8px;
   }
 }
-// .date-panel{
-// }
+
 .date-panel-header{
   display: flex;
   justify-content: center;
@@ -432,9 +431,9 @@ $selected-color: lightseagreen;
     }
   }
 }
-.action {
-  border-top: 1px solid #ccc;
-  padding: 10px 0 4px;
+.action{
+  border-top:1px solid $border-color;
+  padding:10px 0 4px;
   display: flex;
   justify-content: flex-end;
   /deep/ button {

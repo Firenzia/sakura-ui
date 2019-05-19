@@ -69,17 +69,18 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.s-tab-head {
-  display: flex;
-  //   flex-direction: column;
-  &.head-in-row {
-    flex-direction: row;
-    border-right: 1px solid #ccc;
-  }
-  &.head-in-column {
-    flex-direction: column;
-    border-bottom: 1px solid #ccc;
-  }
+   @import "theme";
+  .s-tab-head{
+      display: flex;
+
+     &.head-in-row{
+         flex-direction: row;
+         border-right:1px solid $border-color;
+     }
+     &.head-in-column{
+         flex-direction: column;
+          border-bottom:1px solid $border-color;
+     }
 
   .item-wrapper {
     display: flex;

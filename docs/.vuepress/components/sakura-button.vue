@@ -8,10 +8,10 @@
       <s-button type="success">success</s-button>
       <s-button type="warning">warning</s-button>
       <s-button type="danger">danger</s-button>
-
+    
       <template v-slot:code>
         <pre v-highlightjs><code class="vue">{{code1}}</code></pre>
-      </template>
+      </template>    
     </sakura-card>
 
     <h3>禁用状态</h3>
