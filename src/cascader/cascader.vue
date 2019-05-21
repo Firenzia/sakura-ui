@@ -35,7 +35,10 @@ export default {
   created () {
   },
   mounted () {
-    this.addDocumentListener()
+    window.document.addEventListener('click', this.docClickHandler)
+  },
+  beforeDestroy () {
+    window.document.removeEventListener('click', this.docClickHandler)
   },
   computed: {
     content () {
@@ -43,14 +46,11 @@ export default {
     }
   },
   methods: {
-    addDocumentListener () {
-      let docClickHandler = (e) => {
-        if ((this.$refs.popper && this.$refs.popper.contains(e.target)) || this.$refs.content.contains(e.target)) {
-          return false
-        }
-        this.popoverVisible = false
+    docClickHandler (e) {
+      if ((this.$refs.popper && this.$refs.popper.contains(e.target)) || this.$refs.content.contains(e.target)) {
+        return false
       }
-      window.document.addEventListener('click', docClickHandler)
+      this.popoverVisible = false
     },
     onItemUpdateSelected (newSelected) {
       this.$emit('update:selected', newSelected)

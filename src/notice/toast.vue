@@ -54,15 +54,15 @@ export default {
         return ['top', 'middle', 'bottom'].includes(val)
       }
     },
-    type:{
+    type: {
       type: String,
       default: 'info',
-      validator(val){
-        return ['info','warning','success', 'error'].includes(val)
+      validator (val) {
+        return ['info', 'warning', 'success', 'error'].includes(val)
       }
     }
   },
-  components:{
+  components: {
     's-icon': Icon
   },
   mounted () {
@@ -99,9 +99,12 @@ export default {
      .outer{
         z-index: 30;
         position: fixed;
-        left:50%;
-        transform: translate(-50%);
-        
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: fit-content;
+        height: fit-content;
+
         &.show-on-top{
             top: 20px;
             .toast-wrapper{
@@ -109,8 +112,8 @@ export default {
             }
         }
         &.show-on-middle{
-            top:50%;
-            transform: translate(-50%,-50%);
+            top: 0;
+            bottom: 0;
             .toast-wrapper{
                 animation:fade-in 0.5s;
             }
@@ -151,7 +154,7 @@ export default {
             /deep/ .s-icon{
               margin-right:10px;
             }
-            
+
         }
         .close-btn{
             padding: 0 1.2em;
