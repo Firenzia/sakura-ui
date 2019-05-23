@@ -1,13 +1,13 @@
 <template>
   <div class="card">
-     <div class="card-content">
-       <slot></slot>
-       <div>
-        <div v-if="codeVisible"><slot name="code"></slot></div>
+    <div class="card-content">
+      <slot></slot>
+      <div>
+        <div v-show="codeVisible"><slot name="code"></slot></div>
       </div>
     </div>
     <div class="card-operation" @click="toggle">
-         {{msg}}
+      {{msg}}
     </div>
  </div>
 </template>
@@ -37,6 +37,7 @@ export default {
       border-bottom:1px solid #ccc;
     }
     .card-operation{
+      cursor: pointer;
       height: 40px;
       display: flex;
       align-items: center;
