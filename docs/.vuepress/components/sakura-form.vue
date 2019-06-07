@@ -70,41 +70,49 @@ export default {
         export default {
           data () {
             var checkName = (val) => {
-            if (val === 'Bingo') {
-                throw new Error('被骗了哈哈哈~')
-            } else { return true }
+              if (val === 'Bingo') {
+                  throw new Error('被骗了哈哈哈~')
+              } else { return true }
             }
             var checkAge = (val) => {
-            if (parseInt(val) > 30) {
-                throw new Error('不能超过30岁')
-            } else { return true }
+              if (parseInt(val) > 30) {
+                  throw new Error('不能超过30岁')
+              } else { return true }
             }
-              return {
-                user: {
-                  name: '',
-                  age: '',
-                  count:''
-                },
-                rules: {
-                  name: [
-                    { required: true, message: '请输入名字', trigger: 'blur' },
-                    { lengthControl: [3, 5], message: '长度在 3 到 5 个字符', trigger: 'blur' },
-                    { pattern: /^(\D)+$/, message: '内容不能有数字', trigger: 'blur' },
-                    { validator: checkName, trigger: 'blur' }
-                  ],
-                  age: [
-                    { required: true, message: '请输入年龄', trigger: 'blur' },
-                    { lengthControl: [ null, 2 ], message: '长度不能超过2', trigger: 'blur' },
-                    { pattern: /\d/, message: '必须是数字', trigger: 'blur' },
-                    { validator: checkAge, trigger: 'blur' }
-                  ],
-                  count: [
-                    { lengthControl: [ null, 4 ], message: '长度不能超过4', trigger: 'blur' }
-                  ]
-                }
-
+            return {
+              user: {
+                name: '',
+                age: '',
+                count:''
+              },
+              rules: {
+                name: [
+                  { required: true, message: '请输入名字', trigger: 'blur' },
+                  { lengthControl: [3, 5], message: '长度在 3 到 5 个字符', trigger: 'blur' },
+                  { pattern: /^(\D)+$/, message: '内容不能有数字', trigger: 'blur' },
+                  { validator: checkName, trigger: 'blur' }
+                ],
+                age: [
+                  { required: true, message: '请输入年龄', trigger: 'blur' },
+                  { lengthControl: [ null, 2 ], message: '长度不能超过2', trigger: 'blur' },
+                  { pattern: /\d/, message: '必须是数字', trigger: 'blur' },
+                  { validator: checkAge, trigger: 'blur' }
+                ],
+                count: [
+                  { lengthControl: [ null, 4 ], message: '长度不能超过4', trigger: 'blur' }
+                ]
               }
             }
+          },
+          methods: {
+            submit () {
+              this.$refs.form.validate(this.user)
+            },
+            reset(){
+              this.$refs.form.reset(this.user)
+            }
+          }
+        }
     `.replace(/^ {8}/gm, "").trim(),
       user: {
         name: '',
