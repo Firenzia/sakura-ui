@@ -62,6 +62,7 @@ export default {
 .slot-wrapper{
   &.sticky{
     position: fixed;
+    z-index:99;
   }
 }
 
