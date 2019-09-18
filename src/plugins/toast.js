@@ -1,6 +1,6 @@
 import toast from '../notice/toast'
 export default {
-  install (Vue, options) {
+  install(Vue, options) {
     let toast
     Vue.prototype.$toast = function (userConfig) {
       // 多次点击，销毁之前的toast
@@ -8,14 +8,23 @@ export default {
         console.log('销毁上一个')
         toast.close()
       }
-      toast = createToast({ Vue,
+      toast = createToast({
+        Vue,
         userConfig,
-        onClose: () => { console.log('监听到已关闭'); toast = null } })
+        onClose: () => {
+          console.log('监听到已关闭');
+          toast = null
+        }
+      })
     }
   }
 }
 
-function createToast ({ Vue, userConfig, onClose }) {
+function createToast({
+  Vue,
+  userConfig,
+  onClose
+}) {
   let Constructor = Vue.extend(toast)
   let vm = new Constructor({
     propsData: {

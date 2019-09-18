@@ -2,22 +2,24 @@
   <div>
     <h3>样式1</h3>
     <sakura-card>
-        <div style="width:600px">
-          <s-layout height="400">
-            <s-header height="100">header</s-header>
-            <s-layout>
-              <s-content>content</s-content>
-            </s-layout>
-            <s-footer>footer</s-footer>
+      <div>
+        <s-layout height="400">
+          <s-header height="100">header</s-header>
+          <s-layout>
+            <s-content>content</s-content>
           </s-layout>
-        </div>
+          <s-footer>footer</s-footer>
+        </s-layout>
+      </div>
 
-      <template v-slot:code><pre v-highlightjs><code class="vue">{{code1}}</code></pre></template>
+      <template v-slot:code>
+        <pre v-highlightjs><code class="vue">{{code1}}</code></pre>
+      </template>
     </sakura-card>
 
     <h3>样式2</h3>
     <sakura-card>
-      <div style="width:600px">
+      <div>
         <s-layout height="400">
           <s-header height="100">header</s-header>
           <s-layout>
@@ -28,12 +30,14 @@
         </s-layout>
       </div>
 
-      <template v-slot:code><pre v-highlightjs><code class="vue">{{code2}}</code></pre></template>
+      <template v-slot:code>
+        <pre v-highlightjs><code class="vue">{{code2}}</code></pre>
+      </template>
     </sakura-card>
 
     <h3>样式3</h3>
     <sakura-card>
-      <div style="width:600px">
+      <div>
         <s-layout height="400">
           <s-header height="100">header</s-header>
           <s-layout>
@@ -44,12 +48,14 @@
         </s-layout>
       </div>
 
-      <template v-slot:code><pre v-highlightjs><code class="vue">{{code3}}</code></pre></template>
+      <template v-slot:code>
+        <pre v-highlightjs><code class="vue">{{code3}}</code></pre>
+      </template>
     </sakura-card>
 
     <h3>样式4</h3>
     <sakura-card>
-      <div style="width:600px">
+      <div>
         <s-layout height="400">
           <s-sider width="200">sidebar</s-sider>
           <s-layout>
@@ -60,10 +66,11 @@
         </s-layout>
       </div>
 
-      <template v-slot:code><pre v-highlightjs><code class="vue">{{code4}}</code></pre></template>
+      <template v-slot:code>
+        <pre v-highlightjs><code class="vue">{{code4}}</code></pre>
+      </template>
     </sakura-card>
-
-</div>
+  </div>
 </template>
 <script>
 import Layout from "../../../src/container/layout";
@@ -82,7 +89,9 @@ export default {
             </s-layout>
             <s-footer>footer</s-footer>
         </s-layout>
-     `.replace(/^ {8}/gm, "").trim(),
+     `
+        .replace(/^ {8}/gm, "")
+        .trim(),
       code2: `
         <s-layout height="400">
           <s-header height="100">header</s-header>
@@ -92,7 +101,9 @@ export default {
           </s-layout>
           <s-footer>footer</s-footer>
         </s-layout>
-      `.replace(/^ {8}/gm, "").trim(),
+      `
+        .replace(/^ {8}/gm, "")
+        .trim(),
       code3: `
         <s-layout height="400">
           <s-header height="100">header</s-header>
@@ -102,7 +113,9 @@ export default {
           </s-layout>
           <s-footer>footer</s-footer>
         </s-layout>
-      `.replace(/^ {8}/gm, "").trim(),
+      `
+        .replace(/^ {8}/gm, "")
+        .trim(),
       code4: `
         <s-layout height="400">
           <s-sider width="200">sidebar</s-sider>
@@ -112,7 +125,9 @@ export default {
             <s-footer>footer</s-footer>
           </s-layout>
         </s-layout>
-      `.replace(/^ {8}/gm, "").trim()
+      `
+        .replace(/^ {8}/gm, "")
+        .trim()
     };
   },
   components: {
@@ -124,6 +139,31 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style>
+.s-layout {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+.s-header,
+.s-content,
+.s-footer,
+.s-sider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.s-header,
+.s-footer {
+  background: #7dbcea;
+}
+.s-content {
+  background: #108ee9;
+  height: 240px;
+}
+.s-sider {
+  background: #3ba0e9;
+}
 </style>
 

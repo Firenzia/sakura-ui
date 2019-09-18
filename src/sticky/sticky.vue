@@ -1,69 +1,65 @@
 <template>
-  <div ref="stickyItem" >
-    <div class="slot-wrapper"
-      :class="{'sticky':sticky}"
-      :style="{top,left}" >
+  <div ref="stickyItem">
+    <div class="slot-wrapper" :class="{'sticky':sticky}" :style="{top,left}">
       <slot></slot>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 's-sticky',
+  name: "s-sticky",
   props: {
     offsetTop: {
       type: Number,
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       limitY: 0,
       sticky: false,
       top: 0,
       left: 0,
       g_scrollHandler: undefined,
-      msg: ''
-    }
+      msg: ""
+    };
   },
-  mounted () {
-    this.init()
+  mounted() {
+    this.init();
   },
   methods: {
-    init () {
-      this.initData()
-      this.addListener()
+    init() {
+      this.initData();
+      this.addListener();
     },
-    addListener () {
-      this.g_scrollHandler = this.scrollHandler.bind(this)
-      window.addEventListener('scroll', this.g_scrollHandler)
+    addListener() {
+      this.g_scrollHandler = this.scrollHandler.bind(this);
+      window.addEventListener("scroll", this.g_scrollHandler);
     },
-    initData () {
-      let { top, left } = this.$refs.stickyItem.getBoundingClientRect()
-      this.limitY = top - this.offsetTop
-      this.left = left + 'px'
-      this.top = this.offsetTop + 'px'
+    initData() {
+      let { top, left } = this.$refs.stickyItem.getBoundingClientRect();
+      this.limitY = top - this.offsetTop;
+      this.left = left + "px";
+      this.top = this.offsetTop + "px";
     },
-    scrollHandler () {
+    scrollHandler() {
       if (window.scrollY > this.limitY) {
-        this.sticky = true
+        this.sticky = true;
       } else {
-        this.sticky = false
+        this.sticky = false;
       }
     }
   },
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.g_scrollHandler)
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.g_scrollHandler);
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-
-.slot-wrapper{
-  &.sticky{
+.slot-wrapper {
+  &.sticky {
     position: fixed;
     z-index:99;
   }
 }
-
 </style>

@@ -17,7 +17,7 @@
 <script>
 import Icon from '../icon/icon'
 export default {
-  name: 's-toast',
+  name: "s-toast",
   props: {
     // 默认2s自动关闭
     duration: {
@@ -33,25 +33,25 @@ export default {
     },
     // 自动关闭前用户可以看文字按钮手动关闭
     closeBtn: {
-      validator (val) {
-        let flag = true
+      validator(val) {
+        let flag = true;
         for (let key of Object.keys(val)) {
-          if (!['btnText', 'callback'].includes(key)) {
-            flag = false
-            break
+          if (!["btnText", "callback"].includes(key)) {
+            flag = false;
+            break;
           }
         }
         if (flag) {
-          val['btnText'] = val['btnText'] || '关闭'
+          val["btnText"] = val["btnText"] || "关闭";
         }
-        return flag
+        return flag;
       }
     },
     // toast出现位置
     position: {
-      default: 'top',
-      validator (val) {
-        return ['top', 'middle', 'bottom'].includes(val)
+      default: "top",
+      validator(val) {
+        return ["top", "middle", "bottom"].includes(val);
       }
     },
     type:{
@@ -69,30 +69,30 @@ export default {
     this.autoClose()
   },
   computed: {
-    toastClass () {
-      return `show-on-${this.position}`
+    toastClass() {
+      return `show-on-${this.position}`;
     }
   },
   methods: {
-    autoClose () {
+    autoClose() {
       setTimeout(() => {
-        this.close()
-      }, this.duration)
+        this.close();
+      }, this.duration);
     },
-    close () {
-      this.$el.remove()
-      this.$emit('closed')
-      this.$destroy()
+    close() {
+      this.$el.remove();
+      this.$emit("closed");
+      this.$destroy();
     },
-    userCustClose () {
-      this.close()
-      this.closeBtn.callback(this)
+    userCustClose() {
+      this.close();
+      this.closeBtn.callback(this);
     },
-    componentMethod () {
+    componentMethod() {
       // console.log('我是组件方法')
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
      @import "theme";
@@ -159,4 +159,26 @@ export default {
             border-left:1px solid #fff;
         }
     }
+
+.toast-wrapper {
+  padding: 0.8em 0em;
+  background: $toast-bg;
+  color: $toast-text-color;
+  border-radius: 4px;
+  display: flex;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .message {
+    max-width: 400px;
+    padding: 0 1.2em;
+  }
+  .close-btn {
+    padding: 0 1.2em;
+    flex-shrink: 0;
+    border-left: 1px solid #fff;
+  }
+}
 </style>

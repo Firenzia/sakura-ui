@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: 's-steps',
+  name: "s-steps",
   props: {
     active: {
       type: Number,
@@ -19,55 +19,60 @@ export default {
     },
     direction: {
       type: String,
-      validator (val) {
-        return ['vertical', 'horizontal'].includes(val)
+      validator(val) {
+        return ["vertical", "horizontal"].includes(val);
       },
-      default: 'horizontal'
+      default: "horizontal"
     }
   },
-  mounted () {
-    this.boardcast()
-    this.setStepStyle()
+  mounted() {
+    this.boardcast();
+    this.setStepStyle();
   },
   methods: {
-    setStepStyle () {
+    setStepStyle() {
       this.$children.forEach(vm => {
-        if (this.space) { vm.lineSpan = this.space }
-        if (this.stepFinishColor) { vm.stepFinishColor = this.stepFinishColor }
-        if (this.direction) { vm.direction = this.direction }
-      })
+        if (this.space) {
+          vm.lineSpan = this.space;
+        }
+        if (this.stepFinishColor) {
+          vm.stepFinishColor = this.stepFinishColor;
+        }
+        if (this.direction) {
+          vm.direction = this.direction;
+        }
+      });
     },
-    boardcast () {
+    boardcast() {
       this.$children.forEach(vm => {
-        vm.active = this.active
-      })
+        vm.active = this.active;
+      });
     }
   },
-  updated () {
-    this.boardcast()
+  updated() {
+    this.boardcast();
   }
-}
+};
 </script>
 <style lang="scss" scoped>
-.s-steps{
+.s-steps {
   display: flex;
-  padding:.5em;
-  &.steps-direction-horizontal{
+  padding: 0.5em;
+  &.steps-direction-horizontal {
     flex-direction: row;
   }
-  &.steps-direction-vertical{
+  &.steps-direction-vertical {
     flex-direction: column;
   }
 }
-
 </style>
 <style  lang="scss">
-.s-steps .s-step:not(:last-child){
-  flex-grow:1
+.s-steps .s-step:not(:last-child) {
+  flex-grow: 1;
 }
-.s-steps .s-step:last-child{
-  .line{
-    display:none
+.s-steps .s-step:last-child {
+  .line {
+    display: none;
   }
 }
 </style>

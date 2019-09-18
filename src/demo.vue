@@ -4,14 +4,14 @@
   </div>
 </template>
 <script>
-import modal from './plugins/modal'
-import toast from './plugins/toast'
-import Vue from 'vue'
-Vue.use(modal)
-Vue.use(toast)
+import modal from "./plugins/modal";
+import toast from "./plugins/toast";
+import Vue from "vue";
+Vue.use(modal);
+Vue.use(toast);
 
 export default {
-  data () {
+  data() {
     return {
     }
   },
@@ -56,6 +56,5 @@ export default {
 }
 </script>
 <style lang="scss">
- @import './static/scss/global.scss';
-
+@import "./static/scss/global.scss";
 </style>

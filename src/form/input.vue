@@ -1,30 +1,32 @@
 <template>
-    <div class="wrapper" :class="{error, disabled ,readonly}">
-        <template v-if="icon">
-          <s-icon :name="icon"></s-icon>
-        </template>
-        <input type="text"
-        ref="input"
-        :readonly="readonly"
-        :disabled="disabled"
-        :value="value"
-        :placeholder="placeholder"
-        @input="$emit('input',$event.target.value)"
-        @change="$emit('change',$event.target.value)"
-        @focus="$emit('focus',$event.target.value)"
-        @blur="$emit('blur',$event.target.value)">
-        <template v-if="error">
-            <s-icon name="error"></s-icon>
-            <span class="err-msg">{{error}}</span>
-        </template>
-    </div>
+  <div class="wrapper" :class="{error, disabled ,readonly}">
+    <template v-if="icon">
+      <s-icon :name="icon"></s-icon>
+    </template>
+    <input
+      type="text"
+      ref="input"
+      :readonly="readonly"
+      :disabled="disabled"
+      :value="value"
+      :placeholder="placeholder"
+      @input="$emit('input',$event.target.value)"
+      @change="$emit('change',$event.target.value)"
+      @focus="$emit('focus',$event.target.value)"
+      @blur="$emit('blur',$event.target.value)"
+    >
+    <template v-if="error">
+      <s-icon name="error"></s-icon>
+      <span class="err-msg">{{error}}</span>
+    </template>
+  </div>
 </template>
 <script>
-import Icon from '../icon/icon'
+import Icon from "../icon/icon";
 export default {
-  name: 's-input',
+  name: "s-input",
   components: {
-    's-icon': Icon
+    "s-icon": Icon
   },
   props: {
     icon: {
@@ -48,7 +50,7 @@ export default {
       type: String
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
   @import "theme";
@@ -81,5 +83,14 @@ export default {
     }
     .icon-error { fill: $color-danger; }
     .errorMessage { color: $color-danger; }
+  }
+  input:disabled {
+    background: #bbb;
+  }
+  .icon-error {
+    fill: $red;
+  }
+  .errorMessage {
+    color: $red;
   }
 </style>
