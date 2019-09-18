@@ -1,7 +1,7 @@
 <template>
    <div >
     <sakura-card>
-        <s-sticky :offset-top="top">
+      <s-sticky :offset-top="top">
         <div class="box">滚动下看我是不是被黏住了~</div>
       </s-sticky>
 
