@@ -200,8 +200,8 @@ const list4 = [
   },
   {
     color: '#227D51',
-    cnName: '緑, MIDORI',
-    jpName: '緑, MIDORI'
+    cnName: '緑',
+    jpName: 'MIDORI'
   },
   {
     color: '#A8D8B9',
