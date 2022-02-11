@@ -42,7 +42,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.21",
     "vuepress": "^0.13.1"
